@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Flash Car — Hero variations</title>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<link rel="stylesheet" href="../components.css"/>
+<link href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" rel="stylesheet"/>
+<link href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css" rel="stylesheet"/>
+<link href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css" rel="stylesheet"/>
+<link href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/duotone/style.css" rel="stylesheet"/>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: var(--font-body); }
+  .ab { position: relative; overflow: hidden; }
+  .ab__inner { width: 100%; height: 100%; padding: 64px 56px; display: flex; flex-direction: column; justify-content: center; gap: 24px; }
+  .ab__inner.two-col { display: grid; grid-template-columns: 1.05fr 0.85fr; gap: 48px; align-items: center; }
+  .ab__inner.solo  { padding: 80px 56px; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font: 800 12px var(--font-display); letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 6px 12px; border-radius: 999px;
+  }
+  .title { font: 800 clamp(36px, 4.4vw, 56px) var(--font-display); line-height: 1.05; letter-spacing: -0.025em; margin: 0; max-width: 14ch; }
+  .lead  { font: 400 17px/1.55 var(--font-body); max-width: 440px; margin: 0; }
+  .ctas  { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 4px; }
+  .ph    { line-height: 1; vertical-align: middle; }
+
+  /* Variation A · gradient navy → red w/ floating cards (current) */
+  .vA { background: linear-gradient(108deg, #0A1628 0%, #122036 38%, #1B2C46 65%, #5A0F12 100%); color: white; }
+  .vA::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(800px 380px at 100% 0%, rgba(216,38,42,0.28), transparent 70%); pointer-events: none; }
+  .vA .title { color: white; }
+  .vA .title .acc { color: var(--fc-red); }
+  .vA .lead { color: rgba(255,255,255,0.85); }
+  .vA .eyebrow { background: rgba(251,229,27,0.18); color: var(--fc-yellow); }
+  .vA__visual { position: relative; aspect-ratio: 5 / 4; background: linear-gradient(180deg, #1B2C46, #0A1628); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; display: grid; place-items: center; color: rgba(255,255,255,0.3); }
+  .vA__visual i { font-size: 120px; opacity: 0.5; }
+  .vA__price { position: absolute; right: -16px; top: 20px; background: var(--fc-red); color: white; padding: 14px 18px; border-radius: 12px; font: 700 12px var(--font-display); letter-spacing: 0.06em; text-transform: uppercase; box-shadow: 0 12px 32px rgba(0,0,0,0.3); }
+  .vA__price strong { display: block; font-size: 22px; letter-spacing: -0.01em; text-transform: none; margin-top: 4px; }
+  .vA__speed { position: absolute; left: -20px; bottom: 24px; background: white; color: var(--fc-ink-900); padding: 14px 18px; border-radius: 12px; display: flex; align-items: center; gap: 12px; box-shadow: 0 12px 32px rgba(0,0,0,0.3); }
+  .vA__speed .ic { width: 40px; height: 40px; border-radius: 10px; background: var(--fc-yellow); color: var(--fc-navy-900); display: grid; place-items: center; font-size: 22px; }
+  .vA__speed strong { font: 800 20px var(--font-display); display: block; letter-spacing: -0.01em; }
+  .vA__speed span { font: 700 10px var(--font-display); letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-muted); }
+
+  /* Variation B · white hero, big red type, minimal */
+  .vB { background: white; color: var(--fg-strong); }
+  .vB .eyebrow { background: var(--fc-danger-soft); color: var(--fc-red); }
+  .vB .title { color: var(--fg-strong); font-size: clamp(48px, 6vw, 80px); letter-spacing: -0.035em; }
+  .vB .title .acc { color: var(--fc-red); }
+  .vB .lead { color: var(--fg-muted); }
+  .vB__photo { position: relative; aspect-ratio: 5/4; border-radius: 20px; background: linear-gradient(135deg, #1B2C46 0%, #0A1628 100%); display: grid; place-items: center; color: rgba(255,255,255,0.25); overflow: hidden; }
+  .vB__photo i { font-size: 140px; }
+  .vB__photo::after { content: "FOTO · CARRO HERO"; position: absolute; top: 18px; left: 18px; font: 800 10px var(--font-display); letter-spacing: 0.12em; color: rgba(255,255,255,0.4); }
+  .vB__tag { position: absolute; bottom: 20px; left: 20px; background: white; color: var(--fc-ink-900); padding: 12px 16px; border-radius: 10px; box-shadow: 0 12px 24px rgba(0,0,0,0.18); font: 700 13px var(--font-display); display: flex; align-items: center; gap: 8px; }
+
+  /* Variation C · full-bleed red, max brand */
+  .vC { background: var(--fc-red); color: white; }
+  .vC::after { content: ""; position: absolute; right: -120px; bottom: -120px; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(251,229,27,0.22), transparent 60%); }
+  .vC .eyebrow { background: rgba(255,255,255,0.16); color: white; }
+  .vC .title { color: white; font-size: clamp(44px, 5.4vw, 68px); }
+  .vC .title .acc { color: var(--fc-yellow); }
+  .vC .lead { color: rgba(255,255,255,0.9); }
+  .vC .btn-w { background: white; color: var(--fc-red); border: 0; padding: 0 28px; height: 56px; border-radius: 999px; font: 800 16px var(--font-display); display: inline-flex; align-items: center; gap: 10px; cursor: pointer; }
+  .vC .btn-g { background: transparent; color: white; border: 1.5px solid rgba(255,255,255,0.5); padding: 0 26px; height: 56px; border-radius: 999px; font: 700 16px var(--font-display); display: inline-flex; align-items: center; gap: 10px; cursor: pointer; }
+  .vC__bigmark { position: absolute; right: 56px; bottom: 56px; display: flex; align-items: center; gap: 16px; }
+  .vC__bigmark .stat { text-align: right; }
+  .vC__bigmark .stat strong { font: 900 88px var(--font-display); display: block; line-height: 0.85; color: var(--fc-yellow); letter-spacing: -0.04em; }
+  .vC__bigmark .stat span { font: 700 13px var(--font-display); letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.85); }
+
+  /* Variation D · split editorial — photo left, copy right */
+  .vD { background: white; color: var(--fg-strong); }
+  .vD__inner { display: grid; grid-template-columns: 0.92fr 1.08fr; height: 100%; }
+  .vD__photo { background: linear-gradient(135deg, var(--fc-navy-900) 0%, var(--fc-navy-800) 100%); position: relative; display: grid; place-items: center; color: rgba(255,255,255,0.3); }
+  .vD__photo i { font-size: 160px; }
+  .vD__photo::after { content: "FOTO · UNIDADE FLASH CAR"; position: absolute; top: 18px; left: 18px; font: 800 10px var(--font-display); letter-spacing: 0.12em; color: rgba(255,255,255,0.4); }
+  .vD__photo .float-stat { position: absolute; bottom: 28px; right: -28px; background: var(--fc-red); color: white; padding: 18px 22px; border-radius: 12px; box-shadow: 0 18px 36px rgba(0,0,0,0.25); }
+  .vD__photo .float-stat strong { font: 800 30px var(--font-display); letter-spacing: -0.01em; display: block; }
+  .vD__photo .float-stat span { font: 700 10px var(--font-display); letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.9; }
+  .vD__copy { padding: 64px 64px 64px 80px; display: flex; flex-direction: column; justify-content: center; gap: 22px; }
+  .vD .eyebrow { background: var(--fc-danger-soft); color: var(--fc-red); }
+  .vD .title { font-size: clamp(36px, 4.2vw, 52px); letter-spacing: -0.025em; }
+  .vD .title .acc { color: var(--fc-red); border-bottom: 4px solid var(--fc-yellow); padding-bottom: 2px; }
+  .vD .lead { color: var(--fg-muted); }
+  .vD__trust { display: flex; gap: 18px; margin-top: 8px; flex-wrap: wrap; }
+  .vD__trust .t { display: flex; align-items: center; gap: 8px; font: 600 13px var(--font-display); color: var(--fg-strong); }
+  .vD__trust .t i { color: var(--fc-red); font-size: 18px; }
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel" data-presets="env,react">
+const { DesignCanvas, DCSection, DCArtboard } = window;
+
+const W = 1280, H = 720;
+
+function HeroA() {
+  return (
+    <section className="ab vA" style={{ width: W, height: H }}>
+      <div className="ab__inner two-col">
+        <div>
+          <span className="eyebrow"><i className="ph-fill ph-lightning"/>Avaliação em até 60 minutos</span>
+          <h1 className="title" style={{ marginTop: 18 }}>Venda seu veículo com segurança, agilidade e pagamento via PIX em até <span className="acc">60 minutos.</span></h1>
+          <p className="lead" style={{ marginTop: 22 }}>Conectamos seu carro a uma rede exclusiva de compradores verificados para garantir a melhor proposta do mercado — com suporte burocrático completo.</p>
+          <div className="ctas">
+            <button className="fc-btn fc-btn--primary fc-btn--lg">Agendar avaliação gratuita</button>
+            <button className="fc-btn fc-btn--lg" style={{ background: "transparent", color: "white", border: "1.5px solid rgba(255,255,255,0.4)" }}>Encontrar unidade</button>
+          </div>
+        </div>
+        <div className="vA__visual">
+          <i className="ph ph-car-profile"/>
+          <div className="vA__price">Avaliado em<strong>R$ 87.400</strong></div>
+          <div className="vA__speed">
+            <div className="ic"><i className="ph-fill ph-lightning"/></div>
+            <div><strong>24 min</strong><span>Recorde PIX</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function HeroB() {
+  return (
+    <section className="ab vB" style={{ width: W, height: H }}>
+      <div className="ab__inner two-col">
+        <div>
+          <span className="eyebrow"><i className="ph-fill ph-lightning"/>Avaliação grátis em 40 minutos</span>
+          <h1 className="title" style={{ marginTop: 18 }}>Seu carro vendido em <span className="acc">60 min.</span></h1>
+          <p className="lead" style={{ marginTop: 22 }}>Avaliação técnica + rede de compradores verificados + PIX no mesmo dia. Sem leilão, sem golpe, sem dor de cabeça.</p>
+          <div className="ctas">
+            <button className="fc-btn fc-btn--primary fc-btn--lg">Agendar avaliação</button>
+            <button className="fc-btn fc-btn--ghost fc-btn--lg">Como funciona →</button>
+          </div>
+        </div>
+        <div className="vB__photo">
+          <i className="ph ph-car-profile"/>
+          <div className="vB__tag"><i className="ph-fill ph-seal-check" style={{ color: "var(--fc-red)" }}/>+15.000 veículos intermediados</div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function HeroC() {
+  return (
+    <section className="ab vC" style={{ width: W, height: H }}>
+      <div className="ab__inner solo">
+        <span className="eyebrow" style={{ alignSelf: "flex-start" }}><i className="ph-fill ph-lightning"/>Intermediação automotiva profissional</span>
+        <h1 className="title" style={{ marginTop: 12 }}>Venda em <span className="acc">60 minutos.</span><br/>Receba via PIX.</h1>
+        <p className="lead" style={{ marginTop: 8 }}>Conectamos seu carro a uma rede nacional de compradores verificados. Sem anúncio, sem curioso, sem risco.</p>
+        <div className="ctas" style={{ marginTop: 4 }}>
+          <button className="btn-w"><i className="ph-bold ph-calendar-check"/>Agendar avaliação gratuita</button>
+          <button className="btn-g">Encontrar unidade</button>
+        </div>
+      </div>
+      <div className="vC__bigmark">
+        <div className="stat"><strong>60</strong><span>min · PIX na conta</span></div>
+      </div>
+    </section>
+  );
+}
+
+function HeroD() {
+  return (
+    <section className="ab vD" style={{ width: W, height: H }}>
+      <div className="vD__inner">
+        <div className="vD__photo">
+          <i className="ph ph-storefront"/>
+          <div className="float-stat"><strong>15k+</strong><span>veículos intermediados</span></div>
+        </div>
+        <div className="vD__copy">
+          <span className="eyebrow"><i className="ph-fill ph-buildings"/>Rede nacional</span>
+          <h1 className="title">Venda seu veículo onde a confiança encontra <span className="acc">velocidade.</span></h1>
+          <p className="lead">Avaliação técnica especializada, rede exclusiva de compradores verificados e pagamento via PIX em até 60 minutos.</p>
+          <div className="ctas">
+            <button className="fc-btn fc-btn--primary fc-btn--lg">Agendar avaliação</button>
+            <button className="fc-btn fc-btn--ghost fc-btn--lg">Conhecer unidades</button>
+          </div>
+          <div className="vD__trust">
+            <div className="t"><i className="ph-fill ph-shield-check"/>Processo 100% seguro</div>
+            <div className="t"><i className="ph-fill ph-wallet"/>Pagamento à vista</div>
+            <div className="t"><i className="ph-fill ph-handshake"/>Suporte completo</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function App() {
+  return (
+    <DesignCanvas title="Hero · 4 directions" subtitle="Flash Car home — variações lado a lado. Use ↔ Esc para focar.">
+      <DCSection id="heroes" title="Hero — Vender meu veículo" subtitle="1280×720 · clique numa artboard para focar">
+        <DCArtboard id="a" label="A · Atual (gradiente navy→red + cards flutuantes)" width={W} height={H}><HeroA/></DCArtboard>
+        <DCArtboard id="b" label="B · Branco minimalista + foto carro" width={W} height={H}><HeroB/></DCArtboard>
+        <DCArtboard id="c" label="C · Full-bleed vermelho (máximo branding)" width={W} height={H}><HeroC/></DCArtboard>
+        <DCArtboard id="d" label="D · Editorial split (foto unidade + copy)" width={W} height={H}><HeroD/></DCArtboard>
+      </DCSection>
+    </DesignCanvas>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+</script>
+</body>
+</html>

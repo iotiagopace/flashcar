@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "border-muted": "#e2e8f0",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#e2e2e2",
+                        "surface-container": "#eeeeee",
+                        "secondary": "#bc000b",
+                        "outline": "#75777d",
+                        "outline-variant": "#c5c6cd",
+                        "surface-container-low": "#f3f3f4",
+                        "primary": "#051125",
+                        "on-tertiary-fixed-variant": "#4f4700",
+                        "surface-subtle": "#f4f5f7",
+                        "primary-container": "#1b263b",
+                        "on-primary-container": "#828da7",
+                        "on-secondary-fixed-variant": "#930006",
+                        "on-primary-fixed": "#101b30",
+                        "surface-bright": "#f9f9f9",
+                        "on-tertiary": "#ffffff",
+                        "inverse-surface": "#2f3131",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#695f00",
+                        "surface-container-highest": "#e2e2e2",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-dim": "#dadada",
+                        "success-green": "#60b239",
+                        "on-secondary": "#ffffff",
+                        "surface-tint": "#545e76",
+                        "secondary-fixed": "#ffdad5",
+                        "surface-container-high": "#e8e8e8",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#e3231f",
+                        "on-secondary-container": "#fffbff",
+                        "secondary-fixed-dim": "#ffb4aa",
+                        "on-background": "#1a1c1c",
+                        "inverse-primary": "#bbc6e2",
+                        "surface": "#f9f9f9",
+                        "on-secondary-fixed": "#410001",
+                        "on-primary-fixed-variant": "#3c475d",
+                        "tertiary-fixed-dim": "#dcc800",
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#bead00",
+                        "tertiary-fixed": "#fbe51b",
+                        "primary-fixed-dim": "#bbc6e2",
+                        "on-surface-variant": "#45474d",
+                        "inverse-on-surface": "#f0f1f1",
+                        "on-tertiary-fixed": "#201c00",
+                        "background": "#f9f9f9",
+                        "on-tertiary-container": "#474000",
+                        "primary-fixed": "#d7e2ff",
+                        "on-surface": "#1a1c1c",
+                        "on-error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "base": "4px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "64px",
+                        "sm": "16px",
+                        "lg": "48px",
+                        "xs": "8px",
+                        "xl": "80px",
+                        "md": "24px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Montserrat"],
+                        "display-lg-mobile": ["Montserrat"],
+                        "display-lg": ["Montserrat"],
+                        "headline-lg": ["Montserrat"],
+                        "label-bold": ["Montserrat"],
+                        "headline-md": ["Montserrat"],
+                        "body-md": ["Montserrat"],
+                        "body-lg": ["Montserrat"],
+                        "headline-xl": ["Montserrat"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-bold": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-xl": ["32px", {"lineHeight": "40px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body { font-family: 'Montserrat', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-background">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 border-b border-muted bg-surface">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-[1280px] mx-auto">
+<a class="text-headline-lg font-headline-lg font-black text-primary" href="#">
+                Flash Car Store
+            </a>
+<nav class="hidden md:flex items-center gap-md">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 text-body-md font-body-md" href="#">Vender meu veículo</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 text-body-md font-body-md" href="#">Como funciona</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 text-body-md font-body-md" href="#">Sobre a Flash Car</a>
+<a class="text-primary border-b-2 border-primary pb-1 font-bold text-body-md font-body-md" href="#">Unidades</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 text-body-md font-body-md" href="#">Seja um franqueado</a>
+</nav>
+<button class="bg-primary text-on-primary px-md py-xs rounded-lg font-headline-md text-body-md hover:bg-primary-container transition-all active:scale-95">
+                Agendar avaliação
+            </button>
+</div>
+</header>
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="bg-surface py-xl px-margin-mobile md:px-margin-desktop">
+<div class="max-w-[1280px] mx-auto text-center">
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-md">
+                    Encontre a Flash Car mais perto de você
+                </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-lg">
+                    Estamos presentes nas principais regiões do país para garantir que você tenha a melhor experiência na compra ou venda do seu próximo veículo de performance.
+                </p>
+</div>
+</section>
+<!-- Filters Section -->
+<section class="sticky top-20 z-40 bg-surface-subtle py-md border-b border-muted">
+<div class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop flex flex-wrap items-center gap-sm">
+<span class="font-label-bold text-label-bold text-outline uppercase tracking-wider">Filtrar por Estado:</span>
+<div class="flex flex-wrap gap-xs">
+<button class="px-md py-2 rounded-full border border-primary bg-primary text-on-primary font-body-md transition-all">Todos</button>
+<button class="px-md py-2 rounded-full border border-outline-variant bg-surface text-on-surface hover:border-primary transition-all font-body-md">SC</button>
+<button class="px-md py-2 rounded-full border border-outline-variant bg-surface text-on-surface hover:border-primary transition-all font-body-md">RS</button>
+<button class="px-md py-2 rounded-full border border-outline-variant bg-surface text-on-surface hover:border-primary transition-all font-body-md">SP</button>
+<button class="px-md py-2 rounded-full border border-outline-variant bg-surface text-on-surface hover:border-primary transition-all font-body-md">GO</button>
+</div>
+</div>
+</section>
+<!-- Units Grid -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop">
+<div class="max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Unit Card 1 -->
+<div class="bg-surface-container-lowest border border-border-muted rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 group">
+<div class="h-48 overflow-hidden bg-surface-variant relative">
+<img alt="Showroom Floripa" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A luxurious, minimalist automotive showroom with polished grey concrete floors and high ceilings. Wide windows reveal a bright, daylight-filled environment showcasing a premium dark blue sedan. The space is exceptionally clean, echoing a corporate modern aesthetic with subtle architectural lighting and vast open space." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMj_oQkOo3V4xjRqkFSTPywVd-7Mn6PbkTav_M_2oe4HpKzQoAn2DVjS6UmAzfu-NCcWClfmhuA-Ze4F27CknuEb1NG9SXVEFkcl_-uGjD4t-8J0fYyhYCc7NtetD5f9EFTpZSajo6yjcaGA5ZdFqHd8_VS6tZkO-6hJf3iXeZqchpPdUGaj56lmRZnvGg_HsnjXVFisQLt72h5yVSVihI-P8Wm1w3tn2oYk3UZy2dO4S1ZC59dG73wXRT0xYvsEbc4n8x8dv_biw"/>
+<div class="absolute top-4 left-4">
+<span class="bg-secondary text-on-secondary px-3 py-1 rounded-full text-label-bold uppercase">Sede Própria</span>
+</div>
+</div>
+<div class="p-md">
+<h3 class="font-headline-md text-headline-md text-primary mb-xs">Flash Car Florianópolis/SC</h3>
+<div class="space-y-base mb-md">
+<div class="flex items-start gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">location_on</span>
+<p class="text-body-sm font-body-sm">Rod. SC-401, 4500 - Saco Grande, Florianópolis - SC, 88032-005</p>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">schedule</span>
+<p class="text-body-sm font-body-sm">Seg a Sex: 09h às 19h | Sáb: 09h às 13h</p>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">call</span>
+<p class="text-body-sm font-body-sm">(48) 3232-4040</p>
+</div>
+</div>
+<button class="w-full bg-primary-container text-on-primary py-3 rounded-lg font-headline-md hover:bg-primary transition-colors flex items-center justify-center gap-2 active:scale-[0.98]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chat</span>
+                            Falar com esta unidade
+                        </button>
+</div>
+</div>
+<!-- Unit Card 2 -->
+<div class="bg-surface-container-lowest border border-border-muted rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 group">
+<div class="h-48 overflow-hidden bg-surface-variant relative">
+<img alt="Showroom SP" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Modern high-end automotive dealership facade in São Paulo at dusk. The building features large glass panels reflecting city lights. The atmosphere is professional and premium, with a palette of deep navy and bright white lighting. The interior showroom is visible, displaying high-performance sports cars in a minimal, high-key setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTPw_fsND3KJ2aITPiLhaCwahmQ6uUa-49I_OLPbpjFVFt861FZg-haSChyX82fFBQt16gjZbE5uFa9NTVAbCMxbJZ1JAPb0Qm_eT-IGkslkeo_gbe6ERuoYwVZFmlFWKveLEOOxObDqwMzOiTkjzwuHd6aiYXkaWlFLePwtwaS6LcxhtOpqM1qDoGboKNwgO0ePqodrwv3C5dZeJZWxAcZ2B9lGKtgYd1qqHYwYRK9ZdTJ4eHSvx6-RjfyEaurE_-5sQanm2Hrgs"/>
+</div>
+<div class="p-md">
+<h3 class="font-headline-md text-headline-md text-primary mb-xs">Flash Car São Paulo/SP</h3>
+<div class="space-y-base mb-md">
+<div class="flex items-start gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">location_on</span>
+<p class="text-body-sm font-body-sm">Av. Europa, 1200 - Jardim Europa, São Paulo - SP, 01449-001</p>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">schedule</span>
+<p class="text-body-sm font-body-sm">Seg a Sex: 09h às 20h | Sáb: 09h às 17h</p>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">call</span>
+<p class="text-body-sm font-body-sm">(11) 3085-5050</p>
+</div>
+</div>
+<button class="w-full bg-primary-container text-on-primary py-3 rounded-lg font-headline-md hover:bg-primary transition-colors flex items-center justify-center gap-2 active:scale-[0.98]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chat</span>
+                            Falar com esta unidade
+                        </button>
+</div>
+</div>
+<!-- Unit Card 3 -->
+<div class="bg-surface-container-lowest border border-border-muted rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 group">
+<div class="h-48 overflow-hidden bg-surface-variant relative">
+<img alt="Showroom POA" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A clean, contemporary car service and reception area. Minimalist white walls contrasted by dark blue corporate accents. High-resolution lighting highlights the polished floors and professional environment. The space is uncluttered, suggesting high-performance care and expertise in automotive intermediation, set in Porto Alegre." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfl6483yYwLCBmkwd8pn9VEwdVYBK4V70Mb6wqWd_hcWHWWBahf7B3pAWoaIDO6D13J19wScpUDYDm8__IPC5k3W8oNDKVEWFQ6sMY1uEM0Hfhe4SotMGiU67uzM8_PY-JnCxsEfTaf2HBkpbhAAGZW6_Lc22al0vsZ-rO2PgPVpUzhM36VvzWa26f0t91PZEfX9XaeGytvsHAhcTcVNwxwZvgj7PlxcFGWUxFbI0Fj8orqpRNUDnTl2KiGjfQjAShcJ6Uc9S7G7o"/>
+</div>
+<div class="p-md">
+<h3 class="font-headline-md text-headline-md text-primary mb-xs">Flash Car Porto Alegre/RS</h3>
+<div class="space-y-base mb-md">
+<div class="flex items-start gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">location_on</span>
+<p class="text-body-sm font-body-sm">Av. Nilo Peçanha, 2500 - Três Figueiras, Porto Alegre - RS, 91330-001</p>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">schedule</span>
+<p class="text-body-sm font-body-sm">Seg a Sex: 09h às 19h | Sáb: 09h às 13h</p>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">call</span>
+<p class="text-body-sm font-body-sm">(51) 3333-6060</p>
+</div>
+</div>
+<button class="w-full bg-primary-container text-on-primary py-3 rounded-lg font-headline-md hover:bg-primary transition-colors flex items-center justify-center gap-2 active:scale-[0.98]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chat</span>
+                            Falar com esta unidade
+                        </button>
+</div>
+</div>
+<!-- Unit Card 4 -->
+<div class="bg-surface-container-lowest border border-border-muted rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 group">
+<div class="h-48 overflow-hidden bg-surface-variant relative">
+<img alt="Showroom GYN" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Interior of a luxury car dealership in Goiânia. Warm, high-key natural light pours through expansive glass walls onto a dark blue sports car. The floor is a pristine, light-reflecting surface. The overall mood is sophisticated and reliable, with plenty of white space and a focus on premium service quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5kXss-B-uqGC5wLQKX6Utz5uR_5-NB6UlpwStD5XVaVz2m0doCbQLAIrsab4v_EnTC0zpOpBDFoLBCw_4dxRA09Nxj2UtfONwmbB0RHZwTzr27ss-aGWy8ip4ZDepp7c_iV2cJvHAjAyXQIV884KhmUKzgd1j_iGKXuNqSYwA1v3tkhbuRyQoEI3mUsZVnHSjHwz3ls4I1MIqN-IBbfE0_YXTzA_iIlhO9NtddEzOOQN7ger55yOc3jWyCwy6BR-vLhaLH3zfwIo"/>
+<div class="absolute top-4 left-4">
+<span class="bg-tertiary text-on-tertiary px-3 py-1 rounded-full text-label-bold uppercase">Novo Espaço</span>
+</div>
+</div>
+<div class="p-md">
+<h3 class="font-headline-md text-headline-md text-primary mb-xs">Flash Car Goiânia/GO</h3>
+<div class="space-y-base mb-md">
+<div class="flex items-start gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">location_on</span>
+<p class="text-body-sm font-body-sm">Av. Ricardo Paranhos, 800 - Setor Marista, Goiânia - GO, 74180-050</p>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">schedule</span>
+<p class="text-body-sm font-body-sm">Seg a Sex: 08h às 18h | Sáb: 08h às 12h</p>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">call</span>
+<p class="text-body-sm font-body-sm">(62) 3999-7070</p>
+</div>
+</div>
+<button class="w-full bg-primary-container text-on-primary py-3 rounded-lg font-headline-md hover:bg-primary transition-colors flex items-center justify-center gap-2 active:scale-[0.98]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chat</span>
+                            Falar com esta unidade
+                        </button>
+</div>
+</div>
+<!-- Unit Card 5 -->
+<div class="bg-surface-container-lowest border border-border-muted rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 group">
+<div class="h-48 overflow-hidden bg-surface-variant relative">
+<img alt="Showroom Joinville" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="An expansive aerial view of a modern automotive complex with a large parking lot containing premium vehicles. The architecture is sharp and modern, featuring white panels and dark blue window frames. The lighting is bright and clear, emphasizing a sense of trust and professional expertise in the heart of Santa Catarina." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0pbtZUAwOXE3kJvyIG-_0rX45oFbskDVur7pLcr3An6JHDOSM6BYtvKXbgL1wrQsl-6KeFFtgDIXqe4VJfqpnkxl7O-C5Lag-Qn8gR6lY7MDnCSGiRKWYxEDgpWBmKUg9XJWCqGUaSUZI7-SGA7mdhsHWSbwyy-BRcjEfQOD5nDTXHTYFomJDQb33G57Ps6C6U-nrkeBuhObzg4JfU108nUxuRpsFSdSSYX-UH_a0j9FPvo5GWdmn6OwoS_Yek5Oxe87sMczCnt0"/>
+</div>
+<div class="p-md">
+<h3 class="font-headline-md text-headline-md text-primary mb-xs">Flash Car Joinville/SC</h3>
+<div class="space-y-base mb-md">
+<div class="flex items-start gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">location_on</span>
+<p class="text-body-sm font-body-sm">Rua XV de Novembro, 1500 - Glória, Joinville - SC, 89216-201</p>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">schedule</span>
+<p class="text-body-sm font-body-sm">Seg a Sex: 09h às 19h | Sáb: 09h às 13h</p>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">call</span>
+<p class="text-body-sm font-body-sm">(47) 3455-8080</p>
+</div>
+</div>
+<button class="w-full bg-primary-container text-on-primary py-3 rounded-lg font-headline-md hover:bg-primary transition-colors flex items-center justify-center gap-2 active:scale-[0.98]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chat</span>
+                            Falar com esta unidade
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA Section -->
+<section class="bg-primary text-on-primary py-xl px-margin-mobile md:px-margin-desktop">
+<div class="max-w-[1280px] mx-auto text-center">
+<h2 class="font-headline-xl text-headline-xl mb-md">Quer vender seu veículo com mais segurança?</h2>
+<p class="font-body-lg text-body-lg mb-lg max-w-2xl mx-auto text-on-primary-container">
+                    Nossos consultores estão prontos para oferecer uma avaliação justa e todo o suporte necessário para uma venda rápida e segura.
+                </p>
+<div class="flex flex-col md:flex-row gap-md justify-center">
+<button class="bg-secondary text-on-secondary px-xl py-md rounded-lg font-headline-md hover:bg-secondary-container transition-all active:scale-95 shadow-lg">
+                        Encontrar minha unidade
+                    </button>
+<button class="border border-on-primary text-on-primary px-xl py-md rounded-lg font-headline-md hover:bg-white/10 transition-all active:scale-95">
+                        Agendar agora
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-primary py-xl w-full">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter px-margin-mobile md:px-margin-desktop max-w-[1280px] mx-auto text-on-primary">
+<div class="space-y-md">
+<a class="text-headline-md font-headline-md font-bold text-on-primary" href="#">
+                    Flash Car Store
+                </a>
+<p class="text-body-sm font-body-sm text-on-primary-container leading-relaxed">
+                    © 2024 Flash Car Store. Todos os direitos reservados. Especialistas em intermediação automotiva de alta performance.
+                </p>
+</div>
+<div class="grid grid-cols-2 gap-md">
+<div class="flex flex-col gap-xs">
+<span class="text-headline-md font-headline-md mb-xs">Links</span>
+<a class="text-body-sm font-body-sm text-on-primary-container hover:text-on-primary hover:translate-x-1 transition-all" href="#">Vender meu veículo</a>
+<a class="text-body-sm font-body-sm text-on-primary-container hover:text-on-primary hover:translate-x-1 transition-all" href="#">Como funciona</a>
+<a class="text-body-sm font-body-sm text-on-primary-container hover:text-on-primary hover:translate-x-1 transition-all" href="#">Sobre a Flash Car</a>
+</div>
+<div class="flex flex-col gap-xs mt-8 md:mt-11">
+<a class="text-body-sm font-body-sm text-secondary font-bold hover:translate-x-1 transition-all" href="#">Unidades</a>
+<a class="text-body-sm font-body-sm text-on-primary-container hover:text-on-primary hover:translate-x-1 transition-all" href="#">Seja um franqueado</a>
+<a class="text-body-sm font-body-sm text-on-primary-container hover:text-on-primary hover:translate-x-1 transition-all" href="#">Suporte</a>
+</div>
+</div>
+<div class="space-y-md">
+<span class="text-headline-md font-headline-md block">Newsletter</span>
+<p class="text-body-sm font-body-sm text-on-primary-container">Fique por dentro das novidades e novos carros no estoque.</p>
+<div class="flex gap-2">
+<input class="bg-primary-container border-none rounded-lg px-4 py-2 text-on-primary placeholder:text-on-primary-container w-full focus:ring-2 focus:ring-secondary" placeholder="Seu e-mail" type="email"/>
+<button class="bg-secondary p-2 rounded-lg hover:bg-secondary-container transition-colors">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        // Interactive Filter Logic (Visual only for this demo)
+        const filterButtons = document.querySelectorAll('button[class*="rounded-full"]');
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => {
+                    b.classList.remove('bg-primary', 'text-on-primary', 'border-primary');
+                    b.classList.add('bg-surface', 'text-on-surface', 'border-outline-variant');
+                });
+                btn.classList.remove('bg-surface', 'text-on-surface', 'border-outline-variant');
+                btn.classList.add('bg-primary', 'text-on-primary', 'border-primary');
+            });
+        });
+
+        // Simple observer for reveal animation
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.grid > div').forEach(card => {
+            card.classList.add('opacity-0', 'translate-y-10', 'transition-all', 'duration-700');
+            observer.observe(card);
+        });
+    </script>
+</body></html>

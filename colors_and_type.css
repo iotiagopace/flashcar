@@ -1,0 +1,273 @@
+/* ============================================================
+   FLASH CAR — Color & Type tokens
+   ------------------------------------------------------------
+   The brand is RED-led. The logo is white "FLASH$CAR.store"
+   on a vibrant red field, with a yellow lightning bolt and a
+   green dollar sign baked into the wordmark. The design system
+   treats those three brand colors as a fixed triad, with deep
+   navy as a supporting dark surface and clean white as the
+   primary canvas. CTAs are red on light surfaces, white on red.
+   ============================================================ */
+
+/* --- Webfont ----------------------------------------------- */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap");
+
+:root {
+  /* ── BRAND TRIAD ─────────────────────────────────────────
+     These three colors are LOCKED. They come straight from
+     the logo and must not drift. Treat them as identity, not
+     palette suggestions.                                       */
+  --fc-red:            #D8262A;   /* primary brand red (premium automotive — sober, not alert) */
+  --fc-red-deep:       #B81B1F;   /* press / active state for red surfaces */
+  --fc-red-hover:      #E8393D;   /* hover lift on red CTAs */
+  --fc-yellow:         #FBE51B;   /* lightning bolt — speed / energy accent */
+  --fc-yellow-deep:    #E6C800;   /* press state for yellow */
+  --fc-green:          #5BB336;   /* dollar sign — money / PIX / value accent */
+  --fc-green-deep:     #449128;   /* press state for green */
+
+  /* ── DARK SUPPORTING SURFACE ─────────────────────────────
+     Used for footers, premium-tier franchise sections, and
+     authoritative quote blocks. Never the page base.           */
+  --fc-navy-900:       #0A1628;   /* deepest — footers, dark hero overlay */
+  --fc-navy-800:       #122036;   /* dark sections */
+  --fc-navy-700:       #1B2C46;   /* card on dark surface */
+  --fc-navy-600:       #2A3D5A;   /* border on dark */
+
+  /* ── NEUTRALS (light-first canvas) ───────────────────────  */
+  --fc-white:          #FFFFFF;
+  --fc-ink-50:         #F7F7F8;   /* page subtle bg */
+  --fc-ink-100:        #EFEFF1;   /* section bg, input bg */
+  --fc-ink-200:        #E2E3E7;   /* dividers, soft borders */
+  --fc-ink-300:        #C9CBD2;   /* disabled borders */
+  --fc-ink-400:        #8E919A;   /* placeholder / meta */
+  --fc-ink-500:        #5F6470;   /* secondary text */
+  --fc-ink-700:        #2E3340;   /* body text on light */
+  --fc-ink-900:        #15171E;   /* headings on light */
+
+  /* ── SEMANTIC ────────────────────────────────────────────  */
+  --fc-success:        var(--fc-green);
+  --fc-success-soft:   #E8F5E0;
+  --fc-warning:        var(--fc-yellow);
+  --fc-warning-soft:   #FFF7C2;
+  --fc-danger:         var(--fc-red);
+  --fc-danger-soft:    #FFE3E3;
+  --fc-info:           #2A6FDB;
+  --fc-info-soft:      #E3EEFC;
+
+  /* ── ROLES (use these in components) ─────────────────────  */
+  --bg-page:           var(--fc-white);
+  --bg-subtle:         var(--fc-ink-50);
+  --bg-section:        var(--fc-ink-100);
+  --bg-dark:           var(--fc-navy-900);
+  --bg-brand:          var(--fc-red);
+
+  --fg-default:        var(--fc-ink-700);
+  --fg-strong:         var(--fc-ink-900);
+  --fg-muted:          var(--fc-ink-500);
+  --fg-on-brand:       var(--fc-white);
+  --fg-on-dark:        var(--fc-white);
+  --fg-link:           var(--fc-red);
+
+  --border-soft:       var(--fc-ink-200);
+  --border-strong:     var(--fc-ink-300);
+  --border-on-dark:    var(--fc-navy-600);
+
+  /* ── ELEVATION ───────────────────────────────────────────
+     Two-layer shadows. Red-tinted for elements lifting on
+     light, navy-tinted for elements lifting on dark.           */
+  --shadow-sm:    0 1px 2px rgba(10, 22, 40, 0.06),
+                  0 1px 1px rgba(10, 22, 40, 0.04);
+  --shadow-md:    0 4px 12px rgba(10, 22, 40, 0.08),
+                  0 1px 2px rgba(10, 22, 40, 0.04);
+  --shadow-lg:    0 12px 28px rgba(10, 22, 40, 0.12),
+                  0 4px 8px  rgba(10, 22, 40, 0.06);
+  --shadow-cta:   0 8px 20px rgba(216, 38, 42, 0.24),
+                  0 2px 4px  rgba(216, 38, 42, 0.16);
+  --shadow-cta-hover: 0 12px 28px rgba(216, 38, 42, 0.32),
+                      0 4px 8px  rgba(216, 38, 42, 0.20);
+
+  /* ── RADII ───────────────────────────────────────────────  */
+  --radius-xs:    4px;     /* tags, micro-chips */
+  --radius-sm:    8px;     /* inputs, secondary buttons */
+  --radius-md:    12px;    /* cards, surfaces */
+  --radius-lg:    16px;    /* hero cards, modals */
+  --radius-xl:    24px;    /* feature blocks */
+  --radius-pill:  999px;   /* primary CTA shape, status pills, filter chips */
+
+  /* ── SPACING (8px scale, with 4px micro) ─────────────────  */
+  --space-0:   0;
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   24px;
+  --space-6:   32px;
+  --space-7:   48px;
+  --space-8:   64px;
+  --space-9:   96px;
+  --space-10:  128px;
+
+  /* ── LAYOUT ──────────────────────────────────────────────  */
+  --container-max:     1200px;
+  --container-wide:    1320px;
+  --gutter-mobile:     16px;
+  --gutter-desktop:    24px;
+  --section-y-mobile:  48px;
+  --section-y-desktop: 96px;
+
+  /* ── TYPOGRAPHY: FAMILIES ────────────────────────────────
+     Montserrat is the workhorse — geometric, confident, fits
+     the automotive register. Inter is a fallback for dense
+     UI (forms, tables) where Montserrat's optical size feels
+     heavy. Default everywhere is Montserrat.                  */
+  --font-display: "Montserrat", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-body:    "Montserrat", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-ui:      "Inter", "Montserrat", system-ui, sans-serif;
+  --font-mono:    ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* ── TYPOGRAPHY: SCALE (fluid clamps) ─────────────────────  */
+  --fs-display:   clamp(40px, 6vw, 72px);   /* hero claim */
+  --fs-h1:        clamp(32px, 4.4vw, 52px);
+  --fs-h2:        clamp(26px, 3.2vw, 40px);
+  --fs-h3:        clamp(22px, 2.4vw, 30px);
+  --fs-h4:        20px;
+  --fs-h5:        18px;
+  --fs-body-lg:   18px;
+  --fs-body:      16px;
+  --fs-body-sm:   14px;
+  --fs-meta:      13px;
+  --fs-eyebrow:   12px;
+
+  --lh-tight:     1.05;
+  --lh-snug:      1.2;
+  --lh-normal:    1.5;
+  --lh-relaxed:   1.65;
+
+  --tracking-tight:   -0.02em;
+  --tracking-normal:  0;
+  --tracking-wide:    0.04em;
+  --tracking-eyebrow: 0.14em;
+
+  /* ── MOTION ──────────────────────────────────────────────
+     Fast & confident — matches the "flash" brand promise.
+     Never use bouncy spring eases; the brand is professional. */
+  --ease-out:    cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --t-fast:      120ms;
+  --t-base:      200ms;
+  --t-slow:      320ms;
+}
+
+/* ============================================================
+   SEMANTIC TYPE STYLES
+   ------------------------------------------------------------
+   Reach for these directly: `<h1 class="fc-display">`, etc.
+   You can also nest the brand reset and write plain semantic
+   HTML inside `.fc-prose` for prose blocks.
+   ============================================================ */
+
+.fc-display, h1.fc-display {
+  font-family: var(--font-display);
+  font-size: var(--fs-display);
+  font-weight: 800;
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-strong);
+}
+
+.fc-h1, h1 {
+  font-family: var(--font-display);
+  font-size: var(--fs-h1);
+  font-weight: 800;
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-strong);
+}
+
+.fc-h2, h2 {
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  font-weight: 700;
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-strong);
+}
+
+.fc-h3, h3 {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-weight: 700;
+  line-height: var(--lh-snug);
+  color: var(--fg-strong);
+}
+
+.fc-h4, h4 {
+  font-family: var(--font-display);
+  font-size: var(--fs-h4);
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--fg-strong);
+}
+
+.fc-eyebrow {
+  font-family: var(--font-display);
+  font-size: var(--fs-eyebrow);
+  font-weight: 700;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--fc-red);
+}
+
+.fc-lead, p.fc-lead {
+  font-family: var(--font-body);
+  font-size: var(--fs-body-lg);
+  font-weight: 400;
+  line-height: var(--lh-relaxed);
+  color: var(--fg-default);
+}
+
+.fc-body, p {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: 400;
+  line-height: var(--lh-relaxed);
+  color: var(--fg-default);
+}
+
+.fc-meta {
+  font-family: var(--font-ui);
+  font-size: var(--fs-meta);
+  color: var(--fg-muted);
+}
+
+.fc-label {
+  font-family: var(--font-display);
+  font-size: var(--fs-meta);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--fg-strong);
+}
+
+/* On dark sections, text flips automatically when wrapped */
+.fc-on-dark, .fc-on-dark p, .fc-on-dark h1, .fc-on-dark h2, .fc-on-dark h3 {
+  color: var(--fc-white);
+}
+.fc-on-dark .fc-meta, .fc-on-dark p.fc-meta { color: rgba(255,255,255,0.7); }
+.fc-on-dark .fc-eyebrow { color: var(--fc-yellow); }
+
+/* ============================================================
+   BASE RESET — minimal, opt-in via .fc-prose root
+   ============================================================ */
+html { -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-relaxed);
+  color: var(--fg-default);
+  background: var(--bg-page);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+a { color: var(--fg-link); text-decoration: none; }
+a:hover { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+::selection { background: var(--fc-red); color: var(--fc-white); }

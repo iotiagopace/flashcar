@@ -1,0 +1,400 @@
+/* ============================================================
+   FLASH CAR — Component primitives
+   Depends on colors_and_type.css. Plain CSS — drop into any
+   page or wrap inside React via className.
+   ============================================================ */
+
+/* ── BUTTONS ───────────────────────────────────────────────
+   .fc-btn is the base. Variants:
+     .fc-btn--primary    red pill — main CTA ("Agendar avaliação")
+     .fc-btn--dark       navy pill — supporting action on light
+     .fc-btn--ghost      transparent w/ outline — secondary
+     .fc-btn--inverse    white pill on red/dark backgrounds
+     .fc-btn--whatsapp   green pill — WhatsApp-specific channel
+   Sizes: .fc-btn--sm, .fc-btn--lg
+   ─────────────────────────────────────────────────────────── */
+
+.fc-btn {
+  --_h: 48px;
+  --_px: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: var(--_h);
+  padding: 0 var(--_px);
+  border-radius: var(--radius-pill);
+  border: 0;
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform var(--t-fast) var(--ease-out),
+              background var(--t-fast) var(--ease-out),
+              box-shadow var(--t-base) var(--ease-out),
+              color var(--t-fast);
+  user-select: none;
+}
+.fc-btn:focus-visible {
+  outline: 3px solid var(--fc-red);
+  outline-offset: 3px;
+}
+.fc-btn:active { transform: translateY(1px); }
+.fc-btn:disabled, .fc-btn[aria-disabled="true"] {
+  opacity: 0.5; cursor: not-allowed; transform: none;
+}
+
+.fc-btn--sm { --_h: 36px; --_px: 16px; font-size: 13px; }
+.fc-btn--lg { --_h: 56px; --_px: 32px; font-size: 17px; }
+
+.fc-btn--primary {
+  background: var(--fc-red);
+  color: var(--fc-white);
+  box-shadow: var(--shadow-cta);
+}
+.fc-btn--primary:hover {
+  background: var(--fc-red-hover);
+  box-shadow: var(--shadow-cta-hover);
+  text-decoration: none;
+}
+.fc-btn--primary:active { background: var(--fc-red-deep); }
+
+.fc-btn--dark {
+  background: var(--fc-navy-900);
+  color: var(--fc-white);
+}
+.fc-btn--dark:hover { background: var(--fc-navy-800); text-decoration: none; }
+
+.fc-btn--ghost {
+  background: transparent;
+  color: var(--fc-ink-900);
+  border: 1.5px solid var(--fc-ink-300);
+}
+.fc-btn--ghost:hover {
+  border-color: var(--fc-ink-900);
+  background: var(--fc-ink-50);
+  text-decoration: none;
+}
+
+.fc-btn--inverse {
+  background: var(--fc-white);
+  color: var(--fc-red);
+}
+.fc-btn--inverse:hover { background: rgba(255,255,255,0.92); text-decoration: none; }
+
+.fc-btn--whatsapp {
+  background: var(--fc-green);
+  color: var(--fc-white);
+}
+.fc-btn--whatsapp:hover { background: var(--fc-green-deep); text-decoration: none; }
+
+.fc-btn--block { width: 100%; }
+
+/* ── BADGES / CHIPS ──────────────────────────────────────── */
+.fc-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+.fc-badge--red    { background: var(--fc-red);    color: var(--fc-white); }
+.fc-badge--yellow { background: var(--fc-yellow); color: var(--fc-navy-900); }
+.fc-badge--green  { background: var(--fc-green);  color: var(--fc-white); }
+.fc-badge--dark   { background: var(--fc-navy-900); color: var(--fc-white); }
+.fc-badge--soft-red    { background: var(--fc-danger-soft);  color: var(--fc-red-deep); }
+.fc-badge--soft-green  { background: var(--fc-success-soft); color: var(--fc-green-deep); }
+.fc-badge--soft-yellow { background: var(--fc-warning-soft); color: #6B5800; }
+.fc-badge--outline {
+  background: transparent;
+  color: var(--fc-ink-700);
+  box-shadow: inset 0 0 0 1.5px var(--fc-ink-300);
+}
+
+/* ── CARDS ───────────────────────────────────────────────── */
+.fc-card {
+  background: var(--fc-white);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-soft);
+  padding: var(--space-5);
+  transition: box-shadow var(--t-base) var(--ease-out),
+              transform var(--t-base) var(--ease-out),
+              border-color var(--t-base) var(--ease-out);
+}
+.fc-card--lift:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--fc-ink-300);
+}
+.fc-card--flush { padding: 0; overflow: hidden; }
+.fc-card--feature {
+  background: var(--fc-white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-sm);
+}
+.fc-card--dark {
+  background: var(--fc-navy-800);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--fc-navy-600);
+  padding: var(--space-6);
+  color: var(--fc-white);
+}
+.fc-card--brand {
+  background: var(--fc-red);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  color: var(--fc-white);
+  border: 0;
+}
+.fc-card--brand .fc-eyebrow { color: var(--fc-yellow); }
+
+/* Unit / location card */
+.fc-unit-card {
+  background: var(--fc-white);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow var(--t-base) var(--ease-out), transform var(--t-base) var(--ease-out);
+}
+.fc-unit-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.fc-unit-card__media {
+  aspect-ratio: 16 / 10;
+  background: var(--fc-ink-100);
+  position: relative;
+  overflow: hidden;
+}
+.fc-unit-card__media > img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.fc-unit-card__flag {
+  position: absolute; top: 12px; left: 12px;
+}
+.fc-unit-card__body { padding: 20px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+.fc-unit-card__title { font-weight: 700; font-size: 18px; color: var(--fg-strong); }
+.fc-unit-card__meta { font-size: 14px; color: var(--fg-muted); display: flex; gap: 8px; align-items: flex-start; }
+.fc-unit-card__meta svg { flex-shrink: 0; margin-top: 2px; color: var(--fc-red); }
+.fc-unit-card__cta { margin-top: auto; }
+
+/* Step card (numbered process) */
+.fc-step {
+  background: var(--fc-white);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.fc-step__num {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--fc-red);
+  letter-spacing: -0.04em;
+}
+.fc-step__icon {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--fc-danger-soft);
+  color: var(--fc-red);
+  display: grid; place-items: center;
+}
+.fc-step--active {
+  background: var(--fc-red);
+  border-color: var(--fc-red);
+  color: var(--fc-white);
+}
+.fc-step--active .fc-step__num { color: var(--fc-white); }
+.fc-step--active .fc-step__icon { background: rgba(255,255,255,0.15); color: var(--fc-white); }
+.fc-step--active h4 { color: var(--fc-white); }
+.fc-step--active p   { color: rgba(255,255,255,0.9); }
+
+/* ── INPUTS ──────────────────────────────────────────────── */
+.fc-field { display: flex; flex-direction: column; gap: 6px; }
+.fc-field__label {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--fg-strong);
+}
+.fc-input, .fc-select, .fc-textarea {
+  appearance: none;
+  height: 48px;
+  padding: 0 16px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border-soft);
+  background: var(--fc-white);
+  font: 400 15px/1.4 var(--font-body);
+  color: var(--fg-strong);
+  transition: border-color var(--t-fast), box-shadow var(--t-fast);
+}
+.fc-textarea { height: auto; padding: 12px 16px; min-height: 96px; resize: vertical; }
+.fc-input::placeholder, .fc-textarea::placeholder { color: var(--fg-muted); }
+.fc-input:focus, .fc-select:focus, .fc-textarea:focus {
+  outline: none;
+  border-color: var(--fc-red);
+  box-shadow: 0 0 0 4px rgba(216, 38, 42, 0.14);
+}
+.fc-input--error {
+  border-color: var(--fc-red);
+  box-shadow: 0 0 0 4px rgba(216, 38, 42, 0.12);
+}
+
+/* Filter pill (for unit-state filters etc.) */
+.fc-pill {
+  display: inline-flex; align-items: center;
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  background: var(--fc-white);
+  border: 1.5px solid var(--border-soft);
+  font: 600 14px var(--font-display);
+  color: var(--fg-strong);
+  cursor: pointer;
+  transition: all var(--t-fast) var(--ease-out);
+}
+.fc-pill:hover { border-color: var(--fc-ink-400); }
+.fc-pill[aria-pressed="true"], .fc-pill--active {
+  background: var(--fc-navy-900);
+  border-color: var(--fc-navy-900);
+  color: var(--fc-white);
+}
+
+/* ── NAVBAR ──────────────────────────────────────────────── */
+.fc-nav {
+  height: 72px;
+  background: var(--fc-white);
+  border-bottom: 1px solid var(--border-soft);
+  display: flex; align-items: center;
+  padding: 0 var(--gutter-desktop);
+  position: sticky; top: 0; z-index: 50;
+}
+.fc-nav__brand {
+  display: flex; align-items: center; gap: 12px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 18px;
+  color: var(--fc-ink-900);
+}
+.fc-nav__brand img { height: 40px; width: auto; }
+.fc-nav__links {
+  display: flex; align-items: center; gap: 8px;
+  margin: 0 auto;
+}
+.fc-nav__link {
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  font: 500 14px var(--font-display);
+  color: var(--fc-ink-700);
+  position: relative;
+  transition: color var(--t-fast) var(--ease-out);
+}
+.fc-nav__link::after {
+  content: "";
+  position: absolute;
+  left: 14px; right: 14px;
+  bottom: -2px; height: 3px;
+  background: var(--fc-red);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 280ms var(--ease-out), background var(--t-fast);
+}
+.fc-nav__link:hover { background: var(--fc-ink-50); text-decoration: none; }
+.fc-nav__link:hover::after { transform: scaleX(0.5); background: var(--fc-ink-400); }
+.fc-nav__link--active {
+  color: var(--fc-red);
+  font-weight: 700;
+}
+.fc-nav__link--active::after {
+  transform: scaleX(1);
+  background: var(--fc-red);
+}
+
+/* ── SECTION HELPERS ─────────────────────────────────────── */
+.fc-section { padding: var(--section-y-mobile) var(--gutter-mobile); }
+.fc-section--dark { background: var(--fc-navy-900); color: var(--fc-white); }
+.fc-section--brand { background: var(--fc-red); color: var(--fc-white); }
+.fc-section--subtle { background: var(--bg-subtle); }
+.fc-container { max-width: var(--container-max); margin: 0 auto; }
+
+@media (min-width: 900px) {
+  .fc-section { padding: var(--section-y-desktop) var(--gutter-desktop); }
+}
+
+/* ── TRUST BAR (icon strip) ──────────────────────────────── */
+.fc-trust {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-5);
+  padding: var(--space-6) 0;
+  border-block: 1px solid var(--border-soft);
+}
+.fc-trust__item {
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; gap: 8px;
+}
+.fc-trust__icon {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--fc-danger-soft);
+  color: var(--fc-red);
+  display: grid; place-items: center;
+}
+.fc-trust__label {
+  font: 700 11px var(--font-display);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+
+/* ── KPI / Stat ──────────────────────────────────────────── */
+.fc-stat {
+  display: flex; flex-direction: column; gap: 4px;
+}
+.fc-stat__value {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--fc-red);
+}
+.fc-stat__label {
+  font-size: 13px;
+  color: var(--fg-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+
+/* ── WhatsApp FAB ────────────────────────────────────────── */
+.fc-fab-whatsapp {
+  position: fixed;
+  right: 20px; bottom: 20px;
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--fc-green);
+  color: var(--fc-white);
+  display: grid; place-items: center;
+  box-shadow: 0 10px 24px rgba(91, 179, 54, 0.4);
+  z-index: 60;
+  transition: transform var(--t-base) var(--ease-out);
+}
+.fc-fab-whatsapp:hover { transform: scale(1.08); }

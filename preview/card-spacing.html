@@ -1,0 +1,27 @@
+<!-- @dsCard group="Spacing" -->
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8"/>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  body { margin: 0; padding: 20px; background: var(--bg-page); font-family: var(--font-body); }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { padding: 7px 10px; text-align: left; font-size: 12px; border-bottom: 1px solid var(--border-soft); }
+  th { font: 700 10px var(--font-display); letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-muted); }
+  td.token { font-family: var(--font-mono); color: var(--fc-red); font-size: 11px; }
+  .bar { height: 14px; background: var(--fc-red); border-radius: 3px; }
+</style></head>
+<body>
+  <table>
+    <thead><tr><th>Token</th><th>px</th><th>Visual</th><th>Use</th></tr></thead>
+    <tbody>
+      <tr><td class="token">--space-1</td><td>4</td><td><div class="bar" style="width:4px;"></div></td><td>icon-text gap</td></tr>
+      <tr><td class="token">--space-2</td><td>8</td><td><div class="bar" style="width:8px;"></div></td><td>chip gap</td></tr>
+      <tr><td class="token">--space-3</td><td>12</td><td><div class="bar" style="width:12px;"></div></td><td>card stack</td></tr>
+      <tr><td class="token">--space-4</td><td>16</td><td><div class="bar" style="width:16px;"></div></td><td>mobile gutter</td></tr>
+      <tr><td class="token">--space-5</td><td>24</td><td><div class="bar" style="width:24px;"></div></td><td>card padding, desktop gutter</td></tr>
+      <tr><td class="token">--space-6</td><td>32</td><td><div class="bar" style="width:32px;"></div></td><td>feature padding</td></tr>
+      <tr><td class="token">--space-7</td><td>48</td><td><div class="bar" style="width:48px;"></div></td><td>mobile section Y</td></tr>
+      <tr><td class="token">--space-9</td><td>96</td><td><div class="bar" style="width:96px;"></div></td><td>desktop section Y</td></tr>
+    </tbody>
+  </table>
+</body></html>

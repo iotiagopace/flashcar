@@ -1,0 +1,22 @@
+<!-- @dsCard group="Colors" -->
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8"/>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  body { margin: 0; background: var(--bg-page); padding: 20px; font-family: var(--font-body); }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .swatch { border-radius: 12px; padding: 18px; display: flex; flex-direction: column; justify-content: space-between; min-height: 140px; }
+  .role { font: 700 11px var(--font-display); letter-spacing: 0.14em; text-transform: uppercase; }
+  .hex { font: 700 22px var(--font-display); letter-spacing: -0.01em; }
+  .name { font: 600 13px var(--font-body); opacity: 0.9; }
+  .s1 { background: var(--fc-red); color: var(--fc-white); }
+  .s2 { background: var(--fc-yellow); color: var(--fc-navy-900); }
+  .s3 { background: var(--fc-green); color: var(--fc-white); }
+</style></head>
+<body>
+  <div class="grid">
+    <div class="swatch s1"><div class="role">Primary</div><div><div class="hex">#D8262A</div><div class="name">Flash Red · Premium</div></div></div>
+    <div class="swatch s2"><div class="role">Energy</div><div><div class="hex">#FBE51B</div><div class="name">Lightning Yellow</div></div></div>
+    <div class="swatch s3"><div class="role">Value · PIX</div><div><div class="hex">#5BB336</div><div class="name">Dollar Green</div></div></div>
+  </div>
+</body></html>

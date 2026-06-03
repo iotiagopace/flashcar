@@ -1,0 +1,22 @@
+<!-- @dsCard group="Brand" -->
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8"/>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  body { margin: 0; background: var(--bg-page); padding: 20px; font-family: var(--font-body); }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .swatch { border: 1px solid var(--border-soft); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; aspect-ratio: 1.4 / 1; }
+  .swatch.red { background: var(--fc-red); }
+  .swatch.dark { background: var(--fc-navy-900); }
+  .swatch img { max-width: 100%; max-height: 70px; object-fit: contain; }
+  .swatch .label { font: 600 11px var(--font-display); letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-muted); }
+  .swatch.red .label, .swatch.dark .label { color: rgba(255,255,255,0.7); }
+</style></head>
+<body>
+  <div class="grid">
+    <div class="swatch"><img src="../assets/logo-flashcar-color.png" alt=""/><div class="label">Color · on white</div></div>
+    <div class="swatch red"><img src="../assets/logo-flashcar-white.png" alt=""/><div class="label">White · on red</div></div>
+    <div class="swatch dark"><img src="../assets/logo-flashcar-white.png" alt=""/><div class="label">White · on dark</div></div>
+    <div class="swatch"><img src="../assets/avatar-red-square.png" alt="" style="border-radius:12px;"/><div class="label">Avatar 1:1</div></div>
+  </div>
+</body></html>

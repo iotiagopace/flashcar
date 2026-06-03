@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "border-muted": "#e2e8f0",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#e2e2e2",
+                        "surface-container": "#eeeeee",
+                        "secondary": "#bc000b",
+                        "outline": "#75777d",
+                        "outline-variant": "#c5c6cd",
+                        "surface-container-low": "#f3f3f4",
+                        "primary": "#051125",
+                        "on-tertiary-fixed-variant": "#4f4700",
+                        "surface-subtle": "#f4f5f7",
+                        "primary-container": "#1b263b",
+                        "on-primary-container": "#828da7",
+                        "on-secondary-fixed-variant": "#930006",
+                        "on-primary-fixed": "#101b30",
+                        "surface-bright": "#f9f9f9",
+                        "on-tertiary": "#ffffff",
+                        "inverse-surface": "#2f3131",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#695f00",
+                        "surface-container-highest": "#e2e2e2",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-dim": "#dadada",
+                        "success-green": "#60b239",
+                        "on-secondary": "#ffffff",
+                        "surface-tint": "#545e76",
+                        "secondary-fixed": "#ffdad5",
+                        "surface-container-high": "#e8e8e8",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#e3231f",
+                        "on-secondary-container": "#fffbff",
+                        "secondary-fixed-dim": "#ffb4aa",
+                        "on-background": "#1a1c1c",
+                        "inverse-primary": "#bbc6e2",
+                        "surface": "#f9f9f9",
+                        "on-secondary-fixed": "#410001",
+                        "on-primary-fixed-variant": "#3c475d",
+                        "tertiary-fixed-dim": "#dcc800",
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#bead00",
+                        "tertiary-fixed": "#fbe51b",
+                        "primary-fixed-dim": "#bbc6e2",
+                        "on-surface-variant": "#45474d",
+                        "inverse-on-surface": "#f0f1f1",
+                        "on-tertiary-fixed": "#201c00",
+                        "background": "#f9f9f9",
+                        "on-tertiary-container": "#474000",
+                        "primary-fixed": "#d7e2ff",
+                        "on-surface": "#1a1c1c",
+                        "on-error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "base": "4px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "64px",
+                        "sm": "16px",
+                        "lg": "48px",
+                        "xs": "8px",
+                        "xl": "80px",
+                        "md": "24px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Montserrat"],
+                        "display-lg": ["Montserrat"],
+                        "headline-lg": ["Montserrat"],
+                        "label-bold": ["Montserrat"],
+                        "headline-md": ["Montserrat"],
+                        "body-md": ["Montserrat"],
+                        "body-lg": ["Montserrat"],
+                        "headline-xl": ["Montserrat"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-bold": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-xl": ["32px", {"lineHeight": "40px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .premium-shadow {
+            box-shadow: 0 10px 30px -10px rgba(5, 17, 37, 0.1);
+        }
+        .text-shadow-hero {
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 border-b border-muted bg-surface">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-[1280px] mx-auto">
+<div class="text-headline-lg font-headline-lg font-black text-primary">Flash Car Store</div>
+<nav class="hidden md:flex gap-md">
+<a class="text-on-surface-variant hover:text-primary font-body-md transition-colors duration-200" href="#">Vender meu veículo</a>
+<a class="text-on-surface-variant hover:text-primary font-body-md transition-colors duration-200" href="#">Como funciona</a>
+<a class="text-primary border-b-2 border-primary pb-1 font-bold font-body-md" href="#">Sobre a Flash Car</a>
+<a class="text-on-surface-variant hover:text-primary font-body-md transition-colors duration-200" href="#">Unidades</a>
+<a class="text-on-surface-variant hover:text-primary font-body-md transition-colors duration-200" href="#">Seja um franqueado</a>
+</nav>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-lg font-bold hover:opacity-80 transition-all text-body-md">Agendar avaliação</button>
+</div>
+</header>
+<main class="pt-[72px]">
+<!-- Hero Section -->
+<section class="relative min-h-[819px] flex items-center justify-center overflow-hidden bg-primary-container">
+<div class="absolute inset-0 opacity-40">
+<img alt="Luxurious car showroom" class="w-full h-full object-cover" data-alt="A cinematic, wide-angle shot of a high-end, minimalist car showroom with polished dark floors and architectural lighting. A sleek, modern sports car is positioned prominently as the center-piece. The atmosphere is professional, quiet, and ultra-premium, featuring a sophisticated palette of deep blacks, greys, and subtle metallic glints under soft overhead spotlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiedmxEd-U-Gjdag49EViONL-yJfWAuJDZ_uXiQHtRVJZwKJ2VDkKhzUcmMMGeuqWnlu5X5Vwy6f4tqHPL__bKn2GKtIHEuXV1QjQtRRGzYPYHOpja0-4VlcPk56fAemvt0ygATB-2eMZ7FSLvn_1h9T8utNbzWHJ8OXfVkaRaBHrRv9N530qc-vBJadyuVFGlDJ3_QOv4i5D2yIQItKtS1svy3TNj_AKM6D5TbzYCpFSwDeRibTyslCoQzOHbbdYL-xb6wYo8vFI"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/60 to-transparent"></div>
+<div class="relative z-10 px-margin-mobile md:px-margin-desktop max-w-[1280px] mx-auto text-center">
+<h1 class="font-display-lg text-display-lg text-white mb-6 text-shadow-hero max-w-4xl mx-auto">
+                    A Flash Car nasceu para transformar a forma de vender veículos no Brasil
+                </h1>
+<p class="font-body-lg text-body-lg text-white/90 max-w-2xl mx-auto mb-md">
+                    Com mais de 15 anos de mercado, unimos tecnologia de ponta, agilidade processual e atendimento humanizado para criar a melhor experiência automotiva do país.
+                </p>
+<div class="flex flex-col md:flex-row gap-4 justify-center">
+<div class="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
+<span class="material-symbols-outlined text-white">verified</span>
+<span class="text-white text-label-bold">15 ANOS DE EXPERIÊNCIA</span>
+</div>
+<div class="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
+<span class="material-symbols-outlined text-white">speed</span>
+<span class="text-white text-label-bold">AGILIDADE DIGITAL</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Nossa História -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop max-w-[1280px] mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-xl items-center">
+<div class="order-2 md:order-1">
+<span class="text-secondary font-label-bold tracking-widest uppercase mb-2 block">Nossa História</span>
+<h2 class="font-headline-xl text-headline-xl text-primary mb-md">Do desafio à solução definitiva</h2>
+<div class="space-y-4 text-on-surface-variant font-body-md leading-relaxed">
+<p>
+                            A trajetória da Flash Car teve início com a visão empreendedora de <strong>David</strong> e <strong>Agnaldo</strong>, profissionais que vivenciaram por décadas as ineficiências e a falta de segurança no mercado tradicional de compra e venda de veículos.
+                        </p>
+<p>
+                            Eles identificaram que vender um carro no Brasil era um processo lento, burocrático e muitas vezes arriscado. A "dor do mercado" era clara: proprietários queriam liquidez e segurança, enquanto compradores buscavam procedência e confiança.
+                        </p>
+<p>
+                            Foi dessa necessidade que surgiu o modelo de intermediação da Flash Car. Não somos apenas uma loja; somos uma plataforma de confiança que profissionaliza a negociação, cuidando de cada detalhe para que você tenha tranquilidade total.
+                        </p>
+</div>
+</div>
+<div class="order-1 md:order-2 relative">
+<div class="aspect-square rounded-xl overflow-hidden premium-shadow">
+<img alt="Founders in meeting" class="w-full h-full object-cover" data-alt="Two professional, middle-aged men in tailored business casual attire are engaged in a confident and focused discussion inside a bright, modern corporate office environment. The setting features clean lines, glass walls, and a minimalist aesthetic. The mood is one of trust, leadership, and visionary collaboration, illuminated by soft natural light streaming through large windows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJQAXSHyJcDMn2JciX94Mb7_JfCCKiVLEKqnSr5uKN9ysmXxhzgKyU2oIruPDFrlUA4GeMOlQzurgniqlsy76OtwV1SYC8uFP7WO_wFUZ1pfwQiiVT3VvpzRNqshF7wDFHoPQGPc8sbC9nmZnqulbq63Nv5b2yfCP_PFmrXHXT7_iiTGOOnnbBTf-pcEvK_0qg2bqbbS_P6NaQwmAvhDJEAB8nD3lNyUdTBJdNljv2NpS8Yt6FfqYNmTeaNd1ZiKBX5E7n6BcHVEo"/>
+</div>
+<div class="absolute -bottom-6 -left-6 bg-secondary text-on-secondary p-8 rounded-xl hidden md:block">
+<div class="text-[48px] font-black leading-none">15k+</div>
+<div class="text-label-bold opacity-80 uppercase mt-2">Veículos Intermediados</div>
+</div>
+</div>
+</div>
+</section>
+<!-- O que fazemos - Asymmetric Layout -->
+<section class="bg-surface-subtle py-xl">
+<div class="px-margin-mobile md:px-margin-desktop max-w-[1280px] mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-lg gap-md">
+<div class="max-w-xl">
+<span class="text-secondary font-label-bold tracking-widest uppercase mb-2 block">Nosso Core</span>
+<h2 class="font-headline-xl text-headline-xl text-primary">Conectando quem quer vender com quem busca o melhor</h2>
+</div>
+<p class="text-on-surface-variant font-body-md max-w-sm">
+                        Desenvolvemos um ecossistema que elimina as barreiras entre vendedores e compradores verificados.
+                    </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Bento Card 1 -->
+<div class="md:col-span-2 bg-white p-lg rounded-xl border border-border-muted premium-shadow flex flex-col md:flex-row gap-md items-center">
+<div class="w-full md:w-1/2">
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Vendedores Satisfeitos</h3>
+<p class="text-on-surface-variant text-body-md mb-4">Seu carro é avaliado por especialistas e anunciado em nossa rede nacional, garantindo a melhor oferta sem você sair de casa.</p>
+<ul class="space-y-2">
+<li class="flex items-center gap-2 text-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-success-green text-[18px]">check_circle</span>
+                                    Avaliação técnica presencial
+                                </li>
+<li class="flex items-center gap-2 text-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-success-green text-[18px]">check_circle</span>
+                                    Fotos profissionais inclusas
+                                </li>
+</ul>
+</div>
+<div class="w-full md:w-1/2 rounded-lg overflow-hidden h-48 md:h-full">
+<img alt="Modern car detailing" class="w-full h-full object-cover" data-alt="Close-up macro shot of a sleek, dark grey luxury vehicle's bodywork reflecting soft studio lights. The focus is on the flawless paint and the precise gap lines of the car door. The lighting is low-key and dramatic, highlighting the high-performance engineering and professional care given to the vehicle. The palette is dominated by deep blues and charcoals." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAz_idgul8h2Zb0mFVogqDsyRGoINeVUzIm3NKsNQr2JqNHfm0Hk0MUUkKpyAZim88FrYM-Iz-scWBh4EpT3a14i4j-hL7u3rjs7HA_QkpnzA1A2jxIfC4C8WeBWtVUOBNcncMvqz19T2rvQWEsk3TzLeh_Y9fcApTtWkVqV_qD0IyjDEK-aDDlWFAoXpogDAAYbML64xqnUPJG2YkqqBH1f4bKpmIwE6hFm-7KKhKjzlXtL1JgaKm5rGUeIsdLLAYT-Uq0Ri-qEfw"/>
+</div>
+</div>
+<!-- Bento Card 2 -->
+<div class="bg-primary text-white p-lg rounded-xl flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-[40px] mb-4 text-secondary-fixed">verified_user</span>
+<h3 class="font-headline-md text-headline-md mb-2">Compradores Verificados</h3>
+<p class="text-white/70 text-body-md">Apenas interessados reais e pré-aprovados acessam nossa base, eliminando curiosos e golpes.</p>
+</div>
+<a class="text-secondary-fixed font-label-bold flex items-center gap-2 hover:gap-3 transition-all mt-6" href="#">
+                            SAIBA MAIS <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Missão e Visão -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop max-w-[1280px] mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="bg-primary-container p-xl rounded-xl text-white relative overflow-hidden">
+<span class="material-symbols-outlined absolute -right-4 -top-4 text-[120px] opacity-10">rocket_launch</span>
+<h3 class="font-headline-lg text-headline-lg mb-4">Missão</h3>
+<p class="font-body-lg text-body-lg text-white/80">
+                        Proporcionar uma intermediação automotiva ágil, transparente e segura, superando as expectativas de nossos clientes através de processos inovadores e excelência no atendimento.
+                    </p>
+</div>
+<div class="border-2 border-primary p-xl rounded-xl text-primary relative overflow-hidden">
+<span class="material-symbols-outlined absolute -right-4 -top-4 text-[120px] opacity-5">visibility</span>
+<h3 class="font-headline-lg text-headline-lg mb-4">Visão</h3>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                        Ser reconhecida como a maior e mais confiável rede de intermediação automotiva do Brasil, referência em tecnologia e satisfação do cliente no setor.
+                    </p>
+</div>
+</div>
+</section>
+<!-- Valores -->
+<section class="py-xl bg-white">
+<div class="px-margin-mobile md:px-margin-desktop max-w-[1280px] mx-auto text-center">
+<span class="text-secondary font-label-bold tracking-widest uppercase mb-2 block">Nossos Pilares</span>
+<h2 class="font-headline-xl text-headline-xl text-primary mb-lg">Valores que nos guiam</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Valor 1 -->
+<div class="group p-lg bg-surface-subtle rounded-xl hover:bg-primary hover:text-white transition-all duration-300 text-left">
+<div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-md shadow-sm group-hover:bg-secondary">
+<span class="material-symbols-outlined text-primary group-hover:text-white">visibility</span>
+</div>
+<h4 class="font-headline-md text-headline-md mb-2">Transparência</h4>
+<p class="text-body-sm opacity-70">Processos claros e informações abertas em todas as etapas da negociação.</p>
+</div>
+<!-- Valor 2 -->
+<div class="group p-lg bg-surface-subtle rounded-xl hover:bg-primary hover:text-white transition-all duration-300 text-left">
+<div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-md shadow-sm group-hover:bg-secondary">
+<span class="material-symbols-outlined text-primary group-hover:text-white">bolt</span>
+</div>
+<h4 class="font-headline-md text-headline-md mb-2">Agilidade</h4>
+<p class="text-body-sm opacity-70">Reduzimos o tempo de venda através de tecnologia e rede de contatos qualificada.</p>
+</div>
+<!-- Valor 3 -->
+<div class="group p-lg bg-surface-subtle rounded-xl hover:bg-primary hover:text-white transition-all duration-300 text-left">
+<div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-md shadow-sm group-hover:bg-secondary">
+<span class="material-symbols-outlined text-primary group-hover:text-white">shield</span>
+</div>
+<h4 class="font-headline-md text-headline-md mb-2">Segurança</h4>
+<p class="text-body-sm opacity-70">Garantia jurídica e verificação rigorosa de todos os veículos e compradores.</p>
+</div>
+<!-- Valor 4 -->
+<div class="group p-lg bg-surface-subtle rounded-xl hover:bg-primary hover:text-white transition-all duration-300 text-left">
+<div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-md shadow-sm group-hover:bg-secondary">
+<span class="material-symbols-outlined text-primary group-hover:text-white">star</span>
+</div>
+<h4 class="font-headline-md text-headline-md mb-2">Excelência</h4>
+<p class="text-body-sm opacity-70">Comprometimento com a perfeição nos detalhes e na experiência do cliente.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA Section -->
+<section class="py-xl bg-primary relative overflow-hidden">
+<div class="absolute inset-0 opacity-10">
+<img alt="Highway at night" class="w-full h-full object-cover" data-alt="A long exposure, high-speed photography shot of light trails from cars on a modern, curved highway at night. The streaks of white and red light create a sense of velocity and futuristic motion. The dark environment is punctuated by cold blue city lights in the distance. The mood is energetic, high-performance, and sophisticated." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7Li2v6F2feBgj8WdtGac79K4D2zpkK4aPJS-OlVtY7OyRXY2c_BM0GA0pU68Rzpix_lHbGsfpClrHuNePX_-Vws-d1Fvq6og7MmyvOEc94CvZUSlbgjoUhfhBtty-h_hkMRxYmG_WlHTBkV3moRcZCdF1_YLMoKDtP31oi-Y2t6r8QcWhaENIhyhy8CHHKCqEDUN9bnGh6wf45ZEfINS-j1Z7eOhyIr-8uwR_b2_ZTW75f9ths1dseHTSZHEvq3Kq34C9NYI96ao"/>
+</div>
+<div class="relative z-10 px-margin-mobile md:px-margin-desktop max-w-[1280px] mx-auto text-center">
+<h2 class="font-display-lg text-white mb-6">Venda seu veículo com quem entende do mercado</h2>
+<p class="text-white/70 font-body-lg mb-lg max-w-2xl mx-auto">
+                    Junte-se a milhares de clientes satisfeitos e experimente a nova era da intermediação automotiva.
+                </p>
+<button class="bg-secondary text-on-secondary px-xl py-4 rounded-lg font-bold text-headline-md hover:scale-105 active:scale-95 transition-all premium-shadow">
+                    Agendar avaliação
+                </button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-primary dark:bg-black w-full py-xl text-on-primary">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter px-margin-desktop max-w-[1280px] mx-auto">
+<div class="flex flex-col gap-md">
+<div class="text-headline-md font-headline-md font-bold text-on-primary">Flash Car Store</div>
+<p class="text-body-sm text-on-primary-container max-w-xs">Especialistas em intermediação automotiva de alta performance com foco em segurança e transparência.</p>
+<div class="flex gap-4">
+<span class="material-symbols-outlined hover:text-secondary cursor-pointer">social_leaderboard</span>
+<span class="material-symbols-outlined hover:text-secondary cursor-pointer">share</span>
+<span class="material-symbols-outlined hover:text-secondary cursor-pointer">link</span>
+</div>
+</div>
+<div class="flex flex-col gap-sm">
+<h4 class="font-headline-md mb-2">Links Rápidos</h4>
+<a class="text-on-primary-container hover:text-on-primary text-body-sm transition-transform hover:translate-x-1" href="#">Vender meu veículo</a>
+<a class="text-on-primary-container hover:text-on-primary text-body-sm transition-transform hover:translate-x-1" href="#">Como funciona</a>
+<a class="text-secondary font-bold text-body-sm" href="#">Sobre a Flash Car</a>
+<a class="text-on-primary-container hover:text-on-primary text-body-sm transition-transform hover:translate-x-1" href="#">Unidades</a>
+<a class="text-on-primary-container hover:text-on-primary text-body-sm transition-transform hover:translate-x-1" href="#">Seja um franqueado</a>
+<a class="text-on-primary-container hover:text-on-primary text-body-sm transition-transform hover:translate-x-1" href="#">Suporte</a>
+</div>
+<div class="flex flex-col gap-sm">
+<h4 class="font-headline-md mb-2">Newsletter</h4>
+<p class="text-body-sm text-on-primary-container mb-2">Receba novidades e ofertas exclusivas diretamente no seu e-mail.</p>
+<div class="flex">
+<input class="bg-white/10 border-none text-white px-4 py-2 w-full focus:ring-1 focus:ring-secondary rounded-l" placeholder="Seu e-mail" type="email"/>
+<button class="bg-secondary px-4 py-2 rounded-r hover:bg-secondary/80 transition-colors">Enviar</button>
+</div>
+</div>
+</div>
+<div class="max-w-[1280px] mx-auto mt-xl pt-md border-t border-white/10 px-margin-desktop text-center">
+<p class="text-body-sm text-on-primary-container">© 2024 Flash Car Store. Todos os direitos reservados. Especialistas em intermediação automotiva de alta performance.</p>
+</div>
+</footer>
+<script>
+        // Micro-interactions and simple effects
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('opacity-100', 'translate-y-0');
+                        entry.target.classList.remove('opacity-0', 'translate-y-10');
+                    }
+                });
+            }, observerOptions);
+
+            // Apply fade-in animation to sections
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
+                observer.observe(section);
+            });
+        });
+    </script>
+</body></html>

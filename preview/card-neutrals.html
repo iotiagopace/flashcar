@@ -1,0 +1,28 @@
+<!-- @dsCard group="Colors" -->
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8"/>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  body { margin: 0; background: var(--bg-page); padding: 20px; font-family: var(--font-body); }
+  .row { display: grid; grid-template-columns: repeat(9, 1fr); gap: 6px; }
+  .sw { border-radius: 8px; height: 90px; display: flex; flex-direction: column; justify-content: flex-end; padding: 8px; border: 1px solid var(--border-soft); }
+  .sw .h { font: 700 10px var(--font-display); letter-spacing: 0.04em; }
+  .sw .n { font: 500 9px var(--font-body); opacity: 0.7; }
+  .light { color: var(--fc-ink-900); }
+  .dark  { color: var(--fc-white); }
+  .heading { font: 700 11px var(--font-display); letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-muted); margin: 0 0 8px; }
+</style></head>
+<body>
+  <div class="heading">Neutrals scale (light → dark)</div>
+  <div class="row">
+    <div class="sw light" style="background:#FFFFFF;"><div class="h">#FFFFFF</div><div class="n">white</div></div>
+    <div class="sw light" style="background:#F7F7F8;"><div class="h">#F7F7F8</div><div class="n">ink-50</div></div>
+    <div class="sw light" style="background:#EFEFF1;"><div class="h">#EFEFF1</div><div class="n">ink-100</div></div>
+    <div class="sw light" style="background:#E2E3E7;"><div class="h">#E2E3E7</div><div class="n">ink-200</div></div>
+    <div class="sw light" style="background:#C9CBD2;"><div class="h">#C9CBD2</div><div class="n">ink-300</div></div>
+    <div class="sw dark" style="background:#8E919A;"><div class="h">#8E919A</div><div class="n">ink-400</div></div>
+    <div class="sw dark" style="background:#5F6470;"><div class="h">#5F6470</div><div class="n">ink-500</div></div>
+    <div class="sw dark" style="background:#2E3340;"><div class="h">#2E3340</div><div class="n">ink-700</div></div>
+    <div class="sw dark" style="background:#15171E;"><div class="h">#15171E</div><div class="n">ink-900</div></div>
+  </div>
+</body></html>

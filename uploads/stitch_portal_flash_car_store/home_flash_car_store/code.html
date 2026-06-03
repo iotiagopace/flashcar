@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Flash Car Store - Venda seu veículo com segurança</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+.bg-hero-pattern {
+    background-image: linear-gradient(to right, rgba(5, 17, 37, 0.9), rgba(5, 17, 37, 0.4)), url(https://lh3.googleusercontent.com/aida-public/AB6AXuA2uPY8g_xOx07BMflgoC_-CbzFoJA_KJJaYx6TMo9gVjcnL3s0D3nSZoUnzsDW4dLWvycbSJaUtx0j0lcluJdoK5DURwvVKXJ1f_wvdndVA5kmF_KW9qH9kzsvcppykR3yGdaC0XhNCTUo0S4enU6hMzd9KD3-4Cov234GvovbMGDnr_3bjdltS9vMQJIHf-Qd6f22_O9UVdqZLfqCuk0Y0u8qkMr12sUmoaGbIRI4LZ9lABhKfUI5c1JUF26TA2tL_5T8EGivC_g);
+    background-size: cover;
+    background-position: center
+    }
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px
+    }</style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-container": "#1b263b",
+                    "surface-container-high": "#e8e8e8",
+                    "error": "#ba1a1a",
+                    "border-muted": "#e2e8f0",
+                    "on-primary-fixed-variant": "#3c475d",
+                    "surface": "#f9f9f9",
+                    "on-secondary-fixed": "#410001",
+                    "on-error-container": "#93000a",
+                    "surface-bright": "#f9f9f9",
+                    "primary-fixed-dim": "#bbc6e2",
+                    "on-tertiary-fixed-variant": "#4f4700",
+                    "on-tertiary-container": "#474000",
+                    "primary-fixed": "#d7e2ff",
+                    "inverse-on-surface": "#f0f1f1",
+                    "on-secondary-container": "#fffbff",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed": "#fbe51b",
+                    "error-container": "#ffdad6",
+                    "surface-container": "#eeeeee",
+                    "on-surface-variant": "#45474d",
+                    "tertiary-fixed-dim": "#dcc800",
+                    "on-primary-fixed": "#101b30",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "surface-container-low": "#f3f3f4",
+                    "surface-dim": "#dadada",
+                    "on-error": "#ffffff",
+                    "secondary-container": "#e3231f",
+                    "inverse-surface": "#2f3131",
+                    "tertiary": "#695f00",
+                    "on-secondary": "#ffffff",
+                    "tertiary-container": "#bead00",
+                    "secondary-fixed": "#ffdad5",
+                    "surface-subtle": "#f4f5f7",
+                    "on-primary-container": "#828da7",
+                    "secondary": "#bc000b",
+                    "on-background": "#1a1c1c",
+                    "success-green": "#60b239",
+                    "outline": "#75777d",
+                    "secondary-fixed-dim": "#ffb4aa",
+                    "on-tertiary-fixed": "#201c00",
+                    "outline-variant": "#c5c6cd",
+                    "on-surface": "#1a1c1c",
+                    "background": "#f9f9f9",
+                    "primary": "#051125",
+                    "surface-container-highest": "#e2e2e2",
+                    "inverse-primary": "#bbc6e2",
+                    "on-secondary-fixed-variant": "#930006",
+                    "surface-tint": "#545e76",
+                    "surface-variant": "#e2e2e2"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "xs": "8px",
+                    "margin-mobile": "16px",
+                    "gutter": "24px",
+                    "lg": "48px",
+                    "sm": "16px",
+                    "base": "4px",
+                    "margin-desktop": "64px",
+                    "md": "24px",
+                    "xl": "80px"
+            },
+            "fontFamily": {
+                    "headline-xl": ["Montserrat"],
+                    "headline-md": ["Montserrat"],
+                    "body-sm": ["Montserrat"],
+                    "headline-lg": ["Montserrat"],
+                    "body-md": ["Montserrat"],
+                    "display-lg": ["Montserrat"],
+                    "display-lg-mobile": ["Montserrat"],
+                    "label-bold": ["Montserrat"],
+                    "body-lg": ["Montserrat"]
+            },
+            "fontSize": {
+                    "headline-xl": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "label-bold": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-surface font-body-md text-on-surface selection:bg-secondary selection:text-white">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 border-b border-muted bg-surface flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-[1280px] left-1/2 -translate-x-1/2">
+<div class="text-headline-lg font-headline-lg font-black text-primary">Flash Car Store</div>
+<div class="hidden md:flex gap-md">
+<a class="text-primary border-b-2 border-primary pb-1 font-bold font-body-md text-body-md" href="#">Vender meu veículo</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-body-md text-body-md" href="#">Como funciona</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-body-md text-body-md" href="#">Sobre a Flash Car</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-body-md text-body-md" href="#">Unidades</a>
+</div>
+<button class="bg-secondary text-on-secondary px-md py-xs rounded-lg font-bold hover:bg-secondary-container transition-all active:scale-95 text-body-md">
+            Agendar avaliação
+        </button>
+</nav>
+<!-- Hero Section -->
+<header class="pt-[80px]">
+<div class="relative min-h-[600px] flex items-center bg-hero-pattern" data-alt="A luxurious dark blue sports car parked in a minimalist, high-tech showroom with polished concrete floors and dramatic overhead linear lighting. The atmosphere is premium and professional, using a deep charcoal and navy blue color palette with sharp red accents. Soft atmospheric haze and high-contrast lighting create a sense of speed and high-performance automotive excellence.">
+<div class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop w-full text-white">
+<div class="max-w-2xl">
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg mb-sm">
+                        Venda seu veículo com segurança, agilidade e pagamento via PIX em até <span class="text-secondary">60 minutos</span>
+</h1>
+<p class="font-body-lg text-body-lg text-surface-container-high mb-lg">
+                        Conectamos seu carro a uma rede exclusiva de compradores verificados para garantir a melhor proposta do mercado com suporte burocrático completo.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-md">
+<button class="bg-secondary text-white px-lg py-sm rounded font-bold text-headline-md hover:brightness-110 transition-all flex items-center justify-center gap-xs">
+                            Agendar avaliação gratuita
+                        </button>
+<button class="border-2 border-white text-white px-lg py-sm rounded font-bold text-headline-md hover:bg-white hover:text-primary transition-all flex items-center justify-center gap-xs">
+                            Encontrar unidade
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Confiança / Trust Badges -->
+<section class="bg-surface-subtle py-md border-b border-muted">
+<div class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter text-center">
+<div class="flex flex-col items-center gap-xs">
+<span class="material-symbols-outlined text-primary text-[40px]" data-icon="verified_user">verified_user</span>
+<span class="font-label-bold text-label-bold uppercase tracking-wider text-on-surface-variant">Avaliação especializada</span>
+</div>
+<div class="flex flex-col items-center gap-xs">
+<span class="material-symbols-outlined text-primary text-[40px]" data-icon="group_work">group_work</span>
+<span class="font-label-bold text-label-bold uppercase tracking-wider text-on-surface-variant">Compradores verificados</span>
+</div>
+<div class="flex flex-col items-center gap-xs">
+<span class="material-symbols-outlined text-primary text-[40px]" data-icon="payments">payments</span>
+<span class="font-label-bold text-label-bold uppercase tracking-wider text-on-surface-variant">Pagamento à vista</span>
+</div>
+<div class="flex flex-col items-center gap-xs">
+<span class="material-symbols-outlined text-primary text-[40px]" data-icon="shield_with_heart">shield_with_heart</span>
+<span class="font-label-bold text-label-bold uppercase tracking-wider text-on-surface-variant">Processo 100% seguro</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Como Facilitamos -->
+<section class="py-xl bg-white">
+<div class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="text-center mb-xl">
+<h2 class="font-headline-xl text-headline-xl text-primary mb-sm">Como facilitamos sua venda</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                    Nossa metodologia foi desenhada para eliminar a burocracia e o risco das negociações particulares, focando no que importa: seu tempo e dinheiro.
+                </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<!-- Card 1 -->
+<div class="p-md bg-surface border border-muted rounded-lg hover:shadow-lg transition-shadow">
+<div class="w-12 h-12 bg-primary-container rounded flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-white" data-icon="assignment_turned_in">assignment_turned_in</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-xs">1. Avaliação</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Vistoria técnica presencial ou digital feita por especialistas em alta performance.</p>
+</div>
+<!-- Card 2 -->
+<div class="p-md bg-surface border border-muted rounded-lg hover:shadow-lg transition-shadow">
+<div class="w-12 h-12 bg-primary-container rounded flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-white" data-icon="campaign">campaign</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-xs">2. Divulgação</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Seu veículo é apresentado para uma rede de lojistas e investidores nacionais.</p>
+</div>
+<!-- Card 3 -->
+<div class="p-md bg-surface border border-muted rounded-lg hover:shadow-lg transition-shadow">
+<div class="w-12 h-12 bg-primary-container rounded flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-white" data-icon="handshake">handshake</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-xs">3. Propostas</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Filtramos as melhores ofertas e você escolhe a que melhor atende suas expectativas.</p>
+</div>
+<!-- Card 4 -->
+<div class="p-md bg-surface border border-muted rounded-lg hover:shadow-lg transition-shadow">
+<div class="w-12 h-12 bg-primary-container rounded flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-white" data-icon="pix">photos</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-xs">4. Pagamento PIX</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Após o aceite e documentação, o dinheiro cai na conta em menos de uma hora.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Benefícios Section - Asymmetric Bento -->
+<section class="py-xl bg-primary text-white overflow-hidden">
+<div class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop">
+<h2 class="font-headline-xl text-headline-xl mb-xl text-center md:text-left">Diferenciais Flash Car</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="md:col-span-2 bg-on-primary-fixed-variant p-lg rounded-xl flex flex-col justify-between">
+<div>
+<div class="inline-block bg-secondary text-white font-label-bold text-label-bold px-sm py-xs rounded-full mb-md uppercase">Top de Mercado</div>
+<h3 class="font-headline-xl text-headline-xl mb-md">A melhor proposta garantida</h3>
+<p class="font-body-lg text-body-lg opacity-80">Nosso algoritmo de precificação e rede de compradores garantem que você receba o valor justo, sem leilões de desvalorização comuns em concessionárias.</p>
+</div>
+<div class="mt-lg flex items-center gap-md">
+<div class="flex -space-x-4">
+<img class="w-12 h-12 rounded-full border-2 border-primary" data-alt="Close up portrait of a middle aged man with a confident and professional look, wearing a suit and glasses in a brightly lit studio. The style is clean, sharp, and business-focused, aligning with corporate trust and reliability in the automotive industry." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFtpYRYL1XGl4zH4mq1gdTkbi0K47M9QteTHGqeL6wdzKc6rccv_wAWfhOooTF0YMLXi7svtlbJmkxzvZ0t1YvJokAN7nZJi-fTRw6-AbCHaP03VJGMeXp-S7Le28jVeLIRxBPOywoKnYM4Z7D25id3uoouH53kRXiSitG782iV4bJJHsrl5UFEuhqLdRTQIgyA-iz7_pezOB-34ChevNdvK7COIW6EptoVa62plstR1bHacv1vkmgFRzXTmktlMWs5n221RAOiu8"/>
+<img class="w-12 h-12 rounded-full border-2 border-primary" data-alt="Portrait of a young professional woman with a friendly smile, photographed in a modern office setting with soft, natural lighting. The visual aesthetic is warm, trustworthy, and approachable, symbolizing expert customer support in a premium service environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDF9hjZG5ywV-XmuUbHljNrWOOjdaAJsmsUHq74bxx7OAe8Ntz_-_fORaTGOMJRgFI4wIhwVDJ-8FwkFxrUocdax_2IcbBvLmKF0Pz4hfEISSessnnK-2Rfq-DZkpMiLyzwa97gTNOI1RT8n8eIqvS-fg1X4982A_LSrLll6IKkwvj56jmb1Cc2qIGK1tzXK_FWfBHWZL_qeIIZ9TMvCaFB8I68M5wqCRoUcukUVBcU2zTK5VAG5pSa708wMR8uUKAywrwxnkTo37s"/>
+</div>
+<span class="text-body-sm">+500 clientes satisfeitos este mês</span>
+</div>
+</div>
+<div class="bg-primary-container p-lg rounded-xl border border-on-primary-fixed-variant">
+<span class="material-symbols-outlined text-secondary text-[48px] mb-md" data-icon="speed">speed</span>
+<h3 class="font-headline-md text-headline-md mb-xs">Velocidade PIX</h3>
+<p class="font-body-md text-on-primary-container">Tempo é dinheiro. Nosso recorde de liquidação é de 24 minutos. Venda e receba no mesmo dia.</p>
+</div>
+<div class="bg-primary-container p-lg rounded-xl border border-on-primary-fixed-variant">
+<span class="material-symbols-outlined text-secondary text-[48px] mb-md" data-icon="description">description</span>
+<h3 class="font-headline-md text-headline-md mb-xs">Suporte Burocrático</h3>
+<p class="font-body-md text-on-primary-container">Nós cuidamos de toda a transferência de propriedade e laudos. Você só assina.</p>
+</div>
+<div class="md:col-span-2 bg-primary-container p-lg rounded-xl border border-on-primary-fixed-variant flex flex-col md:flex-row gap-md items-center">
+<div class="flex-1">
+<span class="material-symbols-outlined text-secondary text-[48px] mb-md" data-icon="support_agent">support_agent</span>
+<h3 class="font-headline-md text-headline-md mb-xs">Atendimento Especializado</h3>
+<p class="font-body-md text-on-primary-container">Consultores dedicados acompanham cada etapa do seu processo de venda, tirando dúvidas em tempo real via WhatsApp ou presencial.</p>
+</div>
+<img class="w-full md:w-48 h-32 object-cover rounded-lg" data-alt="A clean, high-performance SUV dashboard showing modern digital interfaces and a leather-wrapped steering wheel. The interior is sophisticated, with subtle red accent lighting and premium textures, evoking a sense of high-end automotive care and expertise in a professional studio setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuALXWPyOx79fX65pcDBKw0UaB62cj_kPiDDY97djY3S3bXC9grZxnmXfwYSVM--ebr9YIQP5mo7PTF-Pq1_0YUj_1Alw8i2Em41sr8PykYP4T1Qh30OTvbigNAIG1J67k7sOEwnBw-JqOTzBBc3sZ5yX1uSJ_nCIRrkVgIUpWo0xxsSzSNJpr_Lposfz5Fvppz7E_89D-tKYy5a3ntX-Nls_6eSFx5E0cPYdbS0C0P9tVqnsjxXaKHaQl2-9t1QngHm6o87pyuA-lQ"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Para quem é -->
+<section class="py-xl bg-surface-subtle">
+<div class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop">
+<h2 class="font-headline-xl text-headline-xl text-primary text-center mb-xl">Compramos seu veículo</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="flex flex-col items-center text-center group">
+<div class="w-24 h-24 bg-white rounded-full flex items-center justify-center mb-md shadow-sm group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-secondary text-[48px]" data-icon="directions_car">directions_car</span>
+</div>
+<h4 class="font-headline-md text-headline-md mb-xs">Carros</h4>
+<p class="font-body-sm text-on-surface-variant">Sedans, hatchs, SUVs e esportivos de todas as marcas e anos.</p>
+</div>
+<div class="flex flex-col items-center text-center group">
+<div class="w-24 h-24 bg-white rounded-full flex items-center justify-center mb-md shadow-sm group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-secondary text-[48px]" data-icon="two_wheeler">two_wheeler</span>
+</div>
+<h4 class="font-headline-md text-headline-md mb-xs">Motos</h4>
+<p class="font-body-sm text-on-surface-variant">Desde urbanas até alta cilindrada. Avaliação rápida e justa.</p>
+</div>
+<div class="flex flex-col items-center text-center group">
+<div class="w-24 h-24 bg-white rounded-full flex items-center justify-center mb-md shadow-sm group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-secondary text-[48px]" data-icon="fire_truck">fire_truck</span>
+</div>
+<h4 class="font-headline-md text-headline-md mb-xs">Caminhonetes</h4>
+<p class="font-body-sm text-on-surface-variant">Pickups de trabalho ou lazer. Valorizamos acessórios e conservação.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Intermediário -->
+<section class="py-lg">
+<div class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="bg-secondary rounded-xl p-lg md:p-xl flex flex-col md:flex-row items-center justify-between gap-lg relative overflow-hidden">
+<div class="relative z-10 text-white text-center md:text-left">
+<h2 class="font-headline-xl text-headline-xl mb-xs">Quer saber quanto vale seu veículo hoje?</h2>
+<p class="font-body-lg text-body-lg opacity-90">Nossa avaliação é gratuita e sem compromisso. Resultado em minutos.</p>
+</div>
+<button class="relative z-10 bg-primary text-white px-xl py-md rounded font-bold text-headline-md hover:scale-105 active:scale-95 transition-all shadow-xl">
+                    Agendar Agora
+                </button>
+<!-- Decorative background elements -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32 blur-3xl"></div>
+<div class="absolute bottom-0 left-0 w-48 h-48 bg-black/10 rounded-full -ml-24 -mb-24 blur-2xl"></div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-primary text-on-primary w-full py-xl mt-xl">
+<div class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div>
+<div class="text-headline-md font-headline-md font-bold text-on-primary mb-md">Flash Car Store</div>
+<p class="text-body-sm font-body-sm text-on-primary-container leading-relaxed">
+                    Especialistas em intermediação automotiva de alta performance. Oferecemos segurança e liquidez imediata para quem precisa vender seu veículo sem preocupações.
+                </p>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md mb-md">Links Rápidos</h4>
+<div class="grid grid-cols-2 gap-xs">
+<a class="text-on-primary-fixed-variant hover:text-on-primary transition-colors text-body-sm font-body-sm" href="#">Vender meu veículo</a>
+<a class="text-on-primary-fixed-variant hover:text-on-primary transition-colors text-body-sm font-body-sm" href="#">Como funciona</a>
+<a class="text-on-primary-fixed-variant hover:text-on-primary transition-colors text-body-sm font-body-sm" href="#">Sobre a Flash Car</a>
+<a class="text-on-primary-fixed-variant hover:text-on-primary transition-colors text-body-sm font-body-sm" href="#">Unidades</a>
+<a class="text-on-primary-fixed-variant hover:text-on-primary transition-colors text-body-sm font-body-sm" href="#">Seja um franqueado</a>
+<a class="text-on-primary-fixed-variant hover:text-on-primary transition-colors text-body-sm font-body-sm" href="#">Suporte</a>
+</div>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md mb-md">Contato</h4>
+<p class="text-body-sm text-on-primary-container mb-xs">Rua Automobilística, 123 - Centro</p>
+<p class="text-body-sm text-on-primary-container mb-xs">São Paulo - SP</p>
+<p class="text-body-sm text-on-primary-container mb-md">contato@flashcarstore.com.br</p>
+<div class="flex gap-md">
+<span class="material-symbols-outlined cursor-pointer hover:text-secondary" data-icon="facebook">social_leaderboard</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-secondary" data-icon="instacart">retweet</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-secondary" data-icon="alternate_email">alternate_email</span>
+</div>
+</div>
+</div>
+<div class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop mt-xl pt-lg border-t border-on-primary-fixed-variant text-center">
+<p class="text-body-sm font-body-sm text-on-primary-container">
+                © 2024 Flash Car Store. Todos os direitos reservados. Especialistas em intermediação automotiva de alta performance.
+            </p>
+</div>
+</footer>
+<script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Simple animation on scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-10');
+            observer.observe(section);
+        });
+    </script>
+</body></html>

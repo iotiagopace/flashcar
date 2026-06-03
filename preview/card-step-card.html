@@ -1,0 +1,33 @@
+<!-- @dsCard group="Components" -->
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8"/>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<link rel="stylesheet" href="../components.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0..200&display=block" rel="stylesheet"/>
+<style>
+  body { margin: 0; padding: 20px; background: var(--bg-page); display: grid; gap: 12px; grid-template-columns: repeat(3, 1fr); }
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'opsz' 24; font-size: 20px; }
+  h4 { margin: 0; font: 700 16px var(--font-display); color: var(--fg-strong); }
+  p  { margin: 0; font: 400 13px/1.5 var(--font-body); color: var(--fg-muted); }
+  .fc-step--active h4, .fc-step--active p { color: var(--fc-white); }
+</style></head>
+<body>
+  <div class="fc-step">
+    <div class="fc-step__icon"><span class="material-symbols-outlined">event_available</span></div>
+    <div class="fc-step__num">01</div>
+    <h4>Agenda</h4>
+    <p>Você escolhe o melhor horário na unidade Flash Car mais próxima.</p>
+  </div>
+  <div class="fc-step fc-step--active">
+    <div class="fc-step__icon"><span class="material-symbols-outlined">verified</span></div>
+    <div class="fc-step__num">02</div>
+    <h4>Avalia</h4>
+    <p>Vistoria técnica rigorosa em mais de 150 itens para garantir o valor justo.</p>
+  </div>
+  <div class="fc-step">
+    <div class="fc-step__icon"><span class="material-symbols-outlined">pix</span></div>
+    <div class="fc-step__num">06</div>
+    <h4>PIX</h4>
+    <p>O pagamento cai na sua conta de forma instantânea após o aceite.</p>
+  </div>
+</body></html>
