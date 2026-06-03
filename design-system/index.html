@@ -3,8 +3,48 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Flash Car Store</title>
+<title>Flash Car Store — Venda seu carro via PIX em até 40 minutos</title>
+<meta name="description" content="Avaliação técnica gratuita, rede exclusiva de compradores verificados e pagamento PIX no mesmo dia. Sem leilão, sem golpe, sem dor de cabeça."/>
+<link rel="canonical" href="https://flashcar-henna.vercel.app/"/>
+<meta property="og:type"        content="website"/>
+<meta property="og:locale"      content="pt_BR"/>
+<meta property="og:site_name"   content="Flash Car Store"/>
+<meta property="og:title"       content="Flash Car Store — Venda seu carro via PIX em até 40 minutos"/>
+<meta property="og:description" content="Avaliação técnica gratuita, rede exclusiva de compradores verificados e pagamento PIX no mesmo dia. Sem leilão, sem golpe, sem dor de cabeça."/>
+<meta property="og:url"         content="https://flashcar-henna.vercel.app/"/>
+<meta property="og:image"       content="https://flashcar-henna.vercel.app/car-black-suv.png"/>
+<meta name="twitter:card"        content="summary_large_image"/>
+<meta name="twitter:title"       content="Flash Car Store — Venda seu carro via PIX em até 40 minutos"/>
+<meta name="twitter:description" content="Avaliação técnica gratuita, rede exclusiva de compradores verificados e pagamento PIX no mesmo dia."/>
+<meta name="twitter:image"       content="https://flashcar-henna.vercel.app/car-black-suv.png"/>
 <link rel="icon" type="image/svg+xml" href="assets/logo-mark.svg"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://flashcar-henna.vercel.app/#organization",
+      "name": "Flash Car Store",
+      "url": "https://flashcar-henna.vercel.app/",
+      "logo": "https://flashcar-henna.vercel.app/assets/logo-flashcar-color.png",
+      "description": "Intermediação de veículos com avaliação gratuita, rede de compradores verificados e pagamento via PIX no mesmo dia.",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "availableLanguage": "Portuguese"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://flashcar-henna.vercel.app/#website",
+      "url": "https://flashcar-henna.vercel.app/",
+      "name": "Flash Car Store",
+      "publisher": { "@id": "https://flashcar-henna.vercel.app/#organization" }
+    }
+  ]
+}
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <link href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" rel="stylesheet"/>
 <link href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css" rel="stylesheet"/>
@@ -287,7 +327,16 @@ h1,h2,h3,h4{margin:0;}
 
 /* ── HERO ─────────────────────────────────────────────────── */
 .kit-hero{position:relative;background:var(--bg-page);color:var(--fg-strong);border-bottom:1px solid var(--border-soft);overflow:hidden;}
-.kit-hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(720px 320px at 0% 0%,rgba(216,38,42,0.05),transparent 70%),radial-gradient(420px 260px at 100% 100%,rgba(251,229,27,0.08),transparent 75%);pointer-events:none;}
+.kit-hero::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:
+    linear-gradient(to right, #e8e8e8 1px, transparent 1px),
+    linear-gradient(to bottom, #e8e8e8 1px, transparent 1px),
+    radial-gradient(circle 700px at 0% 180px, rgba(196,168,255,0.45), transparent),
+    radial-gradient(circle 600px at 100% 180px, rgba(196,168,255,0.35), transparent),
+    radial-gradient(720px 320px at 0% 0%,rgba(216,38,42,0.04),transparent 70%);
+  background-size: 48px 48px, 48px 48px, 100% 100%, 100% 100%, 100% 100%;
+}
 .kit-hero__inner{position:relative;max-width:var(--container-max);margin:0 auto;padding:96px var(--gutter-desktop) 104px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,0.95fr);gap:64px;align-items:center;}
 .kit-hero h1{font-size:clamp(40px,5.4vw,76px);font-weight:800;line-height:1.0;margin:0 0 22px;letter-spacing:-0.035em;color:var(--fg-strong);max-width:13ch;}
 .kit-hero h1 .accent{color:var(--fc-red);display:inline-block;}
@@ -751,7 +800,7 @@ function HomePage({ onNav }) {
               <div className="hero-light-anim" style={{position:'absolute',top:'-10%',left:0,width:'40%',height:'120%',background:'linear-gradient(105deg,transparent 0%,rgba(255,255,255,0.06) 47%,rgba(255,255,255,0.14) 50%,rgba(255,255,255,0.06) 53%,transparent 100%)',pointerEvents:'none'}}/>
             </div>
             <div className="price-card">
-              Avaliado em <strong>R$ 87.400</strong>
+              Avaliação grátis em até<strong>40 minutos</strong>
             </div>
             <div className="speed-card">
               <div className="icon"><MS name="bolt" size={26} fill={1}/></div>
