@@ -1224,38 +1224,54 @@ function Testimonial({ name, role, body, initial }) {
 function FranquiaPage({ onNav }) {
   return (
     <React.Fragment>
-      {/* HERO */}
+
+      {/* ── HERO ─────────────────────────────────────────────── */}
       <section className="franq-hero">
         <div className="franq-hero__inner">
           <div>
-            <span className="fc-badge fc-badge--red" style={{marginBottom:18}}>
-              <MS name="business_center" size={14} fill={1}/>
-              Oportunidade B2B · 2026
+            <span className="fc-badge fc-badge--soft-red" style={{marginBottom:20}}>
+              <MS name="rocket_launch" size={13} fill={1}/>
+              Expansão nacional · vagas limitadas por praça
             </span>
-            <h1>Seja dono do seu negócio no mercado mais <span className="accent">resiliente</span> do Brasil.</h1>
-            <p>Mais de 18,5 milhões de veículos foram comercializados no Brasil em 2025. A Flash Car é a operação enxuta que conecta você a esse mercado com suporte completo, sem royalties e payback médio de 7 meses.</p>
-            <div style={{display:"flex",gap:12,flexWrap:"wrap"}}>
-              <button className="fc-btn fc-btn--primary fc-btn--lg" onClick={()=>onNav("franquia")}>Receber dossiê completo</button>
+            <h1>Fature <span className="accent">R$ 154 mil/mês</span> no mercado que nunca para.</h1>
+            <p style={{fontSize:18,lineHeight:1.65,marginTop:0}}>18,5 milhões de veículos comercializados no Brasil em 2025. A Flash Car é a operação enxuta que coloca você nesse mercado — sem estoque, sem royalties, com payback médio de 7 meses.</p>
+            <div style={{display:"flex",gap:12,flexWrap:"wrap",marginBottom:28}}>
+              <button className="fc-btn fc-btn--primary fc-btn--lg" onClick={()=>onNav("franquia")}>
+                <MS name="file-text" size={18}/>
+                Quero o dossiê completo
+              </button>
               <button className="fc-btn fc-btn--ghost fc-btn--lg" onClick={()=>onNav("franquia")}>Falar com especialista</button>
+            </div>
+            <div style={{display:"flex",gap:20,flexWrap:"wrap"}}>
+              {[
+                {icon:"verified",text:"Sem royalties sobre faturamento"},
+                {icon:"check_circle",text:"Payback médio de 7 meses"},
+                {icon:"shield_lock",text:"Suporte jurídico incluído"},
+              ].map(({icon,text})=>(
+                <div key={text} style={{display:"flex",alignItems:"center",gap:6,fontSize:13,color:"var(--fg-muted)",fontWeight:600}}>
+                  <MS name={icon} size={15} fill={1} style={{color:"var(--fc-green)"}}/>
+                  {text}
+                </div>
+              ))}
             </div>
           </div>
           <div className="kpi-grid">
-            <div className="kpi">
-              <div className="kpi__label">Investimento</div>
-              <div className="kpi__value">R$ 95k</div>
-              <div className="kpi__sub">A partir do modelo Smart</div>
+            <div className="kpi" style={{borderLeft:"3px solid var(--fc-red)"}}>
+              <div className="kpi__label">Faturamento médio/mês</div>
+              <div className="kpi__value">R$ 154k</div>
+              <div className="kpi__sub">Unidades Premium em operação</div>
             </div>
-            <div className="kpi">
+            <div className="kpi" style={{borderLeft:"3px solid var(--fc-yellow)"}}>
               <div className="kpi__label">Payback</div>
               <div className="kpi__value">7 meses</div>
               <div className="kpi__sub">Retorno médio do capital</div>
             </div>
-            <div className="kpi">
+            <div className="kpi" style={{borderLeft:"3px solid var(--fc-navy-900)"}}>
               <div className="kpi__label">Margem de lucro</div>
               <div className="kpi__value">35–45%</div>
               <div className="kpi__sub">Alto giro · alto ticket</div>
             </div>
-            <div className="kpi">
+            <div className="kpi" style={{borderLeft:"3px solid var(--fc-green)"}}>
               <div className="kpi__label">Royalties</div>
               <div className="kpi__value" style={{color:"var(--fc-green)"}}>Zero</div>
               <div className="kpi__sub">100% do lucro fica com você</div>
@@ -1264,81 +1280,37 @@ function FranquiaPage({ onNav }) {
         </div>
       </section>
 
-      {/* VIDEO */}
-      <section className="section">
-        <div className="section__inner" style={{maxWidth:960}}>
-          <div className="section__head">
-            <span className="fc-eyebrow">Apresentação 2026</span>
-            <h2>Conheça a Flash Car em 90 segundos</h2>
-            <p>Veja como o modelo funciona, o suporte que você recebe e por que franqueados estão fechando o payback antes do previsto.</p>
-          </div>
-          <div className="franq-video" onClick={()=>{}}>
-            <button className="franq-video__play" aria-label="Reproduzir vídeo institucional">
-              <MS name="play_circle" size={40} fill={1}/>
-            </button>
-            <span className="franq-video__label">Vídeo institucional · 1:32</span>
-            <span className="franq-video__placeholder">[ insira o link do vídeo aqui ]</span>
-          </div>
-        </div>
-      </section>
-
-      {/* FUNDADORES */}
-      <section className="section section--subtle">
-        <div className="section__inner">
-          <div className="about-grid">
-            <div>
-              <span className="fc-eyebrow">Quem está por trás</span>
-              <h2 style={{marginTop:8}}>15 anos de mercado automotivo, agora ao seu lado.</h2>
-              <p style={{marginTop:16}}>A Flash Car nasceu da parceria entre <strong>David</strong> e <strong>Agnaldo</strong>, profissionais que vivenciaram por décadas as ineficiências do mercado tradicional e estruturaram um modelo que une visão estratégica, agilidade processual e foco em resultado para o franqueado.</p>
-              <p>O modelo é baseado em <strong>comissão sobre venda</strong>: nossos interesses ficam totalmente alinhados aos seus. Quanto maior a sua operação, maior nosso retorno — e por isso o suporte é diário, não burocrático.</p>
-              <div style={{display:"flex",gap:14,marginTop:20,flexWrap:"wrap"}}>
-                <span className="fc-badge fc-badge--outline"><MS name="bolt" size={14} fill={1}/> Sem estoque imobilizado</span>
-                <span className="fc-badge fc-badge--outline"><MS name="handshake" size={14} fill={1}/> Modelo baseado em comissão</span>
-                <span className="fc-badge fc-badge--outline"><MS name="rocket_launch" size={14} fill={1}/> Implantação assistida</span>
-              </div>
+      {/* ── SOCIAL PROOF BAR ─────────────────────────────────── */}
+      <div style={{background:"var(--fc-navy-900)",borderBottom:"1px solid var(--fc-navy-700)"}}>
+        <div style={{maxWidth:"var(--container-max)",margin:"0 auto",padding:"20px var(--gutter-desktop)",display:"flex",gap:32,justifyContent:"center",alignItems:"center",flexWrap:"wrap"}}>
+          {[
+            {v:"6",l:"Unidades em operação"},
+            {v:"+20",l:"Cidades em expansão"},
+            {v:"4,9★",l:"Avaliação dos franqueados"},
+            {v:"15+",l:"Anos de mercado automotivo"},
+          ].map(({v,l})=>(
+            <div key={l} style={{textAlign:"center",color:"white"}}>
+              <div style={{font:"800 22px var(--font-display)",letterSpacing:"-0.02em",color:"var(--fc-yellow)"}}>{v}</div>
+              <div style={{font:"600 11px var(--font-display)",letterSpacing:"0.08em",textTransform:"uppercase",color:"rgba(255,255,255,0.55)",marginTop:2}}>{l}</div>
             </div>
-            <div className="about-photo" style={{aspectRatio:"1/1"}}>
-              <img src="assets/founders-david-agnaldo.webp" alt="David e Agnaldo, fundadores da Flash Car"
-                   style={{position:"absolute",inset:0,width:"100%",height:"100%",objectFit:"cover",objectPosition:"center top"}}/>
-              <div className="stat-overlay">15+ anos<small>de mercado automotivo</small></div>
-            </div>
-          </div>
+          ))}
         </div>
-      </section>
+      </div>
 
-      {/* 3 PILARES */}
-      <section className="section">
-        <div className="section__inner">
-          <div className="section__head">
-            <span className="fc-eyebrow">Confiança que gera valor</span>
-            <h2>Por que a Flash Car é uma operação rentável</h2>
-            <p>Três pilares que sustentam o modelo financeiro da franquia.</p>
-          </div>
-          <div className="grid-3">
-            <PillarCard icon="workspace_premium" tone="red" kicker="Pilar 01" title="Altamente lucrativa"
-              body="Margens entre 35% e 45% por veículo intermediado. Ticket médio elevado e ciclo de venda curto sustentam um ROI rápido."/>
-            <PillarCard icon="inventory_2" tone="yellow" kicker="Pilar 02" title="Baixo custo operacional"
-              body="Sem estoque imobilizado, time enxuto e estrutura digital. Você foca em comercial — o backoffice é nosso."/>
-            <PillarCard icon="savings" tone="green" kicker="Pilar 03" title="Franquia sem royalties"
-              body="Zero royalties sobre faturamento. Você paga taxa de marketing fixa e mantém 100% do lucro da operação."/>
-          </div>
-        </div>
-      </section>
-
-      {/* MERCADO */}
+      {/* ── MERCADO / POR QUE AGORA ──────────────────────────── */}
       <section className="section section--subtle">
         <div className="section__inner">
           <div className="grid-2" style={{alignItems:"center",gap:56}}>
             <div>
-              <span className="fc-eyebrow">Mercado aquecido</span>
-              <h2 style={{marginTop:8}}>Maior volume da série histórica.</h2>
-              <p style={{color:"var(--fg-default)",fontSize:16,marginTop:16}}>O mercado de seminovos e usados no Brasil cresceu de forma consistente, mesmo em cenários de instabilidade econômica. A mobilidade segue sendo essencial — e a intermediação profissional ganha espaço a cada ano.</p>
+              <span className="fc-eyebrow">Por que agora?</span>
+              <h2 style={{marginTop:8}}>O mercado de usados bateu recorde — e vai continuar crescendo.</h2>
+              <p style={{color:"var(--fg-default)",fontSize:16,marginTop:16,lineHeight:1.7}}>Instabilidade econômica, crédito restrito para zero km e aumento da frota circulante fazem do mercado de seminovos o mais resiliente do setor automotivo. Intermediadores certificados estão capturando essa demanda que concessionárias tradicionais não conseguem atender.</p>
               <div style={{display:"grid",gap:16,marginTop:24}}>
                 <KPIInline value="+17%" body="Crescimento anual do volume de buscas por usados." accent="var(--fc-green)"/>
                 <KPIInline value="70%" body="Dos compradores preferem intermediários certificados para maior segurança." accent="var(--fc-red)"/>
-                <KPIInline value="R$ 154k" body="Faturamento médio mensal das unidades Premium em operação." accent="var(--fc-navy-900)"/>
+                <KPIInline value="18,5M" body="Veículos comercializados no Brasil em 2025 — maior volume da série histórica." accent="var(--fc-navy-900)"/>
               </div>
-              <p style={{fontSize:12,fontStyle:"italic",color:"var(--fg-muted)",marginTop:18}}>Fonte: dados consolidados do mercado automotivo brasileiro 2020–2025.</p>
+              <p style={{fontSize:12,fontStyle:"italic",color:"var(--fg-muted)",marginTop:16}}>Fonte: dados consolidados do mercado automotivo brasileiro 2020–2025.</p>
             </div>
             <div className="market-chart">
               <div className="market-chart__title">Veículos seminovos &amp; usados comercializados</div>
@@ -1359,28 +1331,84 @@ function FranquiaPage({ onNav }) {
         </div>
       </section>
 
-      {/* DIFERENCIAIS dark */}
+      {/* ── COMO SE TORNAR FRANQUEADO ────────────────────────── */}
+      <section className="section">
+        <div className="section__inner">
+          <div className="section__head">
+            <span className="fc-eyebrow">Processo simples</span>
+            <h2>Da conversa ao faturamento em 60 dias</h2>
+            <p>Um caminho direto, sem burocracia. Do primeiro contato até sua unidade operando.</p>
+          </div>
+          <div className="steps-grid">
+            {[
+              {n:"01",icon:"question_answer",title:"Conversa inicial",body:"Você fala com um especialista. Sem pitch, sem pressão — entendemos seu perfil e sua cidade."},
+              {n:"02",icon:"request_quote",title:"Dossiê + proposta",body:"Recebe o material completo: investimento, projeção financeira, cronograma e contrato."},
+              {n:"03",icon:"school",title:"Treinamento completo",body:"7 dias de imersão em comercial, operação, jurídico e marketing. 100% presencial + digital."},
+              {n:"04",icon:"rocket_launch",title:"Implantação assistida",body:"Abertura acompanhada pela equipe central. Você não abre sozinho — estamos no seu lado desde o dia 1."},
+              {n:"05",icon:"payments",title:"Primeiras vendas",body:"Leads chegam pelo marketing da franqueadora. Você atende, fecha e recebe. O ciclo começa."},
+              {n:"06",icon:"savings",title:"Payback alcançado",body:"Com ciclo médio de 7 meses, o capital investido retorna — e o lucro passa a ser 100% seu."},
+            ].map(({n,icon,title,body})=>(
+              <div key={n} className="fc-step">
+                <div className="fc-step__num">{n}</div>
+                <div className="fc-step__icon"><MS name={icon} size={18} fill={1}/></div>
+                <h4 style={{font:"700 17px var(--font-display)",color:"var(--fg-strong)"}}>{title}</h4>
+                <p style={{font:"400 14px/1.6 var(--font-body)",color:"var(--fg-muted)",margin:0}}>{body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 3 PILARES ────────────────────────────────────────── */}
+      <section className="section section--subtle">
+        <div className="section__inner">
+          <div className="section__head">
+            <span className="fc-eyebrow">Modelo financeiro</span>
+            <h2>Por que a Flash Car é uma operação rentável</h2>
+            <p>Três pilares que sustentam o retorno dos nossos franqueados.</p>
+          </div>
+          <div className="grid-3">
+            <PillarCard icon="workspace_premium" tone="red" kicker="Pilar 01" title="Altamente lucrativa"
+              body="Margens entre 35% e 45% por veículo intermediado. Ticket médio elevado e ciclo de venda curto sustentam um ROI rápido."/>
+            <PillarCard icon="inventory_2" tone="yellow" kicker="Pilar 02" title="Sem estoque imobilizado"
+              body="Você não compra carro. Você conecta vendedor e comprador. Capital livre, risco zero de desvalorização."/>
+            <PillarCard icon="savings" tone="green" kicker="Pilar 03" title="Zero royalties"
+              body="Nenhuma taxa sobre faturamento. Taxa de marketing fixa e previsível — 100% do lucro operacional fica com você."/>
+          </div>
+        </div>
+      </section>
+
+      {/* ── SUPORTE 360 dark ─────────────────────────────────── */}
       <section className="section diff-band diff-band--dark">
         <div className="diff-band__inner">
-          <div className="grid-2" style={{alignItems:"start"}}>
+          <div className="grid-2" style={{alignItems:"start",gap:56}}>
             <div>
-              <span className="fc-eyebrow" style={{color:"var(--fc-yellow)"}}>Suporte 360°</span>
-              <h2 style={{color:"white",marginTop:8}}>Tudo o que você precisa pra faturar desde o dia 01.</h2>
-              <p style={{color:"rgba(255,255,255,0.78)",maxWidth:420}}>Não é só uma marca — é uma operação completa pronta pra ser implantada na sua cidade.</p>
+              <span className="fc-eyebrow" style={{color:"var(--fc-yellow)"}}>Você não está sozinho</span>
+              <h2 style={{color:"white",marginTop:8,lineHeight:1.1}}>Suporte completo desde o dia 01 até o seu centésimo veículo.</h2>
+              <p style={{color:"rgba(255,255,255,0.72)",maxWidth:400,marginTop:16}}>Não entregamos só a marca — entregamos a operação. Cada franqueado tem acesso a uma estrutura que levaria anos pra construir sozinho.</p>
+              <div style={{marginTop:28,padding:"20px 24px",background:"rgba(255,255,255,0.06)",borderRadius:12,border:"1px solid rgba(255,255,255,0.1)"}}>
+                <div style={{font:"800 13px var(--font-display)",letterSpacing:"0.1em",textTransform:"uppercase",color:"var(--fc-yellow)",marginBottom:12}}>O que vem incluso</div>
+                {["Gestor de tráfego dedicado","CRM exclusivo Flash Car","Suporte jurídico especializado","Treinamento comercial contínuo","Implantação assistida in loco"].map(item=>(
+                  <div key={item} style={{display:"flex",alignItems:"center",gap:8,color:"rgba(255,255,255,0.9)",fontSize:14,fontWeight:600,marginBottom:8}}>
+                    <MS name="check" size={16} style={{color:"var(--fc-green)"}}/>
+                    {item}
+                  </div>
+                ))}
+              </div>
             </div>
             <div style={{display:"grid",gap:14,gridTemplateColumns:"1fr 1fr"}}>
               {[
                 {i:"gavel",t:"Jurídico especializado",b:"Escritório exclusivo para consulta e validação de intermediações 100% seguras."},
                 {i:"ads_click",t:"Marketing exclusivo",b:"Gestor de tráfego e campanhas personalizadas para cada franqueado."},
                 {i:"school",t:"Treinamento contínuo",b:"Comercial, operacional, financeiro e marketing — capacitação 100% entregue."},
-                {i:"rocket_launch",t:"Implantação assistida",b:"Acompanhamento desde a escolha do ponto comercial até o dia a dia da operação."},
-                {i:"hub",t:"Sistema próprio",b:"Ferramenta exclusiva para gestão de leads e operação. Seu CRM já vem dentro."},
-                {i:"groups",t:"Rede de parceiros",b:"Acesso imediato à nossa base de compradores nacionais e parcerias locais."},
+                {i:"rocket_launch",t:"Implantação assistida",b:"Acompanhamento desde a escolha do ponto até o dia a dia da operação."},
+                {i:"hub",t:"CRM próprio",b:"Ferramenta exclusiva para gestão de leads e operação. Já vem configurado."},
+                {i:"groups",t:"Rede de compradores",b:"Acesso imediato à base nacional de compradores verificados e parcerias locais."},
               ].map(d=>(
-                <div key={d.t} className="diff-card" style={{padding:22}}>
-                  <div className="diff-card__icon" style={{width:40,height:40,fontSize:20}}><MS name={d.i} size={20} fill={1}/></div>
-                  <h3 style={{font:"700 16px var(--font-display)",margin:"8px 0 4px",color:"white"}}>{d.t}</h3>
-                  <p style={{fontSize:13,lineHeight:1.55,color:"rgba(255,255,255,0.72)"}}>{d.b}</p>
+                <div key={d.t} className="diff-card" style={{padding:22,background:"rgba(255,255,255,0.05)",borderColor:"rgba(255,255,255,0.08)"}}>
+                  <div className="diff-card__icon" style={{width:40,height:40,fontSize:20,background:"rgba(216,38,42,0.2)",color:"var(--fc-red)"}}><MS name={d.i} size={20} fill={1}/></div>
+                  <h3 style={{font:"700 15px var(--font-display)",margin:"8px 0 4px",color:"white"}}>{d.t}</h3>
+                  <p style={{fontSize:13,lineHeight:1.55,color:"rgba(255,255,255,0.65)",margin:0}}>{d.b}</p>
                 </div>
               ))}
             </div>
@@ -1388,12 +1416,13 @@ function FranquiaPage({ onNav }) {
         </div>
       </section>
 
-      {/* MODELOS */}
+      {/* ── MODELOS ──────────────────────────────────────────── */}
       <section className="section">
         <div className="section__inner">
           <div className="section__head">
-            <h2>Escolha o modelo certo pra sua cidade</h2>
-            <p>Dois formatos pensados para tamanhos de mercado distintos. Comparativo direto, sem letrinha miúda.</p>
+            <span className="fc-eyebrow">Invista no modelo certo</span>
+            <h2>Escolha o formato ideal para sua praça</h2>
+            <p>Dois modelos calibrados para tamanhos de mercado distintos. Comparativo direto, sem letras miúdas.</p>
           </div>
           <div className="model-grid">
             <div className="model-card">
@@ -1420,36 +1449,89 @@ function FranquiaPage({ onNav }) {
         </div>
       </section>
 
-      {/* CASES */}
+      {/* ── FUNDADORES ───────────────────────────────────────── */}
       <section className="section section--subtle">
         <div className="section__inner">
-          <div className="section__head">
-            <span className="fc-eyebrow">Cases de sucesso</span>
-            <h2>Quem já é franqueado Flash Car</h2>
-            <p>Histórias reais de quem decidiu apostar no modelo — e está vendo o retorno.</p>
-          </div>
-          <div className="testi-grid">
-            <Testimonial name="Rayner" role="Franqueado · Flash Car Campinas" initial="R"
-              body='"Sou o segundo franqueado da rede. O treinamento é prático, o suporte é diário e a operação ficou no positivo no terceiro mês. Estou abrindo a segunda unidade em 2026."'/>
-            <Testimonial name="Joel Silva" role="Franqueado · Unidade Curitiba" initial="J"
-              body='"A facilidade de operar sem estoque gigante e o suporte jurídico me deram a segurança que eu precisava pra investir meu capital sem hesitar."'/>
-            <Testimonial name="Juliano Mendes" role="Franqueado · Unidade Campinas" initial="J"
-              body='"O retorno veio antes do esperado. O marketing da franqueadora traz leads prontos pra fechar — o time só precisa atender bem."'/>
-          </div>
-          <div style={{display:"flex",gap:24,justifyContent:"center",alignItems:"center",marginTop:40,color:"var(--fg-muted)",fontSize:13,flexWrap:"wrap"}}>
-            <div style={{display:"flex",alignItems:"center",gap:6}}><MS name="verified" size={16} fill={1} style={{color:"var(--fc-green)"}}/>Avaliação 4,9 / 5 no segmento</div>
-            <div style={{display:"flex",alignItems:"center",gap:6}}><MS name="storefront" size={16} fill={1} style={{color:"var(--fc-red)"}}/>6 unidades em operação</div>
-            <div style={{display:"flex",alignItems:"center",gap:6}}><MS name="rocket_launch" size={16} fill={1} style={{color:"var(--fc-navy-900)"}}/>+20 cidades em expansão</div>
+          <div className="about-grid">
+            <div>
+              <span className="fc-eyebrow">Quem está por trás</span>
+              <h2 style={{marginTop:8}}>15 anos de mercado automotivo, agora ao seu lado.</h2>
+              <p style={{marginTop:16}}>A Flash Car nasceu da parceria entre <strong>David</strong> e <strong>Agnaldo</strong>, profissionais que vivenciaram por décadas as ineficiências do mercado tradicional e estruturaram um modelo que une visão estratégica, agilidade processual e foco em resultado para o franqueado.</p>
+              <p>O modelo é baseado em <strong>comissão sobre venda</strong>: nossos interesses ficam totalmente alinhados aos seus. Quanto maior a sua operação, maior nosso retorno — e por isso o suporte é diário, não burocrático.</p>
+              <div style={{display:"flex",gap:14,marginTop:20,flexWrap:"wrap"}}>
+                <span className="fc-badge fc-badge--outline"><MS name="bolt" size={14} fill={1}/> Sem estoque imobilizado</span>
+                <span className="fc-badge fc-badge--outline"><MS name="handshake" size={14} fill={1}/> Modelo baseado em comissão</span>
+                <span className="fc-badge fc-badge--outline"><MS name="rocket_launch" size={14} fill={1}/> Implantação assistida</span>
+              </div>
+            </div>
+            <div className="about-photo" style={{aspectRatio:"1/1"}}>
+              <img src="assets/founders-david-agnaldo.webp" alt="David e Agnaldo, fundadores da Flash Car"
+                   style={{position:"absolute",inset:0,width:"100%",height:"100%",objectFit:"cover",objectPosition:"center top"}}/>
+              <div className="stat-overlay">15+ anos<small>de mercado automotivo</small></div>
+            </div>
           </div>
         </div>
       </section>
 
-      <ConversionCard
-        title="Que tal você ser o nosso próximo case de sucesso?"
-        body="Receba o dossiê completo da franquia com investimento, projeção financeira e cronograma de implantação."
-        primary={{label:"Quero receber o dossiê",target:"franquia"}}
-        secondary={{label:"Falar com consultor",target:"franquia"}}
-        onNav={onNav}/>
+      {/* ── CASES / TESTIMONIALS ─────────────────────────────── */}
+      <section className="section">
+        <div className="section__inner">
+          <div className="section__head">
+            <span className="fc-eyebrow">Quem já está faturando</span>
+            <h2>Histórias reais de franqueados Flash Car</h2>
+            <p>Resultados de quem apostou no modelo — e alcançou o payback antes do prazo.</p>
+          </div>
+          <div className="testi-grid">
+            <Testimonial name="Rayner" role="Franqueado · Flash Car Campinas" initial="R"
+              body='"Sou o segundo franqueado da rede. O treinamento é prático, o suporte é diário e a operação ficou no positivo no terceiro mês. Já estou abrindo a segunda unidade em 2026."'/>
+            <Testimonial name="Joel Silva" role="Franqueado · Unidade Curitiba" initial="J"
+              body='"Operar sem estoque e ter suporte jurídico incluído me deram a segurança que eu precisava pra alocar meu capital. Não hesitei um segundo."'/>
+            <Testimonial name="Juliano Mendes" role="Franqueado · Unidade Campinas" initial="J"
+              body='"O retorno veio antes do esperado. Os leads chegam pelo marketing da franqueadora — meu time só precisa atender e fechar. Simples assim."'/>
+          </div>
+        </div>
+      </section>
+
+      {/* ── VIDEO ────────────────────────────────────────────── */}
+      <section className="section section--subtle">
+        <div className="section__inner" style={{maxWidth:960}}>
+          <div className="section__head">
+            <span className="fc-eyebrow">Veja em 90 segundos</span>
+            <h2>Como é operar uma Flash Car na prática</h2>
+            <p>Suporte, operação e resultados — direto de quem já está dentro.</p>
+          </div>
+          <div className="franq-video" onClick={()=>{}}>
+            <button className="franq-video__play" aria-label="Reproduzir vídeo institucional">
+              <MS name="play_circle" size={40} fill={1}/>
+            </button>
+            <span className="franq-video__label">Vídeo institucional · 1:32</span>
+            <span className="franq-video__placeholder">[ insira o link do vídeo aqui ]</span>
+          </div>
+        </div>
+      </section>
+
+      {/* ── CTA FINAL com urgência ───────────────────────────── */}
+      <section className="section diff-band diff-band--dark">
+        <div className="diff-band__inner" style={{textAlign:"center",maxWidth:680,margin:"0 auto"}}>
+          <span className="fc-badge fc-badge--yellow" style={{marginBottom:20}}>
+            <MS name="bolt" size={13} fill={1}/>
+            Vagas limitadas por praça — apenas 1 franqueado por cidade
+          </span>
+          <h2 style={{color:"white",fontSize:"clamp(28px,3.5vw,44px)",lineHeight:1.1,margin:"0 0 16px"}}>Sua cidade ainda tem vaga. Por quanto tempo?</h2>
+          <p style={{color:"rgba(255,255,255,0.72)",fontSize:17,lineHeight:1.65,margin:"0 0 32px"}}>
+            Receba o dossiê completo com investimento detalhado, projeção financeira dos primeiros 12 meses e cronograma de implantação. Sem compromisso.
+          </p>
+          <div style={{display:"flex",gap:12,justifyContent:"center",flexWrap:"wrap"}}>
+            <button className="fc-btn fc-btn--primary fc-btn--lg" onClick={()=>onNav("franquia")}>
+              <MS name="file-text" size={18}/>
+              Quero o dossiê agora
+            </button>
+            <button className="fc-btn fc-btn--inverse fc-btn--lg" onClick={()=>onNav("franquia")}>Falar com consultor</button>
+          </div>
+          <p style={{marginTop:20,fontSize:12,color:"rgba(255,255,255,0.4)"}}>Sem spam. Sem compromisso. Resposta em até 24 horas úteis.</p>
+        </div>
+      </section>
+
     </React.Fragment>
   );
 }
