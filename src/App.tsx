@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import './index.css'
 
 const Logo = () => (
@@ -61,20 +62,31 @@ export default function App() {
         />
 
         {/* Car — transparent PNG, dominant, centered-right */}
-        <img
-          src="/car-black-suv.png"
-          alt=""
-          aria-hidden="true"
-          draggable={false}
-          className="car-anim absolute object-contain pointer-events-none select-none"
-          style={{
-            left: '50%',
-            top: '50%',
-            /* desktop */
-            width: '82vw',
-            maxWidth: '1400px',
-          }}
-        />
+        {(() => {
+          const [err, setErr] = useState(false)
+          return err ? (
+            /* Fallback silhouette if image isn't in public/ yet */
+            <svg
+              aria-hidden="true"
+              className="car-anim absolute pointer-events-none select-none opacity-20"
+              style={{ left: '50%', top: '50%', width: '82vw', maxWidth: '1400px' }}
+              viewBox="0 0 900 380"
+              fill="currentColor"
+            >
+              <path d="M860 220 C860 220 820 170 760 155 L680 130 C650 100 590 70 500 65 C420 60 340 75 280 100 L200 130 C150 145 100 170 80 195 L60 225 C50 235 50 255 65 260 L100 268 C105 295 130 315 160 315 C190 315 215 295 220 268 L670 268 C675 295 700 315 730 315 C760 315 785 295 790 268 L830 260 C850 255 865 240 860 220Z"/>
+            </svg>
+          ) : (
+            <img
+              src="/car-black-suv.png"
+              alt=""
+              aria-hidden="true"
+              draggable={false}
+              onError={() => setErr(true)}
+              className="car-anim absolute object-contain pointer-events-none select-none"
+              style={{ left: '50%', top: '50%', width: '82vw', maxWidth: '1400px' }}
+            />
+          )
+        })()}
 
         {/* Subtle light-sweep reflection */}
         <div
