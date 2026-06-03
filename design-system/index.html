@@ -301,9 +301,15 @@ h1,h2,h3,h4{margin:0;}
 @media(prefers-reduced-motion:reduce){.fc-rotator__word{transition:none;}}
 .kit-hero p.lead{font-size:18px;line-height:1.6;color:var(--fg-muted);margin:0 0 32px;max-width:520px;}
 .kit-hero__ctas{display:flex;gap:14px;flex-wrap:wrap;}
-.kit-hero__visual{position:relative;aspect-ratio:5/4;border-radius:var(--radius-xl);background:linear-gradient(135deg,var(--fc-navy-800) 0%,var(--fc-navy-900) 100%);overflow:visible;display:grid;place-items:center;color:rgba(255,255,255,0.28);box-shadow:var(--shadow-lg);}
-.kit-hero__visual::before{content:"FOTO · CARRO HERO";position:absolute;top:18px;left:18px;font:800 10px var(--font-display);letter-spacing:0.14em;color:rgba(255,255,255,0.4);}
-.kit-hero__visual>i{font-size:160px;opacity:0.55;}
+.kit-hero__visual{position:relative;aspect-ratio:5/4;border-radius:var(--radius-xl);background:#f0f0ee;overflow:visible;display:grid;place-items:center;box-shadow:var(--shadow-lg);}
+.kit-hero__visual::before{content:none;}
+.kit-hero__visual>i{display:none;}
+@keyframes heroCarFloat{0%{transform:translate(-50%,-50%)}100%{transform:translate(calc(-50% - 10px),-50%) scale(1.03)}}
+@keyframes heroShadowPulse{0%{opacity:0.20;transform:translateX(-50%) scaleX(1)}100%{opacity:0.12;transform:translateX(-50%) scaleX(0.88)}}
+@keyframes heroLightSweep{0%{opacity:0;transform:translateX(-100%)}12%{opacity:1}88%{opacity:1}100%{opacity:0;transform:translateX(280%)}}
+.hero-car-anim{animation:heroCarFloat 14s ease-in-out infinite alternate;will-change:transform;}
+.hero-shadow-anim{animation:heroShadowPulse 14s ease-in-out infinite alternate;will-change:transform,opacity;}
+.hero-light-anim{animation:heroLightSweep 10s ease-in-out infinite;will-change:transform,opacity;}
 .kit-hero__visual .speed-card{position:absolute;left:-24px;bottom:36px;background:white;color:var(--fc-ink-900);padding:16px 20px;border-radius:var(--radius-md);box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:14px;min-width:240px;border:1px solid var(--border-soft);}
 .kit-hero__visual .speed-card .icon{width:44px;height:44px;border-radius:12px;background:var(--fc-yellow);color:var(--fc-navy-900);display:grid;place-items:center;font-size:26px;}
 .kit-hero__visual .speed-card strong{font:800 22px var(--font-display);letter-spacing:-0.01em;color:var(--fc-ink-900);display:block;}
@@ -732,7 +738,18 @@ function HomePage({ onNav }) {
             </div>
           </div>
           <div className="kit-hero__visual" aria-hidden="true">
-            <MS name="directions_car" size={160} weight={300}/>
+            {/* Animated car layer — clipped to rounded container */}
+            <div style={{position:'absolute',inset:0,overflow:'hidden',borderRadius:'inherit'}}>
+              <div className="hero-shadow-anim" style={{position:'absolute',left:'50%',bottom:'10%',width:'72%',height:'7%',background:'rgba(0,0,0,0.14)',filter:'blur(18px)',borderRadius:'50%'}}/>
+              <img
+                src="car-black-suv.png"
+                alt=""
+                draggable="false"
+                className="hero-car-anim"
+                style={{position:'absolute',width:'115%',maxWidth:'none',left:'50%',top:'50%',objectFit:'contain',pointerEvents:'none',userSelect:'none'}}
+              />
+              <div className="hero-light-anim" style={{position:'absolute',top:'-10%',left:0,width:'40%',height:'120%',background:'linear-gradient(105deg,transparent 0%,rgba(255,255,255,0.06) 47%,rgba(255,255,255,0.14) 50%,rgba(255,255,255,0.06) 53%,transparent 100%)',pointerEvents:'none'}}/>
+            </div>
             <div className="price-card">
               Avaliado em <strong>R$ 87.400</strong>
             </div>
