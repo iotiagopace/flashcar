@@ -285,9 +285,9 @@ h1,h2,h3,h4{margin:0;}
 /* ── NAVBAR ───────────────────────────────────────────────── */
 .fc-nav{--nav-red:#C7332F;--nav-red-deep:#A92725;--nav-red-soft:#FFF1F0;height:72px;background:rgba(255,255,255,0.96);border-bottom:1px solid rgba(216,38,42,0.14);display:flex;align-items:center;padding:0 var(--gutter-desktop);position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);}
 .fc-nav__brand{display:flex;align-items:center;gap:12px;font-family:var(--font-display);font-weight:800;font-size:18px;color:var(--fc-ink-900);}
-.fc-nav__brand img{height:44px;width:44px;object-fit:cover;border-radius:13px;box-shadow:0 10px 28px rgba(199,51,47,0.18);}
-.fc-nav__links{display:flex;align-items:center;gap:8px;margin:0 auto;}
-.fc-nav__link{padding:8px 14px;border-radius:var(--radius-sm);font:600 14px var(--font-display);color:#343642;position:relative;transition:color var(--t-fast) var(--ease-out),background var(--t-fast) var(--ease-out);}
+.fc-nav__brand img{height:47px;width:auto;max-width:168px;object-fit:contain;border-radius:11px;box-shadow:0 12px 30px rgba(199,51,47,0.20);}
+.fc-nav__links{display:flex;align-items:center;gap:6px;margin:0 auto;}
+.fc-nav__link{padding:8px 10px;border-radius:var(--radius-sm);font:600 14px var(--font-display);color:#343642;position:relative;white-space:nowrap;transition:color var(--t-fast) var(--ease-out),background var(--t-fast) var(--ease-out);}
 .fc-nav__link::after{content:"";position:absolute;left:14px;right:14px;bottom:-3px;height:4px;background:var(--nav-red);border-radius:999px;transform:scaleX(0);transform-origin:left center;transition:transform 280ms var(--ease-out),background var(--t-fast);}
 .fc-nav__link:hover{background:var(--nav-red-soft);color:var(--nav-red-deep);text-decoration:none;}
 .fc-nav__link:hover::after{transform:scaleX(0.45);background:rgba(199,51,47,0.48);}
@@ -302,6 +302,7 @@ h1,h2,h3,h4{margin:0;}
 .fc-nav-mobile{display:none;}
 @media(max-width:900px){
   .fc-nav{padding:0 16px;}
+  .fc-nav__brand img{height:42px;max-width:150px;border-radius:10px;}
   .fc-nav__links{display:none;}
   .fc-nav__menu-btn{display:grid;place-items:center;margin-left:auto;}
   .fc-nav__cta{display:none;}
@@ -368,7 +369,6 @@ h1,h2,h3,h4{margin:0;}
 .kit-hero{position:relative;background:transparent;color:var(--fg-strong);border-bottom:1px solid var(--border-soft);overflow:hidden;}
 .kit-hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(720px 320px at 0% 0%,rgba(216,38,42,0.04),transparent 70%);pointer-events:none;}
 .kit-hero__inner{position:relative;max-width:var(--container-max);margin:0 auto;padding:88px var(--gutter-desktop) 96px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,0.95fr);gap:64px;align-items:center;}
-.kit-hero__logo{display:block;width:min(260px,72vw);height:auto;margin:0 0 24px;border-radius:18px;box-shadow:0 18px 42px rgba(216,38,42,0.22);}
 .kit-hero h1{font-size:clamp(44px,5.8vw,80px);font-weight:900;line-height:0.98;margin:0 0 20px;letter-spacing:-0.045em;color:var(--fg-strong);max-width:12.5ch;}
 .kit-hero h1 .accent{color:var(--fc-red);display:inline-block;}
 .kit-hero h1 .accent::after{content:"";display:block;height:5px;width:70%;background:var(--fc-yellow);border-radius:4px;margin-top:6px;}
@@ -408,7 +408,6 @@ h1,h2,h3,h4{margin:0;}
 }
 @media(max-width:560px){
   .kit-hero h1{font-size:clamp(38px,13vw,56px);max-width:12ch;}
-  .kit-hero__logo{width:min(220px,72vw);margin-bottom:20px;border-radius:15px;}
   .kit-hero p.lead{font-size:16px;}
   .kit-hero__ctas{flex-direction:column;align-items:stretch;}
   .kit-hero__ctas .fc-btn{width:100%;}
@@ -707,7 +706,6 @@ h1,h2,h3,h4{margin:0;}
 /* ============================================================
    SHARED — Nav, Footer, icons, primitives
    ============================================================ */
-const LOGO_COLOR = "assets/logo-mark-red-bg.svg";
 const LOGO_RED_BOX = "assets/logo-flashcar-red-box.png";
 
 const ICON_MAP = {
@@ -769,7 +767,7 @@ function Nav({ current, onNav }) {
         <a href="#home" className="fc-nav__brand"
            onClick={(e)=>{e.preventDefault();go("home");}}
            aria-label="Flash Car Store — Início">
-          <img src={LOGO_COLOR} alt="Flash Car Store"/>
+          <img src={LOGO_RED_BOX} alt="Flash Car Store"/>
         </a>
         <div className="fc-nav__links">
           {NAV_ITEMS.map((item)=>(
@@ -972,7 +970,6 @@ function HomePage({ onNav }) {
       <section className="kit-hero">
         <div className="kit-hero__inner">
           <div>
-            <img className="kit-hero__logo" src={LOGO_RED_BOX} alt="Flash Car Store"/>
             <h1>
               Seu carro vendido <br/>
               <RotatingWord words={["em 60 min.","via PIX.","sem leilão.","sem golpe.","hoje mesmo."]}/>
