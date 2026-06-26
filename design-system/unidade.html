@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<script>
+/* ── SEO síncrono — roda antes do render ── */
+(function() {
+  var slug = location.pathname.replace(/^\//, '').replace(/\/$/, '');
+  var units = window.FLASHCAR_UNITS || [];
+  var u = null;
+  for (var i = 0; i < units.length; i++) {
+    if (units[i].slug === slug) { u = units[i]; break; }
+  }
+  if (!u) {
+    location.replace('/');
+    return;
+  }
+  window.__FC_UNIT__ = u;
+
+  var base = 'https://flashcar-henna.vercel.app';
+  var url  = base + '/' + u.slug;
+  var title = 'Flash Car ' + u.nome + ' — Venda seu carro via PIX em ' + u.nome;
+  var desc  = 'Avaliação gratuita em ' + u.nome + '. ' + u.endereco + '. Pagamento via PIX no mesmo dia. Sem leilão, sem golpe.';
+
+  document.title = title;
+
+  function meta(prop, val, isProp) {
+    var el = document.createElement('meta');
+    el.setAttribute(isProp ? 'property' : 'name', prop);
+    el.setAttribute('content', val);
+    document.head.appendChild(el);
+  }
+  function link(rel, href) {
+    var el = document.createElement('link');
+    el.rel = rel; el.href = href;
+    document.head.appendChild(el);
+  }
+
+  meta('description', desc);
+  link('canonical', url);
+  meta('og:type',        'website',   true);
+  meta('og:locale',      'pt_BR',     true);
+  meta('og:site_name',   'Flash Car Store', true);
+  meta('og:title',       title,       true);
+  meta('og:description', desc,        true);
+  meta('og:url',         url,         true);
+  meta('og:image',       base + '/assets/og-cover.jpg', true);
+  meta('twitter:card',        'summary_large_image');
+  meta('twitter:title',       title);
+  meta('twitter:description', desc);
+  meta('twitter:image',       base + '/assets/og-cover.jpg');
+
+  /* JSON-LD LocalBusiness */
+  var ld = {
+    "@context": "https://schema.org",
+    "@type": "AutoDealer",
+    "name": "Flash Car " + u.nome,
+    "url": url,
+    "telephone": "+" + u.whatsapp,
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": u.endereco,
+      "addressLocality": u.nome,
+      "addressRegion": u.uf,
+      "addressCountry": "BR"
+    },
+    "openingHours": "Mo-Fr 09:00-19:00",
+    "geo": u.lat ? {
+      "@type": "GeoCoordinates",
+      "latitude": u.lat,
+      "longitude": u.lng
+    } : undefined,
+    "priceRange": "$$",
+    "description": desc
+  };
+  var script = document.createElement('script');
+  script.type = 'application/ld+json';
+  script.text = JSON.stringify(ld);
+  document.head.appendChild(script);
+})();
+</script>
+<link rel="icon" type="image/svg+xml" href="/assets/logo-mark.svg"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" rel="stylesheet"/>
+<link href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css" rel="stylesheet"/>
+<link href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css" rel="stylesheet"/>
+<style>
+:root {
+  --fc-red: #D8262A; --fc-red-hover: #E8393D; --fc-red-deep: #B81B1F;
+  --fc-yellow: #FBE51B; --fc-green: #5BB336; --fc-navy-900: #0A1628;
+  --fc-navy-800: #122036; --fc-navy-700: #1B2C46; --fc-navy-600: #2A3D5A;
+  --fc-white: #FFFFFF; --fc-ink-50: #F7F7F8; --fc-ink-100: #EFEFF1;
+  --fc-ink-200: #E2E3E7; --fc-ink-300: #C9CBD2; --fc-ink-400: #8E919A;
+  --fc-ink-500: #5F6470; --fc-ink-700: #2E3340; --fc-ink-900: #15171E;
+  --border-soft: var(--fc-ink-200);
+  --shadow-sm: 0 1px 2px rgba(10,22,40,0.06),0 1px 1px rgba(10,22,40,0.04);
+  --shadow-md: 0 4px 12px rgba(10,22,40,0.08),0 1px 2px rgba(10,22,40,0.04);
+  --shadow-lg: 0 12px 28px rgba(10,22,40,0.12),0 4px 8px rgba(10,22,40,0.06);
+  --shadow-cta: 0 8px 20px rgba(216,38,42,0.24),0 2px 4px rgba(216,38,42,0.16);
+  --radius-sm:8px; --radius-md:12px; --radius-lg:16px; --radius-xl:24px; --radius-pill:999px;
+  --font-display:"Montserrat","Inter",system-ui,sans-serif;
+  --font-body:"Montserrat","Inter",system-ui,sans-serif;
+  --ease-out:cubic-bezier(0.2,0.7,0.2,1);
+  --t-base:200ms;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:var(--font-body);font-size:16px;line-height:1.6;
+  color:var(--fc-ink-700);background:#fff;-webkit-font-smoothing:antialiased;
+  position:relative;
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:
+    linear-gradient(to right,#e8e8e8 1px,transparent 1px),
+    linear-gradient(to bottom,#e8e8e8 1px,transparent 1px),
+    radial-gradient(circle 800px at 0% 300px,rgba(216,38,42,0.10),transparent),
+    radial-gradient(circle 700px at 100% 300px,rgba(216,38,42,0.07),transparent);
+  background-size:48px 48px,48px 48px,100% 100%,100% 100%;
+}
+main{position:relative;z-index:1;}
+a{color:var(--fc-red);text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+/* NAV */
+.nav{height:68px;background:#fff;border-bottom:1px solid var(--border-soft);
+  display:flex;align-items:center;padding:0 24px;position:sticky;top:0;z-index:50;
+  gap:16px;}
+.nav__brand img{height:36px;width:auto;display:block;}
+.nav__back{display:inline-flex;align-items:center;gap:6px;font:600 13px var(--font-display);
+  color:var(--fc-ink-500);padding:6px 12px;border-radius:var(--radius-sm);
+  transition:background var(--t-base);margin-right:auto;}
+.nav__back:hover{background:var(--fc-ink-50);text-decoration:none;color:var(--fc-ink-900);}
+.nav__cta{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 20px;
+  background:var(--fc-red);color:#fff;border-radius:var(--radius-pill);
+  font:700 14px var(--font-display);box-shadow:var(--shadow-cta);white-space:nowrap;
+  transition:background var(--t-base);}
+.nav__cta:hover{background:var(--fc-red-hover);text-decoration:none;}
+
+/* HERO */
+.hero{padding:72px 24px 80px;max-width:1200px;margin:0 auto;
+  display:grid;grid-template-columns:1.1fr 0.9fr;gap:56px;align-items:center;}
+@media(max-width:860px){.hero{grid-template-columns:1fr;gap:40px;padding:48px 16px 56px;}}
+.hero__eyebrow{display:inline-flex;align-items:center;gap:6px;
+  background:rgba(216,38,42,0.08);color:var(--fc-red);
+  font:700 11px var(--font-display);letter-spacing:0.14em;text-transform:uppercase;
+  padding:6px 12px;border-radius:var(--radius-pill);margin-bottom:20px;}
+.hero h1{font:800 clamp(36px,5vw,62px) var(--font-display);
+  color:var(--fc-ink-900);line-height:1.0;letter-spacing:-0.03em;margin:0 0 20px;}
+.hero h1 .accent{color:var(--fc-red);}
+.hero__lead{font-size:18px;color:var(--fc-ink-500);margin:0 0 32px;line-height:1.65;max-width:480px;}
+.hero__ctas{display:flex;gap:12px;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  height:52px;padding:0 28px;border-radius:var(--radius-pill);border:0;cursor:pointer;
+  font:700 15px var(--font-display);letter-spacing:0.01em;text-decoration:none;
+  transition:transform 120ms var(--ease-out),background 120ms,box-shadow var(--t-base);}
+.btn:active{transform:translateY(1px);}
+.btn--primary{background:var(--fc-red);color:#fff;box-shadow:var(--shadow-cta);}
+.btn--primary:hover{background:var(--fc-red-hover);text-decoration:none;box-shadow:0 12px 28px rgba(216,38,42,0.32);}
+.btn--ghost{background:transparent;color:var(--fc-ink-900);border:1.5px solid var(--fc-ink-300);}
+.btn--ghost:hover{border-color:var(--fc-ink-900);background:var(--fc-ink-50);text-decoration:none;}
+.hero__checks{display:flex;flex-direction:column;gap:10px;margin-top:28px;}
+.hero__check{display:flex;align-items:center;gap:8px;font:600 13px var(--font-display);color:var(--fc-ink-500);}
+.hero__check i{color:var(--fc-green);font-size:16px;}
+
+/* INFO CARD */
+.info-card{background:#fff;border:1px solid var(--border-soft);border-radius:var(--radius-xl);
+  box-shadow:var(--shadow-lg);overflow:hidden;}
+.info-card__header{background:var(--fc-navy-900);padding:24px 28px;
+  display:flex;align-items:center;gap:12px;}
+.info-card__header img{height:32px;filter:brightness(0) invert(1);}
+.info-card__title{font:700 14px var(--font-display);color:#fff;letter-spacing:0.04em;}
+.info-card__sub{font:500 12px var(--font-display);color:rgba(255,255,255,0.5);margin-top:2px;}
+.info-card__body{padding:24px 28px;display:flex;flex-direction:column;gap:16px;}
+.info-row{display:flex;align-items:flex-start;gap:12px;font-size:14px;color:var(--fc-ink-700);}
+.info-row i{font-size:18px;color:var(--fc-red);flex-shrink:0;margin-top:1px;}
+.info-row strong{display:block;font:700 11px var(--font-display);letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--fc-ink-400);margin-bottom:2px;}
+.info-card__footer{padding:0 28px 24px;}
+.btn-wa{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;
+  height:52px;background:#25D366;color:#fff;border-radius:var(--radius-pill);
+  font:700 15px var(--font-display);text-decoration:none;
+  box-shadow:0 8px 20px rgba(37,211,102,0.28);transition:background var(--t-base);}
+.btn-wa:hover{background:#1EB85A;text-decoration:none;}
+.btn-wa svg{width:20px;height:20px;flex-shrink:0;}
+
+/* MAP */
+.map-section{max-width:1200px;margin:0 auto;padding:0 24px 80px;}
+@media(max-width:860px){.map-section{padding:0 16px 56px;}}
+.map-section h2{font:800 28px var(--font-display);color:var(--fc-ink-900);
+  letter-spacing:-0.02em;margin:0 0 20px;}
+.map-frame{border-radius:var(--radius-xl);overflow:hidden;border:1px solid var(--border-soft);
+  box-shadow:var(--shadow-md);aspect-ratio:16/7;background:var(--fc-ink-100);}
+.map-frame iframe{width:100%;height:100%;border:0;display:block;}
+
+/* BADGES STRIP */
+.badges{max-width:1200px;margin:0 auto;padding:0 24px 56px;
+  display:flex;gap:16px;flex-wrap:wrap;}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;
+  border-radius:var(--radius-pill);background:var(--fc-ink-50);
+  border:1px solid var(--border-soft);font:600 13px var(--font-display);color:var(--fc-ink-700);}
+.badge i{color:var(--fc-red);font-size:16px;}
+
+/* FOOTER */
+.footer{background:var(--fc-navy-900);color:rgba(255,255,255,0.6);
+  padding:32px 24px;text-align:center;font-size:13px;}
+.footer a{color:rgba(255,255,255,0.6);}
+.footer a:hover{color:#fff;}
+.footer__logo{margin-bottom:12px;}
+.footer__logo img{height:28px;filter:brightness(0) invert(1);opacity:0.7;}
+</style>
+</head>
+<body>
+<script src="/units-config.js"></script>
+<nav class="nav">
+  <a href="/" class="nav__back">
+    <i class="ph ph-arrow-left"></i> Todas as unidades
+  </a>
+  <a href="/assets/logo-flashcar-color.png" class="nav__brand" style="display:none" id="nav-brand-link">
+    <img src="/assets/logo-flashcar-color.png" alt="Flash Car Store" id="nav-logo"/>
+  </a>
+  <a href="#whatsapp" class="nav__cta" id="nav-cta">
+    <i class="ph-fill ph-whatsapp-logo"></i>
+    <span>Agendar avaliação</span>
+  </a>
+</nav>
+
+<main>
+  <section class="hero" id="hero">
+    <div>
+      <div class="hero__eyebrow">
+        <i class="ph-fill ph-map-pin"></i>
+        <span id="hero-eyebrow">Flash Car · Carregando...</span>
+      </div>
+      <h1 id="hero-title">Venda seu carro<br/><span class="accent">via PIX.</span></h1>
+      <p class="hero__lead" id="hero-lead">Avaliação técnica gratuita + rede exclusiva de compradores verificados + pagamento PIX no mesmo dia.</p>
+      <div class="hero__ctas">
+        <a href="#whatsapp" class="btn btn--primary" id="cta-primary">
+          <i class="ph-fill ph-whatsapp-logo"></i> Agendar avaliação gratuita
+        </a>
+        <a href="/" class="btn btn--ghost">Ver outras unidades</a>
+      </div>
+      <div class="hero__checks">
+        <div class="hero__check"><i class="ph-fill ph-check-circle"></i> Avaliação grátis em até 40 minutos</div>
+        <div class="hero__check"><i class="ph-fill ph-check-circle"></i> Pagamento PIX no mesmo dia</div>
+        <div class="hero__check"><i class="ph-fill ph-check-circle"></i> Sem leilão · sem golpe · sem dor de cabeça</div>
+      </div>
+    </div>
+
+    <div class="info-card" id="info-card">
+      <div class="info-card__header">
+        <img src="/assets/logo-flashcar-white.png" alt="Flash Car Store"/>
+        <div>
+          <div class="info-card__title" id="card-title">Flash Car</div>
+          <div class="info-card__sub" id="card-sub">Unidade</div>
+        </div>
+      </div>
+      <div class="info-card__body">
+        <div class="info-row">
+          <i class="ph-fill ph-map-pin"></i>
+          <div><strong>Endereço</strong><span id="card-addr"></span></div>
+        </div>
+        <div class="info-row">
+          <i class="ph ph-clock"></i>
+          <div><strong>Horário</strong><span id="card-hours"></span></div>
+        </div>
+        <div class="info-row">
+          <i class="ph-fill ph-whatsapp-logo"></i>
+          <div><strong>WhatsApp</strong><a id="card-phone" href="#"></a></div>
+        </div>
+      </div>
+      <div class="info-card__footer">
+        <a id="btn-whatsapp" href="#" class="btn-wa" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.2-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.6-.8-2.7-1.4-3.7-3.2-.3-.5.3-.4.7-1.4.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.1.2 2 3.1 4.9 4.4 1.8.8 2.5.8 3.4.7.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.5-.3zM12 2C6.5 2 2 6.5 2 12c0 1.7.4 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+          Falar com esta unidade
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="badges">
+    <div class="badge"><i class="ph-fill ph-seal-check"></i> Avaliação técnica certificada</div>
+    <div class="badge"><i class="ph-fill ph-currency-circle-dollar"></i> PIX no mesmo dia</div>
+    <div class="badge"><i class="ph-fill ph-shield-check"></i> Suporte jurídico incluído</div>
+    <div class="badge"><i class="ph-fill ph-users-three"></i> +15.000 veículos intermediados</div>
+  </div>
+
+  <section class="map-section" id="map-section">
+    <h2 id="map-title">Como chegar</h2>
+    <div class="map-frame">
+      <iframe id="map-iframe" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen src="about:blank" title="Mapa da unidade Flash Car"></iframe>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer__logo"><img src="/assets/logo-flashcar-white.png" alt="Flash Car Store"/></div>
+  <p style="margin:0 0 8px">© 2026 Flash Car Store · Todos os direitos reservados</p>
+  <p style="margin:0"><a href="/">Início</a> · <a href="/#unidades">Unidades</a> · <a href="/#faq">Ajuda</a></p>
+</footer>
+
+<script>
+(function() {
+  var u = window.__FC_UNIT__;
+  if (!u) return;
+
+  /* Hero */
+  document.getElementById('hero-eyebrow').textContent = 'Flash Car · ' + u.nome + ' / ' + u.uf;
+  document.getElementById('hero-title').innerHTML = 'Venda seu carro em <br/><span class="accent">' + u.nome + ' via PIX.</span>';
+  document.getElementById('hero-lead').textContent = 'Avaliação técnica gratuita em ' + u.nome + '. Rede exclusiva de compradores verificados. Pagamento PIX no mesmo dia. Sem leilão, sem golpe.';
+
+  /* Info card */
+  document.getElementById('card-title').textContent = 'Flash Car ' + u.nome;
+  document.getElementById('card-sub').textContent = 'Unidade ' + u.uf;
+  document.getElementById('card-addr').textContent = u.endereco;
+  document.getElementById('card-hours').textContent = u.horario;
+
+  var waUrl = 'https://wa.me/' + u.whatsapp + '?text=' + encodeURIComponent('Olá! Vim pelo site e quero agendar uma avaliação gratuita em ' + u.nome + '.');
+  document.getElementById('card-phone').href = waUrl;
+  document.getElementById('card-phone').textContent = '+' + u.whatsapp;
+  document.getElementById('btn-whatsapp').href = waUrl;
+  document.getElementById('btn-whatsapp').id = 'whatsapp';
+  document.getElementById('cta-primary').href = waUrl;
+  document.getElementById('cta-primary').target = '_blank';
+  document.getElementById('nav-cta').href = waUrl;
+  document.getElementById('nav-cta').target = '_blank';
+
+  /* Map */
+  document.getElementById('map-title').textContent = 'Como chegar à unidade ' + u.nome;
+  if (u.lat && u.lng) {
+    var q = encodeURIComponent(u.endereco);
+    document.getElementById('map-iframe').src =
+      'https://www.google.com/maps/embed/v1/place?key=AIzaSyD-placeholder&q=' + q + '&center=' + u.lat + ',' + u.lng + '&zoom=15';
+  }
+
+  /* GTM */
+  if (u.gtm) {
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+    var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+    j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+    f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer',u.gtm);
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,4 +1,12 @@
 {
   "outputDirectory": "design-system",
-  "buildCommand": ""
+  "buildCommand": "",
+  "rewrites": [
+    { "source": "/florianopolis",  "destination": "/unidade.html" },
+    { "source": "/sao-paulo",      "destination": "/unidade.html" },
+    { "source": "/porto-alegre",   "destination": "/unidade.html" },
+    { "source": "/goiania",        "destination": "/unidade.html" },
+    { "source": "/joinville",      "destination": "/unidade.html" },
+    { "source": "/campinas",       "destination": "/unidade.html" }
+  ]
 }
