@@ -21,8 +21,8 @@
 
   var base = 'https://flashcar-henna.vercel.app';
   var url  = base + '/' + u.slug;
-  var title = 'Flash Car ' + u.nome + ' — Venda seu carro via PIX em ' + u.nome;
-  var desc  = 'Avaliação gratuita em ' + u.nome + '. ' + u.endereco + '. Pagamento via PIX no mesmo dia. Sem leilão, sem golpe.';
+  var title = 'Flash Car ' + u.nome + ' — Venda seu carro via PIX';
+  var desc  = 'Unidade Flash Car ' + u.nome + ': avaliação gratuita, atendimento pelo WhatsApp e pagamento via PIX no mesmo dia. Endereço: ' + u.endereco + '.';
 
   document.title = title;
 
@@ -46,11 +46,11 @@
   meta('og:title',       title,       true);
   meta('og:description', desc,        true);
   meta('og:url',         url,         true);
-  meta('og:image',       base + '/assets/og-cover.jpg', true);
+  meta('og:image',       u.foto || base + '/car-black-suv.png', true);
   meta('twitter:card',        'summary_large_image');
   meta('twitter:title',       title);
   meta('twitter:description', desc);
-  meta('twitter:image',       base + '/assets/og-cover.jpg');
+  meta('twitter:image',       u.foto || base + '/car-black-suv.png');
 
   /* JSON-LD LocalBusiness */
   var ld = {
@@ -66,7 +66,8 @@
       "addressRegion": u.uf,
       "addressCountry": "BR"
     },
-    "openingHours": "Mo-Fr 09:00-19:00",
+    "openingHours": u.openingHours || "Mo-Fr 09:00-19:00",
+    "image": u.foto,
     "geo": u.lat ? {
       "@type": "GeoCoordinates",
       "latitude": u.lat,
@@ -169,6 +170,9 @@ a:hover{text-decoration:underline;}
 /* INFO CARD */
 .info-card{background:#fff;border:1px solid var(--border-soft);border-radius:var(--radius-xl);
   box-shadow:var(--shadow-lg);overflow:hidden;}
+.info-card__photo{display:none;aspect-ratio:16/10;background:var(--fc-ink-100);overflow:hidden;}
+.info-card__photo img{width:100%;height:100%;object-fit:cover;display:block;}
+.info-card__photo.is-visible{display:block;}
 .info-card__header{background:var(--fc-navy-900);padding:24px 28px;
   display:flex;align-items:center;gap:12px;}
 .info-card__header img{height:32px;filter:brightness(0) invert(1);}
@@ -250,6 +254,9 @@ a:hover{text-decoration:underline;}
     </div>
 
     <div class="info-card" id="info-card">
+      <div class="info-card__photo" id="card-photo-wrap">
+        <img src="" alt="" id="card-photo"/>
+      </div>
       <div class="info-card__header">
         <img src="/assets/logo-flashcar-white.png" alt="Flash Car Store"/>
         <div>
@@ -310,17 +317,23 @@ a:hover{text-decoration:underline;}
   /* Hero */
   document.getElementById('hero-eyebrow').textContent = 'Flash Car · ' + u.nome + ' / ' + u.uf;
   document.getElementById('hero-title').innerHTML = 'Venda seu carro em <br/><span class="accent">' + u.nome + ' via PIX.</span>';
-  document.getElementById('hero-lead').textContent = 'Avaliação técnica gratuita em ' + u.nome + '. Rede exclusiva de compradores verificados. Pagamento PIX no mesmo dia. Sem leilão, sem golpe.';
+  document.getElementById('hero-lead').textContent = 'Avaliação técnica gratuita na unidade Flash Car ' + u.nome + '. Atendimento pelo WhatsApp, rede exclusiva de compradores verificados e pagamento PIX no mesmo dia.';
 
   /* Info card */
   document.getElementById('card-title').textContent = 'Flash Car ' + u.nome;
   document.getElementById('card-sub').textContent = 'Unidade ' + u.uf;
+  if (u.foto) {
+    document.getElementById('card-photo-wrap').className += ' is-visible';
+    document.getElementById('card-photo').src = u.foto;
+    document.getElementById('card-photo').alt = 'Flash Car ' + u.nome;
+  }
   document.getElementById('card-addr').textContent = u.endereco;
   document.getElementById('card-hours').textContent = u.horario;
 
-  var waUrl = 'https://wa.me/' + u.whatsapp + '?text=' + encodeURIComponent('Olá! Vim pelo site e quero agendar uma avaliação gratuita em ' + u.nome + '.');
+  var waText = u.whatsappText || ('Olá! Vim pelo site e quero agendar uma avaliação gratuita em ' + u.nome + '.');
+  var waUrl = 'https://wa.me/' + u.whatsapp + '?text=' + encodeURIComponent(waText);
   document.getElementById('card-phone').href = waUrl;
-  document.getElementById('card-phone').textContent = '+' + u.whatsapp;
+  document.getElementById('card-phone').textContent = u.telefone || ('+' + u.whatsapp);
   document.getElementById('btn-whatsapp').href = waUrl;
   document.getElementById('btn-whatsapp').id = 'whatsapp';
   document.getElementById('cta-primary').href = waUrl;
@@ -330,11 +343,8 @@ a:hover{text-decoration:underline;}
 
   /* Map */
   document.getElementById('map-title').textContent = 'Como chegar à unidade ' + u.nome;
-  if (u.lat && u.lng) {
-    var q = encodeURIComponent(u.endereco);
-    document.getElementById('map-iframe').src =
-      'https://www.google.com/maps/embed/v1/place?key=AIzaSyD-placeholder&q=' + q + '&center=' + u.lat + ',' + u.lng + '&zoom=15';
-  }
+  var q = encodeURIComponent(u.endereco);
+  document.getElementById('map-iframe').src = 'https://www.google.com/maps?q=' + q + '&output=embed';
 
   /* GTM */
   if (u.gtm) {

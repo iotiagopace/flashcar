@@ -2,11 +2,21 @@
   "outputDirectory": "design-system",
   "buildCommand": "",
   "rewrites": [
-    { "source": "/florianopolis",  "destination": "/unidade.html" },
-    { "source": "/sao-paulo",      "destination": "/unidade.html" },
-    { "source": "/porto-alegre",   "destination": "/unidade.html" },
-    { "source": "/goiania",        "destination": "/unidade.html" },
-    { "source": "/joinville",      "destination": "/unidade.html" },
-    { "source": "/campinas",       "destination": "/unidade.html" }
+    { "source": "/blumenau", "destination": "/unidade.html" },
+    { "source": "/jaragua-do-sul", "destination": "/unidade.html" },
+    { "source": "/tijucas", "destination": "/unidade.html" },
+    { "source": "/rio-do-sul", "destination": "/unidade.html" },
+    { "source": "/concordia", "destination": "/unidade.html" },
+    { "source": "/joinville", "destination": "/unidade.html" },
+    { "source": "/itajai", "destination": "/unidade.html" },
+    { "source": "/joacaba", "destination": "/unidade.html" },
+    { "source": "/chapeco", "destination": "/unidade.html" },
+    { "source": "/brusque", "destination": "/unidade.html" },
+    { "source": "/ijui", "destination": "/unidade.html" },
+    { "source": "/passo-fundo", "destination": "/unidade.html" },
+    { "source": "/bauru", "destination": "/unidade.html" },
+    { "source": "/campinas", "destination": "/unidade.html" },
+    { "source": "/sao-jose-do-rio-preto", "destination": "/unidade.html" },
+    { "source": "/goiania", "destination": "/unidade.html" }
   ]
 }

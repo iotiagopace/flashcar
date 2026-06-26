@@ -52,6 +52,7 @@
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+<script src="units-config.js"></script>
 <style>
 /* ── COLOR & TYPE TOKENS ──────────────────────────────────── */
 :root {
@@ -1300,23 +1301,30 @@ function SobrePage({ onNav }) {
 }
 
 /* ── UNIDADES ─────────────────────────────────────────────── */
-const UNITS = [
-  {slug:"florianopolis",city:"Florianópolis",uf:"SC",flag:"Sede própria",flagKind:"red",addr:"Rod. SC-401, 4500 — Saco Grande",hours:"Seg–Sex: 09h–19h · Sáb: 09h–13h",phone:"(48) 3232-4040"},
-  {slug:"sao-paulo",city:"São Paulo",uf:"SP",flag:null,addr:"Av. Europa, 1200 — Jardim Europa",hours:"Seg–Sex: 09h–20h · Sáb: 09h–17h",phone:"(11) 3085-5050"},
-  {slug:"porto-alegre",city:"Porto Alegre",uf:"RS",flag:null,addr:"Av. Nilo Peçanha, 2500 — Três Figueiras",hours:"Seg–Sex: 09h–19h · Sáb: 09h–13h",phone:"(51) 3333-6060"},
-  {slug:"goiania",city:"Goiânia",uf:"GO",flag:"Novo espaço",flagKind:"soft-yellow",addr:"Av. Ricardo Paranhos, 800 — Setor Marista",hours:"Seg–Sex: 08h–18h · Sáb: 08h–12h",phone:"(62) 3999-7070"},
-  {slug:"joinville",city:"Joinville",uf:"SC",flag:null,addr:"Rua XV de Novembro, 1500 — Glória",hours:"Seg–Sex: 09h–19h · Sáb: 09h–13h",phone:"(47) 3455-8080"},
-  {slug:"campinas",city:"Campinas",uf:"SP",flag:"Top de avaliações",flagKind:"soft-green",addr:"Av. Norte-Sul, 1100 — Centro",hours:"Seg–Sex: 09h–19h · Sáb: 09h–13h",phone:"(19) 3222-1010"},
-];
+const UNITS = (window.FLASHCAR_UNITS || []).map((u, index)=>({
+  slug:u.slug,
+  city:u.nome,
+  uf:u.uf,
+  flag:u.flag || (index === 0 ? "Unidade oficial" : null),
+  flagKind:u.flag ? "soft-yellow" : index === 0 ? "red" : null,
+  addr:u.endereco,
+  hours:u.horario,
+  phone:u.telefone || ("+" + u.whatsapp),
+  photo:u.foto,
+}));
 
 function UnitCard({ u }) {
   const flagCls = {"red":"fc-badge fc-badge--red","soft-yellow":"fc-badge fc-badge--soft-yellow","soft-green":"fc-badge fc-badge--soft-green"};
   return (
     <article className="fc-unit-card">
       <div className="fc-unit-card__media">
-        <div style={{width:"100%",height:"100%",background:"linear-gradient(135deg,#1B2C46,#0A1628)",display:"grid",placeItems:"center",color:"rgba(255,255,255,0.3)",font:"600 12px var(--font-display)",letterSpacing:"0.1em",textTransform:"uppercase"}}>
+        {u.photo ? (
+          <img src={u.photo} alt={"Flash Car " + u.city} loading="lazy"/>
+        ) : (
+          <div style={{width:"100%",height:"100%",background:"linear-gradient(135deg,#1B2C46,#0A1628)",display:"grid",placeItems:"center",color:"rgba(255,255,255,0.3)",font:"600 12px var(--font-display)",letterSpacing:"0.1em",textTransform:"uppercase"}}>
           <MS name="storefront" size={48} weight={300}/>
-        </div>
+          </div>
+        )}
         {u.flag&&<div className="fc-unit-card__flag"><span className={flagCls[u.flagKind||"red"]}>{u.flag}</span></div>}
       </div>
       <div className="fc-unit-card__body">

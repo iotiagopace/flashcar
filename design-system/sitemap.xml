@@ -6,22 +6,27 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://flashcar-henna.vercel.app/florianopolis</loc>
+    <loc>https://flashcar-henna.vercel.app/blumenau</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flashcar-henna.vercel.app/sao-paulo</loc>
+    <loc>https://flashcar-henna.vercel.app/jaragua-do-sul</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flashcar-henna.vercel.app/porto-alegre</loc>
+    <loc>https://flashcar-henna.vercel.app/tijucas</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flashcar-henna.vercel.app/goiania</loc>
+    <loc>https://flashcar-henna.vercel.app/rio-do-sul</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://flashcar-henna.vercel.app/concordia</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -31,7 +36,52 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://flashcar-henna.vercel.app/itajai</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://flashcar-henna.vercel.app/joacaba</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://flashcar-henna.vercel.app/chapeco</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://flashcar-henna.vercel.app/brusque</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://flashcar-henna.vercel.app/ijui</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://flashcar-henna.vercel.app/passo-fundo</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://flashcar-henna.vercel.app/bauru</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://flashcar-henna.vercel.app/campinas</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://flashcar-henna.vercel.app/sao-jose-do-rio-preto</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://flashcar-henna.vercel.app/goiania</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
