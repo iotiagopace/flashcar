@@ -1301,12 +1301,12 @@ function SobrePage({ onNav }) {
 
 /* ── UNIDADES ─────────────────────────────────────────────── */
 const UNITS = [
-  {city:"Florianópolis",uf:"SC",flag:"Sede própria",flagKind:"red",addr:"Rod. SC-401, 4500 — Saco Grande",hours:"Seg–Sex: 09h–19h · Sáb: 09h–13h",phone:"(48) 3232-4040"},
-  {city:"São Paulo",uf:"SP",flag:null,addr:"Av. Europa, 1200 — Jardim Europa",hours:"Seg–Sex: 09h–20h · Sáb: 09h–17h",phone:"(11) 3085-5050"},
-  {city:"Porto Alegre",uf:"RS",flag:null,addr:"Av. Nilo Peçanha, 2500 — Três Figueiras",hours:"Seg–Sex: 09h–19h · Sáb: 09h–13h",phone:"(51) 3333-6060"},
-  {city:"Goiânia",uf:"GO",flag:"Novo espaço",flagKind:"soft-yellow",addr:"Av. Ricardo Paranhos, 800 — Setor Marista",hours:"Seg–Sex: 08h–18h · Sáb: 08h–12h",phone:"(62) 3999-7070"},
-  {city:"Joinville",uf:"SC",flag:null,addr:"Rua XV de Novembro, 1500 — Glória",hours:"Seg–Sex: 09h–19h · Sáb: 09h–13h",phone:"(47) 3455-8080"},
-  {city:"Campinas",uf:"SP",flag:"Top de avaliações",flagKind:"soft-green",addr:"Av. Norte-Sul, 1100 — Centro",hours:"Seg–Sex: 09h–19h · Sáb: 09h–13h",phone:"(19) 3222-1010"},
+  {slug:"florianopolis",city:"Florianópolis",uf:"SC",flag:"Sede própria",flagKind:"red",addr:"Rod. SC-401, 4500 — Saco Grande",hours:"Seg–Sex: 09h–19h · Sáb: 09h–13h",phone:"(48) 3232-4040"},
+  {slug:"sao-paulo",city:"São Paulo",uf:"SP",flag:null,addr:"Av. Europa, 1200 — Jardim Europa",hours:"Seg–Sex: 09h–20h · Sáb: 09h–17h",phone:"(11) 3085-5050"},
+  {slug:"porto-alegre",city:"Porto Alegre",uf:"RS",flag:null,addr:"Av. Nilo Peçanha, 2500 — Três Figueiras",hours:"Seg–Sex: 09h–19h · Sáb: 09h–13h",phone:"(51) 3333-6060"},
+  {slug:"goiania",city:"Goiânia",uf:"GO",flag:"Novo espaço",flagKind:"soft-yellow",addr:"Av. Ricardo Paranhos, 800 — Setor Marista",hours:"Seg–Sex: 08h–18h · Sáb: 08h–12h",phone:"(62) 3999-7070"},
+  {slug:"joinville",city:"Joinville",uf:"SC",flag:null,addr:"Rua XV de Novembro, 1500 — Glória",hours:"Seg–Sex: 09h–19h · Sáb: 09h–13h",phone:"(47) 3455-8080"},
+  {slug:"campinas",city:"Campinas",uf:"SP",flag:"Top de avaliações",flagKind:"soft-green",addr:"Av. Norte-Sul, 1100 — Centro",hours:"Seg–Sex: 09h–19h · Sáb: 09h–13h",phone:"(19) 3222-1010"},
 ];
 
 function UnitCard({ u }) {
@@ -1324,8 +1324,8 @@ function UnitCard({ u }) {
         <div className="fc-unit-card__meta"><MS name="place" size={16} fill={1}/>{u.addr}</div>
         <div className="fc-unit-card__meta"><MS name="schedule" size={16}/>{u.hours}</div>
         <div className="fc-unit-card__meta"><MS name="call" size={16} fill={1}/>{u.phone}</div>
-        <a href="#" className="fc-btn fc-btn--dark fc-btn--block fc-unit-card__cta" onClick={(e)=>e.preventDefault()}>
-          <WhatsAppIcon size={16}/> Falar com esta unidade
+        <a href={"/"+u.slug} className="fc-btn fc-btn--dark fc-btn--block fc-unit-card__cta">
+          <MS name="arrow_forward" size={16}/> Ver esta unidade
         </a>
       </div>
     </article>
