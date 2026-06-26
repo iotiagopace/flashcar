@@ -116,11 +116,9 @@ body{
 body::before{
   content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
   background-image:
-    linear-gradient(to right,#e8e8e8 1px,transparent 1px),
-    linear-gradient(to bottom,#e8e8e8 1px,transparent 1px),
     radial-gradient(circle 800px at 0% 300px,rgba(216,38,42,0.10),transparent),
     radial-gradient(circle 700px at 100% 300px,rgba(216,38,42,0.07),transparent);
-  background-size:48px 48px,48px 48px,100% 100%,100% 100%;
+  background-size:100% 100%,100% 100%;
 }
 main{position:relative;z-index:1;}
 a{color:var(--fc-red);text-decoration:none;}
@@ -142,17 +140,25 @@ a:hover{text-decoration:underline;}
 .nav__cta:hover{background:var(--fc-red-hover);text-decoration:none;}
 
 /* HERO */
-.hero{padding:72px 24px 80px;max-width:1200px;margin:0 auto;
-  display:grid;grid-template-columns:1.1fr 0.9fr;gap:56px;align-items:center;}
-@media(max-width:860px){.hero{grid-template-columns:1fr;gap:40px;padding:48px 16px 56px;}}
+.hero{
+  padding:88px max(24px,calc((100vw - 1200px)/2)) 86px;
+  margin:0 auto;display:grid;grid-template-columns:minmax(0,0.9fr) minmax(420px,1.1fr);
+  gap:56px;align-items:center;color:#fff;overflow:hidden;position:relative;
+  background:
+    radial-gradient(720px 360px at 86% 40%,rgba(216,38,42,0.36),transparent 70%),
+    linear-gradient(135deg,var(--fc-navy-900) 0%,#111B2D 54%,#060B14 100%);
+}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,22,40,0.94),rgba(10,22,40,0.70) 48%,rgba(10,22,40,0.34));pointer-events:none;}
+.hero>*{position:relative;z-index:1;}
+@media(max-width:860px){.hero{grid-template-columns:1fr;gap:34px;padding:54px 16px 60px;}}
 .hero__eyebrow{display:inline-flex;align-items:center;gap:6px;
-  background:rgba(216,38,42,0.08);color:var(--fc-red);
+  background:rgba(255,255,255,0.10);color:var(--fc-yellow);
   font:700 11px var(--font-display);letter-spacing:0.14em;text-transform:uppercase;
   padding:6px 12px;border-radius:var(--radius-pill);margin-bottom:20px;}
 .hero h1{font:800 clamp(36px,5vw,62px) var(--font-display);
-  color:var(--fc-ink-900);line-height:1.0;letter-spacing:-0.03em;margin:0 0 20px;}
-.hero h1 .accent{color:var(--fc-red);}
-.hero__lead{font-size:18px;color:var(--fc-ink-500);margin:0 0 32px;line-height:1.65;max-width:480px;}
+  color:#fff;line-height:1.0;letter-spacing:-0.045em;margin:0 0 20px;max-width:10.5ch;}
+.hero h1 .accent{color:var(--fc-yellow);}
+.hero__lead{font-size:18px;color:rgba(255,255,255,0.76);margin:0 0 32px;line-height:1.58;max-width:560px;}
 .hero__ctas{display:flex;gap:12px;flex-wrap:wrap;}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
   height:52px;padding:0 28px;border-radius:var(--radius-pill);border:0;cursor:pointer;
@@ -161,24 +167,24 @@ a:hover{text-decoration:underline;}
 .btn:active{transform:translateY(1px);}
 .btn--primary{background:var(--fc-red);color:#fff;box-shadow:var(--shadow-cta);}
 .btn--primary:hover{background:var(--fc-red-hover);text-decoration:none;box-shadow:0 12px 28px rgba(216,38,42,0.32);}
-.btn--ghost{background:transparent;color:var(--fc-ink-900);border:1.5px solid var(--fc-ink-300);}
-.btn--ghost:hover{border-color:var(--fc-ink-900);background:var(--fc-ink-50);text-decoration:none;}
+.btn--ghost{background:rgba(255,255,255,0.08);color:#fff;border:1.5px solid rgba(255,255,255,0.34);}
+.btn--ghost:hover{border-color:rgba(255,255,255,0.72);background:rgba(255,255,255,0.14);text-decoration:none;}
 .hero__checks{display:flex;flex-direction:column;gap:10px;margin-top:28px;}
-.hero__check{display:flex;align-items:center;gap:8px;font:600 13px var(--font-display);color:var(--fc-ink-500);}
+.hero__check{display:flex;align-items:center;gap:8px;font:600 13px var(--font-display);color:rgba(255,255,255,0.74);}
 .hero__check i{color:var(--fc-green);font-size:16px;}
 
 /* INFO CARD */
-.info-card{background:#fff;border:1px solid var(--border-soft);border-radius:var(--radius-xl);
-  box-shadow:var(--shadow-lg);overflow:hidden;}
-.info-card__photo{display:none;aspect-ratio:16/10;background:var(--fc-ink-100);overflow:hidden;}
+.info-card{background:#fff;border:1px solid rgba(255,255,255,0.22);border-radius:var(--radius-xl);
+  box-shadow:0 30px 80px rgba(0,0,0,0.34);overflow:hidden;}
+.info-card__photo{display:none;aspect-ratio:16/10;background:var(--fc-ink-100);overflow:hidden;min-height:320px;}
 .info-card__photo img{width:100%;height:100%;object-fit:cover;display:block;}
 .info-card__photo.is-visible{display:block;}
-.info-card__header{background:var(--fc-navy-900);padding:24px 28px;
+.info-card__header{background:var(--fc-red);padding:22px 28px;
   display:flex;align-items:center;gap:12px;}
 .info-card__header img{height:32px;filter:brightness(0) invert(1);}
 .info-card__title{font:700 14px var(--font-display);color:#fff;letter-spacing:0.04em;}
 .info-card__sub{font:500 12px var(--font-display);color:rgba(255,255,255,0.5);margin-top:2px;}
-.info-card__body{padding:24px 28px;display:flex;flex-direction:column;gap:16px;}
+.info-card__body{padding:24px 28px;display:grid;grid-template-columns:1fr;gap:16px;}
 .info-row{display:flex;align-items:flex-start;gap:12px;font-size:14px;color:var(--fc-ink-700);}
 .info-row i{font-size:18px;color:var(--fc-red);flex-shrink:0;margin-top:1px;}
 .info-row strong{display:block;font:700 11px var(--font-display);letter-spacing:0.1em;
@@ -191,22 +197,55 @@ a:hover{text-decoration:underline;}
 .btn-wa:hover{background:#1EB85A;text-decoration:none;}
 .btn-wa svg{width:20px;height:20px;flex-shrink:0;}
 
-/* MAP */
-.map-section{max-width:1200px;margin:0 auto;padding:0 24px 80px;}
-@media(max-width:860px){.map-section{padding:0 16px 56px;}}
-.map-section h2{font:800 28px var(--font-display);color:var(--fc-ink-900);
-  letter-spacing:-0.02em;margin:0 0 20px;}
-.map-frame{border-radius:var(--radius-xl);overflow:hidden;border:1px solid var(--border-soft);
-  box-shadow:var(--shadow-md);aspect-ratio:16/7;background:var(--fc-ink-100);}
+/* COMMERCIAL SECTIONS */
+.section{position:relative;z-index:1;padding:78px max(24px,calc((100vw - 1200px)/2));}
+.section--tight{padding-top:54px;padding-bottom:54px;}
+.section--dark{background:var(--fc-navy-900);color:#fff;}
+.section--red{background:var(--fc-red);color:#fff;}
+.section__head{max-width:760px;margin:0 0 34px;}
+.eyebrow{display:inline-block;margin:0 0 12px;font:800 11px var(--font-display);letter-spacing:0.14em;text-transform:uppercase;color:var(--fc-red);}
+.section--dark .eyebrow,.section--red .eyebrow{color:var(--fc-yellow);}
+.section h2{font:900 clamp(30px,4vw,50px)/1.04 var(--font-display);letter-spacing:-0.04em;color:var(--fc-ink-900);margin:0;}
+.section--dark h2,.section--red h2{color:#fff;}
+.section__lead{margin:14px 0 0;color:var(--fc-ink-500);font-size:17px;line-height:1.62;max-width:680px;}
+.section--dark .section__lead,.section--red .section__lead{color:rgba(255,255,255,0.78);}
+.benefit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.benefit{background:#fff;border:1px solid var(--border-soft);border-radius:18px;padding:26px;box-shadow:var(--shadow-sm);}
+.benefit i{font-size:30px;color:var(--fc-red);}
+.benefit h3{font:800 20px/1.15 var(--font-display);color:var(--fc-ink-900);letter-spacing:-0.02em;margin:16px 0 10px;}
+.benefit p{margin:0;color:var(--fc-ink-500);font-size:15px;line-height:1.55;}
+.process{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid rgba(255,255,255,0.16);border-radius:20px;overflow:hidden;background:rgba(255,255,255,0.05);}
+.process-step{padding:28px;border-right:1px solid rgba(255,255,255,0.14);}
+.process-step:last-child{border-right:0;}
+.process-step span{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--fc-yellow);color:var(--fc-navy-900);font:900 14px var(--font-display);margin-bottom:18px;}
+.process-step h3{font:800 18px/1.2 var(--font-display);margin:0 0 10px;color:#fff;}
+.process-step p{margin:0;color:rgba(255,255,255,0.72);font-size:14px;line-height:1.55;}
+.location-grid{display:grid;grid-template-columns:minmax(0,0.9fr) minmax(420px,1.1fr);gap:28px;align-items:stretch;}
+.location-card{background:#fff;border:1px solid var(--border-soft);border-radius:20px;padding:28px;box-shadow:var(--shadow-md);}
+.location-card h3{font:900 30px/1.05 var(--font-display);letter-spacing:-0.03em;margin:0 0 18px;color:var(--fc-ink-900);}
+.location-photo{min-height:420px;border-radius:20px;overflow:hidden;background:var(--fc-ink-100);box-shadow:var(--shadow-lg);}
+.location-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+.map-section{max-width:1200px;margin:0 auto;padding:0;}
+.map-section h2{font:800 22px var(--font-display);color:var(--fc-ink-900);letter-spacing:-0.02em;margin:24px 0 14px;}
+.map-frame{border-radius:18px;overflow:hidden;border:1px solid var(--border-soft);box-shadow:var(--shadow-md);aspect-ratio:16/8;background:var(--fc-ink-100);}
 .map-frame iframe{width:100%;height:100%;border:0;display:block;}
 
 /* BADGES STRIP */
-.badges{max-width:1200px;margin:0 auto;padding:0 24px 56px;
-  display:flex;gap:16px;flex-wrap:wrap;}
+.badges{max-width:1200px;margin:0 auto;padding:0;display:flex;gap:16px;flex-wrap:wrap;}
 .badge{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;
-  border-radius:var(--radius-pill);background:var(--fc-ink-50);
-  border:1px solid var(--border-soft);font:600 13px var(--font-display);color:var(--fc-ink-700);}
-.badge i{color:var(--fc-red);font-size:16px;}
+  border-radius:var(--radius-pill);background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.14);font:700 13px var(--font-display);color:rgba(255,255,255,0.86);}
+.badge i{color:var(--fc-yellow);font-size:16px;}
+.cta-final{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;}
+.cta-final h2{max-width:720px;}
+.cta-final p{margin:12px 0 0;color:rgba(255,255,255,0.82);font-size:17px;max-width:620px;}
+@media(max-width:900px){
+  .benefit-grid,.process,.location-grid,.cta-final{grid-template-columns:1fr;}
+  .process-step{border-right:0;border-bottom:1px solid rgba(255,255,255,0.14);}
+  .process-step:last-child{border-bottom:0;}
+  .location-photo{min-height:280px;}
+  .section{padding:56px 16px;}
+}
 
 /* FOOTER */
 .footer{background:var(--fc-navy-900);color:rgba(255,255,255,0.6);
@@ -287,18 +326,116 @@ a:hover{text-decoration:underline;}
     </div>
   </section>
 
-  <div class="badges">
-    <div class="badge"><i class="ph-fill ph-seal-check"></i> Avaliação técnica certificada</div>
-    <div class="badge"><i class="ph-fill ph-currency-circle-dollar"></i> PIX no mesmo dia</div>
-    <div class="badge"><i class="ph-fill ph-shield-check"></i> Suporte jurídico incluído</div>
-    <div class="badge"><i class="ph-fill ph-users-three"></i> +15.000 veículos intermediados</div>
-  </div>
+  <section class="section section--dark section--tight">
+    <div class="badges">
+      <div class="badge"><i class="ph-fill ph-seal-check"></i> Avaliação técnica certificada</div>
+      <div class="badge"><i class="ph-fill ph-currency-circle-dollar"></i> PIX no mesmo dia</div>
+      <div class="badge"><i class="ph-fill ph-shield-check"></i> Processo seguro e transparente</div>
+      <div class="badge"><i class="ph-fill ph-users-three"></i> +15.000 veículos intermediados</div>
+    </div>
+  </section>
 
-  <section class="map-section" id="map-section">
-    <h2 id="map-title">Como chegar</h2>
-    <div class="map-frame">
-      <iframe id="map-iframe" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-        allowfullscreen src="about:blank" title="Mapa da unidade Flash Car"></iframe>
+  <section class="section">
+    <div class="section__head">
+      <span class="eyebrow">Por que vender com a Flash Car?</span>
+      <h2>Mais retorno, menos burocracia e dinheiro no PIX.</h2>
+      <p class="section__lead">Nossa unidade acompanha todo o processo: avaliação, divulgação para compradores verificados, negociação e documentação.</p>
+    </div>
+    <div class="benefit-grid">
+      <div class="benefit">
+        <i class="ph-fill ph-trend-up"></i>
+        <h3>Melhores retornos do mercado</h3>
+        <p>Buscamos propostas qualificadas para você vender seu veículo pelo melhor preço possível.</p>
+      </div>
+      <div class="benefit">
+        <i class="ph-fill ph-lightning"></i>
+        <h3>Dinheiro no PIX em até 1h</h3>
+        <p>Quando a proposta é aceita, cuidamos da burocracia e viabilizamos o pagamento à vista.</p>
+      </div>
+      <div class="benefit">
+        <i class="ph-fill ph-shield-check"></i>
+        <h3>Processo seguro e transparente</h3>
+        <p>Especialistas acompanham a negociação para reduzir risco, curiosos e perda de tempo.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--dark">
+    <div class="section__head">
+      <span class="eyebrow">Como é o processo</span>
+      <h2>Da avaliação à venda realizada, sem travar sua rotina.</h2>
+      <p class="section__lead">Você agenda, nossa equipe avalia, divulgamos para compradores e conduzimos a venda com pagamento via PIX.</p>
+    </div>
+    <div class="process">
+      <div class="process-step">
+        <span>1</span>
+        <h3>Agendamos um horário</h3>
+        <p>Entre em contato com a unidade e marque uma avaliação no melhor momento para você.</p>
+      </div>
+      <div class="process-step">
+        <span>2</span>
+        <h3>Avaliação do veículo</h3>
+        <p>Nosso time analisa o carro com critério técnico e prepara a oferta para o mercado.</p>
+      </div>
+      <div class="process-step">
+        <span>3</span>
+        <h3>Anunciamos para compradores</h3>
+        <p>Seu veículo entra na rede Flash Car para receber propostas de compradores reais.</p>
+      </div>
+      <div class="process-step">
+        <span>4</span>
+        <h3>Venda realizada</h3>
+        <p>Com a proposta aceita, cuidamos da documentação e do pagamento à vista via PIX.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="location-section">
+    <div class="location-grid">
+      <div class="location-card">
+        <span class="eyebrow">Unidade local</span>
+        <h3 id="location-title">Flash Car</h3>
+        <div class="info-row">
+          <i class="ph-fill ph-map-pin"></i>
+          <div><strong>Endereço</strong><span id="location-addr"></span></div>
+        </div>
+        <div class="info-row" style="margin-top:16px">
+          <i class="ph ph-clock"></i>
+          <div><strong>Horário</strong><span id="location-hours"></span></div>
+        </div>
+        <div class="info-row" style="margin-top:16px">
+          <i class="ph-fill ph-whatsapp-logo"></i>
+          <div><strong>WhatsApp</strong><a id="location-phone" href="#"></a></div>
+        </div>
+        <div style="margin-top:22px">
+          <a href="#whatsapp" class="btn btn--primary js-wa-link" target="_blank" rel="noopener">
+            <i class="ph-fill ph-whatsapp-logo"></i> Quero agendar minha avaliação
+          </a>
+        </div>
+        <div class="map-section" id="map-section">
+          <h2 id="map-title">Como chegar</h2>
+          <div class="map-frame">
+            <iframe id="map-iframe" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen src="about:blank" title="Mapa da unidade Flash Car"></iframe>
+          </div>
+        </div>
+      </div>
+      <div class="location-photo">
+        <img src="" alt="" id="location-photo"/>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--red">
+    <div class="cta-final">
+      <div>
+        <span class="eyebrow">Venda hoje</span>
+        <h2 id="final-title">Vamos vender seu carro num Flash?</h2>
+        <p id="final-lead">Fale com a unidade e comece agora a avaliação para vender com segurança e receber via PIX.</p>
+      </div>
+      <a href="#whatsapp" class="btn btn--ghost js-wa-link" target="_blank" rel="noopener">
+        <i class="ph-fill ph-whatsapp-logo"></i> Chamar no WhatsApp
+      </a>
     </div>
   </section>
 </main>
@@ -316,8 +453,8 @@ a:hover{text-decoration:underline;}
 
   /* Hero */
   document.getElementById('hero-eyebrow').textContent = 'Flash Car · ' + u.nome + ' / ' + u.uf;
-  document.getElementById('hero-title').innerHTML = 'Venda seu carro em <br/><span class="accent">' + u.nome + ' via PIX.</span>';
-  document.getElementById('hero-lead').textContent = 'Avaliação técnica gratuita na unidade Flash Car ' + u.nome + '. Atendimento pelo WhatsApp, rede exclusiva de compradores verificados e pagamento PIX no mesmo dia.';
+  document.getElementById('hero-title').innerHTML = 'Venda seu carro em <br/><span class="accent">' + u.nome + '.</span>';
+  document.getElementById('hero-lead').textContent = 'Receba propostas qualificadas, conte com especialistas em todo o processo e finalize com pagamento à vista via PIX.';
 
   /* Info card */
   document.getElementById('card-title').textContent = 'Flash Car ' + u.nome;
@@ -329,17 +466,31 @@ a:hover{text-decoration:underline;}
   }
   document.getElementById('card-addr').textContent = u.endereco;
   document.getElementById('card-hours').textContent = u.horario;
+  document.getElementById('location-title').textContent = 'Flash Car ' + u.nome;
+  document.getElementById('location-addr').textContent = u.endereco;
+  document.getElementById('location-hours').textContent = u.horario;
+  document.getElementById('final-title').textContent = 'Vamos vender seu carro em ' + u.nome + ' hoje?';
+  document.getElementById('final-lead').textContent = 'Agende uma avaliação com a Flash Car ' + u.nome + ' e tenha uma equipe conduzindo preço, comprador, documentação e pagamento.';
+  if (u.foto) {
+    document.getElementById('location-photo').src = u.foto;
+    document.getElementById('location-photo').alt = 'Fachada da Flash Car ' + u.nome;
+  }
 
   var waText = u.whatsappText || ('Olá! Vim pelo site e quero agendar uma avaliação gratuita em ' + u.nome + '.');
   var waUrl = 'https://wa.me/' + u.whatsapp + '?text=' + encodeURIComponent(waText);
   document.getElementById('card-phone').href = waUrl;
   document.getElementById('card-phone').textContent = u.telefone || ('+' + u.whatsapp);
+  document.getElementById('location-phone').href = waUrl;
+  document.getElementById('location-phone').textContent = u.telefone || ('+' + u.whatsapp);
   document.getElementById('btn-whatsapp').href = waUrl;
   document.getElementById('btn-whatsapp').id = 'whatsapp';
   document.getElementById('cta-primary').href = waUrl;
   document.getElementById('cta-primary').target = '_blank';
   document.getElementById('nav-cta').href = waUrl;
   document.getElementById('nav-cta').target = '_blank';
+  Array.prototype.forEach.call(document.querySelectorAll('.js-wa-link'), function(el) {
+    el.href = waUrl;
+  });
 
   /* Map */
   document.getElementById('map-title').textContent = 'Como chegar à unidade ' + u.nome;
