@@ -169,9 +169,11 @@ a:hover{text-decoration:underline;}
 .btn--primary:hover{background:var(--fc-red-hover);text-decoration:none;box-shadow:0 12px 28px rgba(216,38,42,0.32);}
 .btn--ghost{background:rgba(255,255,255,0.08);color:#fff;border:1.5px solid rgba(255,255,255,0.34);}
 .btn--ghost:hover{border-color:rgba(255,255,255,0.72);background:rgba(255,255,255,0.14);text-decoration:none;}
-.hero__checks{display:flex;flex-direction:column;gap:10px;margin-top:28px;}
-.hero__check{display:flex;align-items:center;gap:8px;font:600 13px var(--font-display);color:rgba(255,255,255,0.74);}
-.hero__check i{color:var(--fc-green);font-size:16px;}
+.hero__checks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:30px;max-width:680px;}
+.hero__check{display:flex;align-items:flex-start;gap:11px;min-height:88px;padding:16px 15px;border-radius:16px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.16);box-shadow:inset 0 1px 0 rgba(255,255,255,0.06);}
+.hero__check i{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--fc-green);color:#fff;font-size:16px;flex:0 0 auto;margin-top:1px;}
+.hero__check strong{display:block;color:#fff;font:850 14px/1.18 var(--font-display);letter-spacing:-0.01em;}
+.hero__check span{display:block;margin-top:4px;color:rgba(255,255,255,0.62);font:500 12px/1.35 var(--font-body);}
 
 /* INFO CARD */
 .info-card{background:#fff;border:1px solid rgba(255,255,255,0.22);border-radius:var(--radius-xl);
@@ -231,16 +233,16 @@ a:hover{text-decoration:underline;}
 .map-frame iframe{width:100%;height:100%;border:0;display:block;}
 
 /* BADGES STRIP */
-.badges{max-width:1200px;margin:0 auto;padding:0;display:flex;gap:16px;flex-wrap:wrap;}
-.badge{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;
-  border-radius:var(--radius-pill);background:rgba(255,255,255,0.08);
-  border:1px solid rgba(255,255,255,0.14);font:700 13px var(--font-display);color:rgba(255,255,255,0.86);}
-.badge i{color:var(--fc-yellow);font-size:16px;}
+.badges{max-width:1200px;margin:0 auto;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;}
+.badge{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:flex-start;min-height:112px;padding:22px;border-radius:18px;background:rgba(255,255,255,0.075);border:1px solid rgba(255,255,255,0.16);box-shadow:inset 0 1px 0 rgba(255,255,255,0.07);}
+.badge i{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--fc-yellow);color:var(--fc-navy-900);font-size:18px;}
+.badge strong{display:block;color:#fff;font:850 16px/1.14 var(--font-display);letter-spacing:-0.01em;}
+.badge span{display:block;margin-top:6px;color:rgba(255,255,255,0.62);font:500 12px/1.4 var(--font-body);}
 .cta-final{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;}
 .cta-final h2{max-width:720px;}
 .cta-final p{margin:12px 0 0;color:rgba(255,255,255,0.82);font-size:17px;max-width:620px;}
 @media(max-width:900px){
-  .benefit-grid,.process,.location-grid,.cta-final{grid-template-columns:1fr;}
+  .hero__checks,.badges,.benefit-grid,.process,.location-grid,.cta-final{grid-template-columns:1fr;}
   .process-step{border-right:0;border-bottom:1px solid rgba(255,255,255,0.14);}
   .process-step:last-child{border-bottom:0;}
   .location-photo{min-height:280px;}
@@ -286,9 +288,18 @@ a:hover{text-decoration:underline;}
         <a href="/" class="btn btn--ghost">Ver outras unidades</a>
       </div>
       <div class="hero__checks">
-        <div class="hero__check"><i class="ph-fill ph-check-circle"></i> Avaliação grátis em até 40 minutos</div>
-        <div class="hero__check"><i class="ph-fill ph-check-circle"></i> Pagamento PIX no mesmo dia</div>
-        <div class="hero__check"><i class="ph-fill ph-check-circle"></i> Sem leilão · sem golpe · sem dor de cabeça</div>
+        <div class="hero__check">
+          <i class="ph-fill ph-check"></i>
+          <div><strong>Avaliação grátis</strong><span>Diagnóstico técnico em até 40 minutos.</span></div>
+        </div>
+        <div class="hero__check">
+          <i class="ph-fill ph-check"></i>
+          <div><strong>PIX no mesmo dia</strong><span>Venda aprovada com pagamento à vista.</span></div>
+        </div>
+        <div class="hero__check">
+          <i class="ph-fill ph-check"></i>
+          <div><strong>Sem dor de cabeça</strong><span>Sem leilão, sem golpe e com suporte.</span></div>
+        </div>
       </div>
     </div>
 
@@ -328,10 +339,22 @@ a:hover{text-decoration:underline;}
 
   <section class="section section--dark section--tight">
     <div class="badges">
-      <div class="badge"><i class="ph-fill ph-seal-check"></i> Avaliação técnica certificada</div>
-      <div class="badge"><i class="ph-fill ph-currency-circle-dollar"></i> PIX no mesmo dia</div>
-      <div class="badge"><i class="ph-fill ph-shield-check"></i> Processo seguro e transparente</div>
-      <div class="badge"><i class="ph-fill ph-users-three"></i> +15.000 veículos intermediados</div>
+      <div class="badge">
+        <i class="ph-fill ph-seal-check"></i>
+        <div><strong>Avaliação certificada</strong><span>Especialistas analisam o veículo antes da negociação.</span></div>
+      </div>
+      <div class="badge">
+        <i class="ph-fill ph-currency-circle-dollar"></i>
+        <div><strong>PIX no mesmo dia</strong><span>Pagamento direto quando a venda é concluída.</span></div>
+      </div>
+      <div class="badge">
+        <i class="ph-fill ph-shield-check"></i>
+        <div><strong>Processo seguro</strong><span>Documentação e negociação conduzidas com transparência.</span></div>
+      </div>
+      <div class="badge">
+        <i class="ph-fill ph-users-three"></i>
+        <div><strong>+15.000 veículos</strong><span>Experiência nacional em intermediação automotiva.</span></div>
+      </div>
     </div>
   </section>
 
