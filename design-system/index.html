@@ -151,7 +151,8 @@ html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:88p
 body{
   font-family:var(--font-body);font-size:var(--fs-body);
   line-height:var(--lh-relaxed);color:var(--fg-default);
-  background:#ffffff;-webkit-font-smoothing:antialiased;
+  background:var(--fc-navy-900);
+  -webkit-font-smoothing:antialiased;
   text-rendering:optimizeLegibility;
   position:relative;
   overflow-x:clip;
@@ -163,11 +164,12 @@ body::before{
   pointer-events:none;
   z-index:0;
   background-image:
-    linear-gradient(to right, #e8e8e8 1px, transparent 1px),
-    linear-gradient(to bottom, #e8e8e8 1px, transparent 1px),
-    radial-gradient(circle 800px at 0% 300px, rgba(216,38,42,0.12), transparent),
-    radial-gradient(circle 700px at 100% 300px, rgba(216,38,42,0.08), transparent);
-  background-size: 48px 48px, 48px 48px, 100% 100%, 100% 100%;
+    linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px),
+    radial-gradient(circle 900px at 0% 0%, rgba(216,38,42,0.22), transparent 60%),
+    radial-gradient(circle 700px at 100% 60%, rgba(251,229,27,0.09), transparent 60%),
+    radial-gradient(circle 500px at 40% 100%, rgba(91,179,54,0.07), transparent 60%);
+  background-size: 48px 48px, 48px 48px, 100% 100%, 100% 100%, 100% 100%;
 }
 #root{position:relative;z-index:1;}
 a{color:var(--fg-link);text-decoration:none;}
@@ -337,9 +339,12 @@ h1,h2,h3,h4{margin:0;}
 @media(min-width:900px){.fc-section{padding:var(--section-y-desktop) var(--gutter-desktop);}}
 
 /* ── PAGE-LEVEL LAYOUT ────────────────────────────────────── */
-.section{padding:76px var(--gutter-desktop);}
-.section--subtle{background:var(--bg-subtle);}
+.section{padding:76px var(--gutter-desktop);background:#FFFFFF;}
+.section--subtle{background:#F2F2F4;}
 .section--dark{background:var(--fc-navy-900);color:white;}
+.section--navy{background:var(--fc-navy-800);color:white;}
+.section--red{background:var(--fc-red);color:white;}
+.section--transparent{background:transparent;}
 .section__inner{max-width:var(--container-max);margin:0 auto;}
 .section__head{text-align:center;margin-bottom:48px;}
 .section__head .fc-eyebrow{display:inline-block;margin-bottom:10px;}
@@ -367,22 +372,24 @@ h1,h2,h3,h4{margin:0;}
 }
 
 /* ── HERO ─────────────────────────────────────────────────── */
-.kit-hero{position:relative;background:transparent;color:var(--fg-strong);border-bottom:1px solid var(--border-soft);overflow:hidden;}
-.kit-hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(720px 320px at 0% 0%,rgba(216,38,42,0.04),transparent 70%);pointer-events:none;}
-.kit-hero__inner{position:relative;max-width:var(--container-max);margin:0 auto;padding:88px var(--gutter-desktop) 96px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,0.95fr);gap:64px;align-items:center;}
-.kit-hero h1{font-size:clamp(44px,5.8vw,80px);font-weight:900;line-height:0.98;margin:0 0 20px;letter-spacing:-0.045em;color:var(--fg-strong);max-width:12.5ch;}
-.kit-hero h1 .accent{color:var(--fc-red);display:inline-block;}
-.kit-hero h1 .accent::after{content:"";display:block;height:5px;width:70%;background:var(--fc-yellow);border-radius:4px;margin-top:6px;}
-.fc-rotator{position:relative;display:inline-block;vertical-align:bottom;overflow:hidden;color:var(--fc-red);padding-bottom:0.08em;}
+.kit-hero{position:relative;background:var(--fc-navy-900);color:white;border-bottom:none;overflow:hidden;}
+.kit-hero__video-bg{position:absolute;inset:0;z-index:0;}
+.kit-hero__video-bg video{width:100%;height:100%;object-fit:cover;object-position:center;opacity:0.32;}
+.kit-hero__video-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(105deg,rgba(10,22,40,0.95) 0%,rgba(10,22,40,0.80) 45%,rgba(10,22,40,0.50) 100%),linear-gradient(to top,rgba(10,22,40,0.6) 0%,transparent 40%);}
+.kit-hero__inner{position:relative;z-index:2;max-width:var(--container-max);margin:0 auto;padding:100px var(--gutter-desktop) 108px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,0.9fr);gap:64px;align-items:center;}
+.kit-hero h1{font-size:clamp(44px,5.8vw,80px);font-weight:900;line-height:0.98;margin:0 0 20px;letter-spacing:-0.045em;color:#FFFFFF;max-width:13ch;}
+.kit-hero h1 .accent{color:var(--fc-yellow);display:inline-block;}
+.kit-hero h1 .accent::after{content:"";display:block;height:5px;width:70%;background:var(--fc-red);border-radius:4px;margin-top:6px;}
+.fc-rotator{position:relative;display:inline-block;vertical-align:bottom;overflow:hidden;color:var(--fc-yellow);padding-bottom:0.08em;}
 .fc-rotator__ghost{visibility:hidden;display:inline-block;}
-.fc-rotator__word{position:absolute;left:0;right:0;top:0;color:var(--fc-red);opacity:0;transform:translateY(110%);transition:transform 520ms cubic-bezier(0.2,0.8,0.2,1),opacity 280ms ease-out;pointer-events:none;white-space:nowrap;}
+.fc-rotator__word{position:absolute;left:0;right:0;top:0;color:var(--fc-yellow);opacity:0;transform:translateY(110%);transition:transform 520ms cubic-bezier(0.2,0.8,0.2,1),opacity 280ms ease-out;pointer-events:none;white-space:nowrap;}
 .fc-rotator__word.is-active{opacity:1;transform:translateY(0);}
 .fc-rotator__word.is-leaving{opacity:0;transform:translateY(-110%);}
-.fc-rotator::after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;background:var(--fc-yellow);border-radius:4px;}
+.fc-rotator::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--fc-red);border-radius:4px;}
 @media(prefers-reduced-motion:reduce){.fc-rotator__word{transition:none;}}
-.kit-hero p.lead{font-size:17px;line-height:1.52;color:var(--fg-muted);margin:0 0 30px;max-width:540px;}
+.kit-hero p.lead{font-size:17px;line-height:1.52;color:rgba(255,255,255,0.80);margin:0 0 30px;max-width:540px;}
 .kit-hero__ctas{display:flex;gap:14px;flex-wrap:wrap;}
-.kit-hero__visual{position:relative;aspect-ratio:5/4;border-radius:var(--radius-xl);background:#f0f0ee;overflow:visible;display:grid;place-items:center;box-shadow:var(--shadow-lg);}
+.kit-hero__visual{position:relative;aspect-ratio:5/4;border-radius:var(--radius-xl);background:rgba(255,255,255,0.07);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.14);overflow:visible;display:grid;place-items:center;box-shadow:0 24px 64px rgba(0,0,0,0.40);}
 .kit-hero__visual::before{content:none;}
 .kit-hero__visual>i{display:none;}
 @keyframes heroCarEnter{0%{opacity:0;transform:translate(-44%,-46%) scale(0.94)}100%{opacity:1;transform:translate(-50%,-50%) scale(1)}}
@@ -392,14 +399,14 @@ h1,h2,h3,h4{margin:0;}
 .hero-car-anim{animation:heroCarEnter 900ms var(--ease-out) both,heroCarFloat 9s 900ms ease-in-out infinite alternate;will-change:transform,opacity;}
 .hero-shadow-anim{animation:heroShadowPulse 9s ease-in-out infinite alternate;will-change:transform,opacity;}
 .hero-light-anim{animation:heroLightSweep 6.8s 700ms ease-in-out infinite;will-change:transform,opacity;}
-.kit-hero__visual .speed-card{position:absolute;left:-24px;bottom:36px;background:white;color:var(--fc-ink-900);padding:16px 20px;border-radius:var(--radius-md);box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:14px;min-width:240px;border:1px solid var(--border-soft);}
+.kit-hero__visual .speed-card{position:absolute;left:-24px;bottom:36px;background:rgba(10,22,40,0.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);color:white;padding:16px 20px;border-radius:var(--radius-md);box-shadow:0 8px 32px rgba(0,0,0,0.4);display:flex;align-items:center;gap:14px;min-width:240px;border:1px solid rgba(255,255,255,0.12);}
 .kit-hero__visual .speed-card .icon{width:44px;height:44px;border-radius:12px;background:var(--fc-yellow);color:var(--fc-navy-900);display:grid;place-items:center;font-size:26px;}
-.kit-hero__visual .speed-card strong{font:800 22px var(--font-display);letter-spacing:-0.01em;color:var(--fc-ink-900);display:block;}
-.kit-hero__visual .speed-card span{font:700 11px var(--font-display);letter-spacing:0.1em;text-transform:uppercase;color:var(--fg-muted);}
-.kit-hero__visual .price-card{position:absolute;right:-18px;top:28px;background:var(--fc-red);color:white;padding:14px 18px;border-radius:var(--radius-md);box-shadow:var(--shadow-lg);font:700 11px var(--font-display);letter-spacing:0.1em;text-transform:uppercase;}
+.kit-hero__visual .speed-card strong{font:800 22px var(--font-display);letter-spacing:-0.01em;color:white;display:block;}
+.kit-hero__visual .speed-card span{font:700 11px var(--font-display);letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.55);}
+.kit-hero__visual .price-card{position:absolute;right:-18px;top:28px;background:var(--fc-red);color:white;padding:14px 18px;border-radius:var(--radius-md);box-shadow:0 8px 32px rgba(216,38,42,0.45);font:700 11px var(--font-display);letter-spacing:0.1em;text-transform:uppercase;}
 .kit-hero__visual .price-card strong{display:block;font-size:24px;letter-spacing:-0.01em;text-transform:none;margin-top:4px;}
-.kit-hero__visual .trust-tag{position:absolute;bottom:20px;right:-20px;background:white;color:var(--fc-ink-900);padding:12px 16px;border-radius:var(--radius-md);box-shadow:var(--shadow-lg);font:700 13px var(--font-display);display:flex;align-items:center;gap:8px;border:1px solid var(--border-soft);}
-.kit-hero__visual .trust-tag i{color:var(--fc-red);font-size:18px;}
+.kit-hero__visual .trust-tag{position:absolute;bottom:20px;right:-20px;background:var(--fc-green);color:white;padding:12px 16px;border-radius:var(--radius-md);box-shadow:0 8px 24px rgba(91,179,54,0.40);font:700 13px var(--font-display);display:flex;align-items:center;gap:8px;border:none;}
+.kit-hero__visual .trust-tag i{color:white;font-size:18px;}
 @media(max-width:880px){
   .kit-hero__inner{grid-template-columns:1fr;gap:48px;padding:56px 16px 80px;}
   .kit-hero__visual{aspect-ratio:4/3;}
@@ -871,13 +878,13 @@ function TrustBar() {
     {icon:"shield_lock",label:"Processo 100% seguro"},
   ];
   return (
-    <div style={{background:"white",borderBottom:"1px solid var(--border-soft)"}}>
-      <div style={{maxWidth:"var(--container-max)",margin:"0 auto",padding:"32px 24px"}}>
+    <div style={{background:"var(--fc-red)",borderBottom:"none"}}>
+      <div style={{maxWidth:"var(--container-max)",margin:"0 auto",padding:"28px 24px"}}>
         <div className="fc-trust" style={{border:0,padding:0}}>
           {items.map((it)=>(
-            <div className="fc-trust__item" key={it.icon}>
-              <div className="fc-trust__icon"><MS name={it.icon} size={22}/></div>
-              <div className="fc-trust__label">{it.label}</div>
+            <div className="fc-trust__item" key={it.icon} style={{color:"white"}}>
+              <div className="fc-trust__icon" style={{color:"var(--fc-yellow)"}}><MS name={it.icon} size={22}/></div>
+              <div className="fc-trust__label" style={{color:"white"}}>{it.label}</div>
             </div>
           ))}
         </div>
@@ -954,12 +961,12 @@ function StepCard({ num, icon, title, body, active }) {
 
 function VehicleType({ icon, name, body }) {
   return (
-    <div style={{textAlign:"center",padding:32,background:"white",border:"1px solid var(--border-soft)",borderRadius:16}}>
-      <div style={{width:72,height:72,borderRadius:18,background:"var(--fc-danger-soft)",color:"var(--fc-red)",display:"grid",placeItems:"center",margin:"0 auto 16px"}}>
+    <div style={{textAlign:"center",padding:32,background:"rgba(255,255,255,0.06)",border:"1px solid rgba(255,255,255,0.10)",borderRadius:16,backdropFilter:"blur(12px)"}}>
+      <div style={{width:72,height:72,borderRadius:18,background:"rgba(216,38,42,0.25)",color:"var(--fc-yellow)",display:"grid",placeItems:"center",margin:"0 auto 16px"}}>
         <MS name={icon} size={38} weight={400}/>
       </div>
-      <h3 style={{font:"700 20px var(--font-display)",margin:"0 0 8px",color:"var(--fg-strong)"}}>{name}</h3>
-      <p style={{font:"400 14px/1.55 var(--font-body)",color:"var(--fg-muted)",margin:0}}>{body}</p>
+      <h3 style={{font:"700 20px var(--font-display)",margin:"0 0 8px",color:"white"}}>{name}</h3>
+      <p style={{font:"400 14px/1.55 var(--font-body)",color:"rgba(255,255,255,0.65)",margin:0}}>{body}</p>
     </div>
   );
 }
@@ -969,6 +976,12 @@ function HomePage({ onNav }) {
   return (
     <React.Fragment>
       <section className="kit-hero">
+        <div className="kit-hero__video-bg">
+          <video autoPlay muted loop playsInline preload="metadata">
+            <source src="assets/flashcar-institucional.mp4" type="video/mp4"/>
+          </video>
+        </div>
+        <div className="kit-hero__video-overlay"/>
         <div className="kit-hero__inner">
           <div>
             <h1>
@@ -1041,7 +1054,7 @@ function HomePage({ onNav }) {
         </div>
       </section>
 
-      <section className="diff-band">
+      <section className="diff-band diff-band--dark">
         <div className="diff-band__inner">
           <div className="section__head" style={{textAlign:"left",marginBottom:32}}>
             <h2 style={{color:"var(--fg-strong)"}}>Diferenciais Flash Car</h2>
@@ -1079,11 +1092,12 @@ function HomePage({ onNav }) {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section section--dark">
         <div className="section__inner">
           <div className="section__head">
-            <h2>Compramos seu veículo</h2>
-            <p>Carros, motos e utilitários — todas as marcas, anos e categorias.</p>
+            <span className="fc-eyebrow" style={{color:"var(--fc-yellow)"}}>O que avaliamos</span>
+            <h2 style={{color:"white"}}>Compramos seu veículo</h2>
+            <p style={{color:"rgba(255,255,255,0.7)"}}>Carros, motos e utilitários — todas as marcas, anos e categorias.</p>
           </div>
           <div className="grid-3">
             <VehicleType icon="directions_car" name="Carros"
@@ -1093,24 +1107,6 @@ function HomePage({ onNav }) {
             <VehicleType icon="local_shipping" name="Caminhonetes & utilitários"
               body="Pickups de trabalho ou lazer. Valorizamos acessórios e conservação."/>
           </div>
-        </div>
-      </section>
-
-      {/* ── VÍDEO HOME ──────────────────────────────────────── */}
-      <section className="section section--subtle">
-        <div className="section__inner" style={{maxWidth:960}}>
-          <div className="section__head">
-            <span className="fc-eyebrow">Veja como funciona</span>
-            <h2>A Flash Car na prática — em menos de 2 minutos</h2>
-            <p>Conheça o processo completo, do agendamento ao PIX na conta.</p>
-          </div>
-          <video
-            src="assets/flashcar-institucional.mp4"
-            controls
-            playsInline
-            preload="metadata"
-            style={{width:"100%",borderRadius:16,marginTop:24,boxShadow:"0 8px 40px rgba(0,0,0,0.12)",outline:"none",display:"block"}}
-          />
         </div>
       </section>
 
