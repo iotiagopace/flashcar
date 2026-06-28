@@ -1096,6 +1096,24 @@ function HomePage({ onNav }) {
         </div>
       </section>
 
+      {/* ── VÍDEO HOME ──────────────────────────────────────── */}
+      <section className="section section--subtle">
+        <div className="section__inner" style={{maxWidth:960}}>
+          <div className="section__head">
+            <span className="fc-eyebrow">Veja como funciona</span>
+            <h2>A Flash Car na prática — em menos de 2 minutos</h2>
+            <p>Conheça o processo completo, do agendamento ao PIX na conta.</p>
+          </div>
+          <video
+            src="assets/flashcar-institucional.mp4"
+            controls
+            playsInline
+            preload="metadata"
+            style={{width:"100%",borderRadius:16,marginTop:24,boxShadow:"0 8px 40px rgba(0,0,0,0.12)",outline:"none",display:"block"}}
+          />
+        </div>
+      </section>
+
       <ConversionCard
         title="Quer saber quanto vale seu veículo hoje?"
         body="Nossa avaliação é gratuita e sem compromisso. Resultado em minutos."
@@ -1704,13 +1722,13 @@ function FranquiaPage({ onNav }) {
             <h2>Como é operar uma Flash Car na prática</h2>
             <p>Suporte, operação e resultados — direto de quem já está dentro.</p>
           </div>
-          <div className="franq-video" onClick={()=>{}}>
-            <button className="franq-video__play" aria-label="Reproduzir vídeo institucional">
-              <MS name="play_circle" size={40} fill={1}/>
-            </button>
-            <span className="franq-video__label">Vídeo institucional · 1:32</span>
-            <span className="franq-video__placeholder">[ insira o link do vídeo aqui ]</span>
-          </div>
+          <video
+            src="assets/flashcar-institucional.mp4"
+            controls
+            playsInline
+            preload="metadata"
+            style={{width:"100%",borderRadius:16,marginTop:32,boxShadow:"0 8px 40px rgba(0,0,0,0.12)",outline:"none",display:"block"}}
+          />
         </div>
       </section>
 
