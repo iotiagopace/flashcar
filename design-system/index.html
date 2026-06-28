@@ -1123,19 +1123,19 @@ function ComoFuncionaPage({ onNav }) {
   ];
   return (
     <React.Fragment>
-      <header className="page-header">
+      <header className="page-header" style={{background:"var(--fc-red)"}}>
         <div className="page-header__inner">
-          <span className="fc-eyebrow">Excelência automotiva</span>
-          <h1>Entenda como vendemos seu veículo com <span style={{color:"var(--fc-red)"}}>agilidade e segurança</span></h1>
-          <p>Esqueça os anúncios cansativos e os golpistas. Nós cuidamos de cada etapa — da avaliação técnica até a transferência do dinheiro para sua conta.</p>
+          <span className="fc-eyebrow" style={{color:"var(--fc-yellow)"}}>Excelência automotiva</span>
+          <h1 style={{color:"white"}}>Entenda como vendemos seu veículo com <span style={{color:"var(--fc-yellow)"}}>agilidade e segurança</span></h1>
+          <p style={{color:"rgba(255,255,255,0.82)"}}>Esqueça os riscos na compra e venda de veículos. Nós cuidamos de todas as etapas — da avaliação técnica até a transferência do dinheiro para sua conta.</p>
         </div>
       </header>
 
-      <section className="section section--subtle">
+      <section className="section" style={{background:"var(--fc-red)",paddingTop:56,paddingBottom:56}}>
         <div className="section__inner">
-          <div className="section__head">
-            <h2>Nossa metodologia</h2>
-            <p>Seis passos simples para transformar seu veículo em dinheiro na conta.</p>
+          <div className="section__head" style={{marginBottom:40}}>
+            <h2 style={{color:"white"}}>Nossa metodologia</h2>
+            <p style={{color:"rgba(255,255,255,0.8)"}}>Seis passos simples para transformar seu veículo em dinheiro na conta.</p>
           </div>
           <div className="steps-grid">
             {steps.map((s)=><StepCard key={s.num} {...s}/>)}
@@ -1196,13 +1196,14 @@ function ComoFuncionaPage({ onNav }) {
 function SobrePage({ onNav }) {
   return (
     <React.Fragment>
-      <header className="page-header">
+      <header className="page-header" style={{background:"var(--fc-red)"}}>
         <div className="page-header__inner">
-          <h1>A Flash Car nasceu para transformar a forma de vender veículos no Brasil</h1>
-          <p>Mais de 15 anos de mercado, tecnologia de ponta, agilidade processual e atendimento humanizado para criar a melhor experiência automotiva do país.</p>
+          <span className="fc-eyebrow" style={{color:"var(--fc-yellow)"}}>Nossa história</span>
+          <h1 style={{color:"white"}}>A Flash Car nasceu para transformar a forma de vender veículos no Brasil</h1>
+          <p style={{color:"rgba(255,255,255,0.82)"}}>Mais de 15 anos de mercado, tecnologia de ponta, agilidade processual e atendimento humanizado para criar a melhor experiência automotiva do país.</p>
           <div style={{display:"flex",gap:12,marginTop:24,flexWrap:"wrap"}}>
-            <span className="fc-badge fc-badge--outline"><MS name="verified" size={14} fill={1}/> 15 anos de experiência</span>
-            <span className="fc-badge fc-badge--outline"><MS name="bolt" size={14} fill={1}/> Agilidade digital</span>
+            <span className="fc-badge fc-badge--yellow"><MS name="verified" size={14} fill={1}/> 15 anos de experiência</span>
+            <span className="fc-badge fc-badge--yellow"><MS name="bolt" size={14} fill={1}/> Agilidade digital</span>
           </div>
         </div>
       </header>
@@ -1346,14 +1347,13 @@ function UnidadesPage({ onNav }) {
   const visible = filter==="Todos"?UNITS:UNITS.filter(u=>u.uf===filter);
   return (
     <React.Fragment>
-      <section className="section" style={{paddingBottom:32}}>
-        <div className="section__inner section__head" style={{marginBottom:0}}>
-          <h1 style={{font:"800 clamp(32px,4.4vw,48px) var(--font-display)",letterSpacing:"-0.02em",lineHeight:1.1,margin:"0 auto 16px"}}>
-            Encontre a Flash Car mais perto de você
-          </h1>
-          <p>Estamos presentes nas principais regiões do país para garantir que você tenha a melhor experiência na compra ou venda do seu próximo veículo.</p>
+      <header className="page-header" style={{background:"var(--fc-red)"}}>
+        <div className="page-header__inner">
+          <span className="fc-eyebrow" style={{color:"var(--fc-yellow)"}}>Rede nacional</span>
+          <h1 style={{color:"white"}}>Encontre a Flash Car mais perto de você</h1>
+          <p style={{color:"rgba(255,255,255,0.82)"}}>Estamos presentes nas principais regiões do país. Atendimento presencial com avaliação gratuita e pagamento via PIX no mesmo dia.</p>
         </div>
-      </section>
+      </header>
       <div className="units-filterbar">
         <div className="units-filterbar__inner">
           <span className="units-filterbar__label">Filtrar por estado:</span>
@@ -1365,7 +1365,7 @@ function UnidadesPage({ onNav }) {
           </div>
         </div>
       </div>
-      <section className="section" style={{paddingTop:48}}>
+      <section className="section" style={{paddingTop:48,background:"white"}}>
         <div className="section__inner">
           <div className="grid-3">
             {visible.map(u=><UnitCard key={u.city+u.uf} u={u}/>)}
@@ -1436,18 +1436,18 @@ function FranquiaPage({ onNav }) {
       <section className="franq-hero">
         <div className="franq-hero__inner">
           <div>
-            <h1>Fature <span className="accent">R$ 154 mil/mês</span> no mercado que nunca para.</h1>
-            <p style={{fontSize:18,lineHeight:1.65,marginTop:0}}>18,5 milhões de veículos comercializados no Brasil em 2025. A Flash Car coloca você nesse mercado — sem estoque, sem royalties, com payback médio de 7 meses.</p>
+            <h1>Invista em um mercado que <span className="accent">não para de crescer.</span></h1>
+            <p style={{fontSize:18,lineHeight:1.65,marginTop:0}}>18,5 milhões de veículos comercializados no Brasil em 2025 — recorde histórico. A Flash Car coloca você nesse mercado com um modelo de baixo risco, alto retorno e suporte completo.</p>
             <div style={{display:"flex",gap:12,flexWrap:"wrap",marginBottom:28}}>
               <button className="fc-btn fc-btn--primary fc-btn--lg" onClick={()=>onNav("franquia")}>
-                <MS name="file-text" size={18}/>
-                Quero o dossiê completo
+                <MS name="arrow_forward" size={18}/>
+                Quero conhecer a franquia
               </button>
               <button className="fc-btn fc-btn--ghost fc-btn--lg" onClick={()=>onNav("franquia")}>Falar com especialista</button>
             </div>
             <div style={{display:"flex",gap:20,flexWrap:"wrap"}}>
               {[
-                {icon:"verified",text:"Sem royalties sobre faturamento"},
+                {icon:"verified",text:"Royalties com valor fixo e previsível"},
                 {icon:"check_circle",text:"Payback médio de 7 meses"},
                 {icon:"shield_lock",text:"Suporte jurídico incluído"},
               ].map(({icon,text})=>(
@@ -1461,8 +1461,8 @@ function FranquiaPage({ onNav }) {
 
           <div className="kpi-grid">
             <div className="kpi">
-              <div className="kpi__label">Faturamento médio/mês</div>
-              <div className="kpi__value">R$ 154k</div>
+              <div className="kpi__label">Faturamento até</div>
+              <div className="kpi__value">R$ 2M/ano</div>
               <div className="kpi__sub">Unidades Premium em operação</div>
             </div>
             <div className="kpi">
@@ -1472,13 +1472,13 @@ function FranquiaPage({ onNav }) {
             </div>
             <div className="kpi">
               <div className="kpi__label">Margem de lucro</div>
-              <div className="kpi__value">35–45%</div>
+              <div className="kpi__value">33–47%</div>
               <div className="kpi__sub">Alto giro · alto ticket</div>
             </div>
             <div className="kpi">
               <div className="kpi__label">Royalties</div>
-              <div className="kpi__value">Zero</div>
-              <div className="kpi__sub">100% do lucro fica com você</div>
+              <div className="kpi__value">Fixo</div>
+              <div className="kpi__sub">Valor previsível, sem % do faturamento</div>
             </div>
           </div>
         </div>
@@ -1488,9 +1488,9 @@ function FranquiaPage({ onNav }) {
       <div className="franq-proof">
         <div className="franq-proof__inner">
           {[
-            {v:"6",l:"Unidades em operação"},
-            {v:"+20",l:"Cidades em expansão"},
-            {v:"4,9★",l:"Avaliação dos franqueados"},
+            {v:"+40",l:"Cidades em expansão"},
+            {v:"R$2M",l:"Faturamento até/ano"},
+            {v:"9,7★",l:"Avaliação dos franqueados"},
             {v:"15+",l:"Anos de mercado automotivo"},
           ].map(({v,l})=>(
             <div key={l} className="franq-proof__item">
@@ -1507,7 +1507,7 @@ function FranquiaPage({ onNav }) {
           <div className="grid-2 market-section__grid">
             <div className="market-copy">
               <span className="fc-eyebrow">Por que agora?</span>
-              <h2 style={{marginTop:8}}>O mercado de usados bateu recorde — e vai continuar crescendo.</h2>
+              <h2 style={{marginTop:8}}>O mercado de compra e venda de veículos bateu recorde histórico em 2025 — e continuará crescendo.</h2>
               <p className="market-copy__lead">Instabilidade econômica, crédito restrito para zero km e aumento da frota circulante fazem do mercado de seminovos o mais resiliente do setor automotivo. Intermediadores certificados estão capturando essa demanda que concessionárias tradicionais não conseguem atender.</p>
               <div className="market-kpis">
                 <KPIInline value="+17%" body="Crescimento anual do volume de buscas por usados." accent="var(--fc-green)"/>
@@ -1540,17 +1540,17 @@ function FranquiaPage({ onNav }) {
         <div className="section__inner">
           <div className="section__head">
             <span className="fc-eyebrow">Processo simples</span>
-            <h2>Da conversa ao faturamento em 60 dias</h2>
+            <h2>Da conversa ao faturamento em 90 dias</h2>
             <p>Um caminho direto, sem burocracia. Do primeiro contato até sua unidade operando.</p>
           </div>
           <div className="steps-grid">
             {[
-              {n:"01",icon:"question_answer",title:"Conversa inicial",body:"Você fala com um especialista. Sem pitch, sem pressão — entendemos seu perfil e sua cidade."},
-              {n:"02",icon:"request_quote",title:"Dossiê + proposta",body:"Recebe o material completo: investimento, projeção financeira, cronograma e contrato."},
+              {n:"01",icon:"question_answer",title:"Conversa inicial",body:"Você fala com um especialista. Entendemos seu perfil de investidor e analisamos sua cidade. Sem pressão comercial."},
+              {n:"02",icon:"request_quote",title:"Análise e proposta",body:"Análise personalizada da região, apresentação da proposta, avaliação contratual e próximos passos."},
               {n:"03",icon:"school",title:"Treinamento completo",body:"7 dias de imersão em comercial, operação, jurídico e marketing. 100% presencial + digital."},
               {n:"04",icon:"rocket_launch",title:"Implantação assistida",body:"Abertura acompanhada pela equipe central. Você não abre sozinho — estamos no seu lado desde o dia 1."},
               {n:"05",icon:"payments",title:"Primeiras vendas",body:"Leads chegam pelo marketing da franqueadora. Você atende, fecha e recebe. O ciclo começa."},
-              {n:"06",icon:"savings",title:"Payback alcançado",body:"Com ciclo médio de 7 meses, o capital investido retorna — e o lucro passa a ser 100% seu."},
+              {n:"06",icon:"savings",title:"Payback alcançado",body:"O capital investido retorna dentro do prazo projetado — e o lucro operacional passa a ser 100% seu."},
             ].map(({n,icon,title,body})=>(
               <div key={n} className="fc-step">
                 <div className="fc-step__num">{n}</div>
@@ -1564,20 +1564,20 @@ function FranquiaPage({ onNav }) {
       </section>
 
       {/* ── 3 PILARES ────────────────────────────────────────── */}
-      <section className="section section--subtle">
+      <section className="section" style={{background:"var(--fc-red)"}}>
         <div className="section__inner">
           <div className="section__head">
-            <span className="fc-eyebrow">Modelo financeiro</span>
-            <h2>Por que a Flash Car é uma operação rentável</h2>
-            <p>Três pilares que sustentam o retorno dos nossos franqueados.</p>
+            <span className="fc-eyebrow" style={{color:"var(--fc-yellow)"}}>Modelo financeiro</span>
+            <h2 style={{color:"white"}}>Por que a Flash Car é uma operação rentável</h2>
+            <p style={{color:"rgba(255,255,255,0.8)"}}>Três pilares que sustentam o retorno dos nossos franqueados.</p>
           </div>
           <div className="grid-3">
-            <PillarCard icon="workspace_premium" tone="red" kicker="Pilar 01" title="Altamente lucrativa"
-              body="Margens entre 35% e 45% por veículo intermediado. Ticket médio elevado e ciclo de venda curto sustentam um ROI rápido."/>
+            <PillarCard icon="workspace_premium" tone="red" kicker="Pilar 01" title="Alta lucratividade"
+              body="Margens entre 33% e 47% por veículo intermediado. Ticket médio elevado e ciclo de venda curto sustentam um ROI rápido."/>
             <PillarCard icon="inventory_2" tone="yellow" kicker="Pilar 02" title="Sem estoque imobilizado"
               body="Você não compra carro. Você conecta vendedor e comprador. Capital livre, risco zero de desvalorização."/>
-            <PillarCard icon="savings" tone="green" kicker="Pilar 03" title="Zero royalties"
-              body="Nenhuma taxa sobre faturamento. Taxa de marketing fixa e previsível — 100% do lucro operacional fica com você."/>
+            <PillarCard icon="campaign" tone="green" kicker="Pilar 03" title="Marketing especializado"
+              body="Gestor de tráfego dedicado, campanhas personalizadas e geração de leads — tudo incluso e operado pela equipe da franqueadora."/>
           </div>
         </div>
       </section>
@@ -1592,7 +1592,7 @@ function FranquiaPage({ onNav }) {
               <p style={{color:"rgba(255,255,255,0.72)",maxWidth:400,marginTop:16}}>Não entregamos só a marca — entregamos a operação. Cada franqueado tem acesso a uma estrutura que levaria anos pra construir sozinho.</p>
               <div style={{marginTop:28,padding:"20px 24px",background:"rgba(255,255,255,0.06)",borderRadius:12,border:"1px solid rgba(255,255,255,0.1)"}}>
                 <div style={{font:"800 13px var(--font-display)",letterSpacing:"0.1em",textTransform:"uppercase",color:"var(--fc-yellow)",marginBottom:12}}>O que vem incluso</div>
-                {["Gestor de tráfego dedicado","CRM exclusivo Flash Car","Suporte jurídico especializado","Treinamento comercial contínuo","Implantação assistida in loco"].map(item=>(
+                {["Gestor de tráfego dedicado","CRM exclusivo Flash Car","Suporte jurídico especializado","Marketing especializado no segmento","Treinamento comercial contínuo","Implantação assistida in loco"].map(item=>(
                   <div key={item} style={{display:"flex",alignItems:"center",gap:8,color:"rgba(255,255,255,0.9)",fontSize:14,fontWeight:600,marginBottom:8}}>
                     <MS name="check" size={16} style={{color:"var(--fc-green)"}}/>
                     {item}
@@ -1632,22 +1632,22 @@ function FranquiaPage({ onNav }) {
             <div className="model-card">
               <h3>Modelo de entrada</h3>
               <div className="model-name">Smart</div>
-              <div className="price-row"><span className="lbl">Investimento inicial</span><span className="val">A partir de R$ 95 mil</span></div>
+              <div className="price-row"><span className="lbl">Investimento inicial</span><span className="val">A partir de R$ 134 mil</span></div>
               <div className="price-row"><span className="lbl">Faturamento médio/mês</span><span className="val">R$ 97 mil</span></div>
-              <div className="price-row"><span className="lbl">Lucratividade</span><span className="val">35% a 40%</span></div>
-              <div className="price-row"><span className="lbl">Payback estimado</span><span className="val">7 meses</span></div>
+              <div className="price-row"><span className="lbl">Lucratividade</span><span className="val">33% a 41%</span></div>
+              <div className="price-row"><span className="lbl">Payback estimado</span><span className="val">10 a 12 meses</span></div>
               <div className="price-row" style={{borderBottom:0}}><span className="lbl">Praça recomendada</span><span className="val">Cidades 50k–200k hab.</span></div>
-              <button className="fc-btn fc-btn--dark fc-btn--block model-cta" onClick={()=>onNav("franquia")}>Quero o modelo Smart</button>
+              <button className="fc-btn fc-btn--dark fc-btn--block model-cta" onClick={()=>onNav("franquia")}>Quero saber mais</button>
             </div>
             <div className="model-card premium">
               <h3>Performance máxima</h3>
               <div className="model-name">Premium</div>
-              <div className="price-row"><span className="lbl">Investimento inicial</span><span className="val">A partir de R$ 120 mil</span></div>
+              <div className="price-row"><span className="lbl">Investimento inicial</span><span className="val">A partir de R$ 197 mil</span></div>
               <div className="price-row"><span className="lbl">Faturamento médio/mês</span><span className="val">R$ 154 mil</span></div>
-              <div className="price-row"><span className="lbl">Lucratividade</span><span className="val">40% a 45%</span></div>
-              <div className="price-row"><span className="lbl">Payback estimado</span><span className="val">5 a 6 meses</span></div>
+              <div className="price-row"><span className="lbl">Lucratividade</span><span className="val">38% a 47%</span></div>
+              <div className="price-row"><span className="lbl">Payback estimado</span><span className="val">12 a 14 meses</span></div>
               <div className="price-row" style={{borderBottom:0}}><span className="lbl">Praça recomendada</span><span className="val">Capitais e regiões metropolitanas</span></div>
-              <button className="fc-btn fc-btn--primary fc-btn--block model-cta" onClick={()=>onNav("franquia")}>Quero o modelo Premium</button>
+              <button className="fc-btn fc-btn--primary fc-btn--block model-cta" onClick={()=>onNav("franquia")}>Quero saber mais</button>
             </div>
           </div>
         </div>
@@ -1723,12 +1723,12 @@ function FranquiaPage({ onNav }) {
           </span>
           <h2 style={{color:"white",fontSize:"clamp(28px,3.5vw,44px)",lineHeight:1.1,margin:"0 0 16px"}}>Sua cidade ainda tem vaga. Por quanto tempo?</h2>
           <p style={{color:"rgba(255,255,255,0.72)",fontSize:17,lineHeight:1.65,margin:"0 0 32px"}}>
-            Receba o dossiê completo com investimento detalhado, projeção financeira dos primeiros 12 meses e cronograma de implantação. Sem compromisso.
+            Receba os materiais completos: investimento detalhado, projeção financeira dos primeiros 12 meses e cronograma de implantação. Sem compromisso.
           </p>
           <div style={{display:"flex",gap:12,justifyContent:"center",flexWrap:"wrap"}}>
             <button className="fc-btn fc-btn--primary fc-btn--lg" onClick={()=>onNav("franquia")}>
               <MS name="file-text" size={18}/>
-              Quero o dossiê agora
+              Quero receber os materiais
             </button>
             <button className="fc-btn fc-btn--inverse fc-btn--lg" onClick={()=>onNav("franquia")}>Falar com consultor</button>
           </div>
@@ -1778,11 +1778,11 @@ function FaqItem({ q, a }) {
 function FaqPage({ onNav }) {
   return (
     <React.Fragment>
-      <header className="page-header">
+      <header className="page-header" style={{background:"var(--fc-red)"}}>
         <div className="page-header__inner">
-          <span className="fc-eyebrow">Central de ajuda</span>
-          <h1>Tudo que você precisa saber antes de vender</h1>
-          <p>Reunimos as perguntas mais frequentes de clientes que venderam seus veículos com a Flash Car. Se ainda restou dúvida, fale com a gente pelo WhatsApp.</p>
+          <span className="fc-eyebrow" style={{color:"var(--fc-yellow)"}}>Central de ajuda</span>
+          <h1 style={{color:"white"}}>Tudo que você precisa saber antes de vender</h1>
+          <p style={{color:"rgba(255,255,255,0.82)"}}>Reunimos as perguntas mais frequentes de clientes que venderam seus veículos com a Flash Car. Se ainda restou dúvida, fale com a gente pelo WhatsApp.</p>
         </div>
       </header>
       <section className="section">
