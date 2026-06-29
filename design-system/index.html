@@ -419,8 +419,17 @@ h1,h2,h3,h4{margin:0;}
 .page-header h1{font-size:clamp(36px,4.8vw,58px);margin:12px 0 16px;color:white;line-height:1.04;letter-spacing:-0.035em;font-weight:850;}
 .page-header p{max-width:660px;color:rgba(255,255,255,0.80);font-size:16px;line-height:1.55;margin:0;}
 .page-header .fc-eyebrow{color:var(--fc-yellow);}
+@media(max-width:720px){
+  .page-header{padding:64px 16px 44px;}
+  .page-header h1{font-size:clamp(28px,8vw,44px);}
+}
 .kit-hero .fc-btn--ghost{color:white;border-color:rgba(255,255,255,0.5);}
 .kit-hero .fc-btn--ghost:hover{background:rgba(255,255,255,0.12);border-color:white;}
+@media(max-width:480px){
+  .fc-trust{grid-template-columns:repeat(2,1fr);gap:16px;}
+  .fc-trust__item{gap:6px;}
+  .fc-trust__label{font-size:10px;letter-spacing:0.08em;}
+}
 
 /* ── DIFFERENTIATOR BAND ──────────────────────────────────── */
 .diff-band{background:transparent;color:var(--fg-default);padding:84px var(--gutter-desktop);}
@@ -860,7 +869,7 @@ function TrustBar() {
         <div className="fc-trust" style={{border:0,padding:0}}>
           {items.map((it)=>(
             <div className="fc-trust__item" key={it.icon} style={{color:"white"}}>
-              <div className="fc-trust__icon" style={{color:"var(--fc-yellow)"}}><MS name={it.icon} size={22}/></div>
+              <div className="fc-trust__icon" style={{background:"rgba(255,255,255,0.18)",color:"var(--fc-yellow)"}}><MS name={it.icon} size={26} fill={1}/></div>
               <div className="fc-trust__label" style={{color:"white"}}>{it.label}</div>
             </div>
           ))}
