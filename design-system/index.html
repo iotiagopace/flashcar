@@ -46,9 +46,7 @@
 }
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-<link href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" rel="stylesheet"/>
-<link href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css" rel="stylesheet"/>
-<link href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block" rel="stylesheet"/>
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
@@ -413,11 +411,16 @@ h1,h2,h3,h4{margin:0;}
 }
 
 /* ── PAGE HEADER ──────────────────────────────────────────── */
-.page-header{background:rgba(247,247,248,0.55);color:var(--fg-strong);padding:80px var(--gutter-desktop) 56px;position:relative;border-bottom:1px solid var(--border-soft);overflow:hidden;}
-.page-header::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:4px;background:linear-gradient(90deg,var(--fc-red),var(--fc-yellow) 70%,transparent);}
-.page-header__inner{max-width:var(--container-max);margin:0 auto;position:relative;}
-.page-header h1{font-size:clamp(36px,4.8vw,58px);margin:12px 0 16px;color:var(--fg-strong);line-height:1.04;letter-spacing:-0.035em;font-weight:850;}
-.page-header p{max-width:660px;color:var(--fg-muted);font-size:16px;line-height:1.55;margin:0;}
+.page-header{position:relative;padding:90px var(--gutter-desktop) 64px;overflow:hidden;color:white;border-bottom:none;}
+.page-header__video-bg{position:absolute;inset:0;z-index:0;overflow:hidden;}
+.page-header__video-bg video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0.45;}
+.page-header__video-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(to right,rgba(0,0,0,0.90) 0%,rgba(0,0,0,0.70) 55%,rgba(0,0,0,0.45) 100%);}
+.page-header__inner{max-width:var(--container-max);margin:0 auto;position:relative;z-index:2;}
+.page-header h1{font-size:clamp(36px,4.8vw,58px);margin:12px 0 16px;color:white;line-height:1.04;letter-spacing:-0.035em;font-weight:850;}
+.page-header p{max-width:660px;color:rgba(255,255,255,0.80);font-size:16px;line-height:1.55;margin:0;}
+.page-header .fc-eyebrow{color:var(--fc-yellow);}
+.kit-hero .fc-btn--ghost{color:white;border-color:rgba(255,255,255,0.5);}
+.kit-hero .fc-btn--ghost:hover{background:rgba(255,255,255,0.12);border-color:white;}
 
 /* ── DIFFERENTIATOR BAND ──────────────────────────────────── */
 .diff-band{background:transparent;color:var(--fg-default);padding:84px var(--gutter-desktop);}
@@ -704,33 +707,19 @@ h1,h2,h3,h4{margin:0;}
    ============================================================ */
 const LOGO_RED_BOX = "assets/logo-flashcar-red-box.png";
 
-const ICON_MAP = {
-  bolt:"lightning",directions_car:"car-profile",two_wheeler:"motorcycle",
-  local_shipping:"truck",verified_user:"shield-check",shield_lock:"lock-key",
-  verified:"seal-check",groups:"users-three",payments:"wallet",
-  pix:"currency-circle-dollar",event_available:"calendar-check",
-  campaign:"megaphone",sell:"tag",hub:"graph",request_quote:"file-text",
-  handshake:"handshake",gavel:"gavel",support_agent:"headset",
-  workspace_premium:"trophy",check_circle:"check-circle",check:"check",
-  close:"x",format_quote:"quotes",flag:"flag",visibility:"eye",
-  auto_awesome:"sparkle",inventory_2:"package",ads_click:"cursor-click",
-  school:"graduation-cap",rocket_launch:"rocket-launch",savings:"piggy-bank",
-  business_center:"briefcase",place:"map-pin",schedule:"clock",call:"phone",
-  storefront:"storefront",arrow_forward:"arrow-right",menu:"list",
-  question_answer:"chat-circle-dots",plus:"plus",minus:"minus",
-  play_circle:"play-circle",video:"video-camera",
-};
-
 function MS({ name, size=24, fill=0, weight=400, style }) {
-  const phName = ICON_MAP[name] || name;
-  let variant = "ph";
-  if (fill===1) variant="ph-fill";
-  else if (weight>=600) variant="ph-bold";
-  else if (weight<=300) variant="ph-light";
   return (
-    <i className={`${variant} ph-${phName}`}
-       style={{fontSize:size,lineHeight:1,display:"inline-flex",verticalAlign:"middle",...style}}
-       aria-hidden="true"/>
+    <span className="material-symbols-outlined"
+      style={{
+        fontSize:size,
+        lineHeight:1,
+        display:"inline-flex",
+        verticalAlign:"middle",
+        userSelect:"none",
+        fontVariationSettings:`'FILL' ${fill},'wght' ${weight},'GRAD' 0,'opsz' 24`,
+        ...style
+      }}
+      aria-hidden="true">{name}</span>
   );
 }
 
@@ -1127,11 +1116,15 @@ function ComoFuncionaPage({ onNav }) {
   ];
   return (
     <React.Fragment>
-      <header className="page-header" style={{background:"var(--fc-red)"}}>
+      <header className="page-header" style={{background:"#111"}}>
+        <div className="page-header__video-bg">
+          {React.createElement('video',{ref:el=>{if(el){el.muted=true;el.play&&el.play().catch(()=>{})}},autoPlay:true,loop:true,playsInline:true,preload:"auto"},React.createElement('source',{src:"assets/flashcar-institucional.mp4",type:"video/mp4"}))}
+        </div>
+        <div className="page-header__video-overlay"/>
         <div className="page-header__inner">
-          <span className="fc-eyebrow" style={{color:"var(--fc-yellow)"}}>Excelência automotiva</span>
-          <h1 style={{color:"white"}}>Entenda como vendemos seu veículo com <span style={{color:"var(--fc-yellow)"}}>agilidade e segurança</span></h1>
-          <p style={{color:"rgba(255,255,255,0.82)"}}>Esqueça os riscos na compra e venda de veículos. Nós cuidamos de todas as etapas — da avaliação técnica até a transferência do dinheiro para sua conta.</p>
+          <span className="fc-eyebrow">Excelência automotiva</span>
+          <h1>Entenda como vendemos seu veículo com <span style={{color:"var(--fc-yellow)"}}>agilidade e segurança</span></h1>
+          <p>Esqueça os riscos na compra e venda de veículos. Nós cuidamos de todas as etapas — da avaliação técnica até a transferência do dinheiro para sua conta.</p>
         </div>
       </header>
 
@@ -1200,11 +1193,15 @@ function ComoFuncionaPage({ onNav }) {
 function SobrePage({ onNav }) {
   return (
     <React.Fragment>
-      <header className="page-header" style={{background:"var(--fc-red)"}}>
+      <header className="page-header" style={{background:"#111"}}>
+        <div className="page-header__video-bg">
+          {React.createElement('video',{ref:el=>{if(el){el.muted=true;el.play&&el.play().catch(()=>{})}},autoPlay:true,loop:true,playsInline:true,preload:"auto"},React.createElement('source',{src:"assets/flashcar-institucional.mp4",type:"video/mp4"}))}
+        </div>
+        <div className="page-header__video-overlay"/>
         <div className="page-header__inner">
-          <span className="fc-eyebrow" style={{color:"var(--fc-yellow)"}}>Nossa história</span>
-          <h1 style={{color:"white"}}>A Flash Car nasceu para transformar a forma de vender veículos no Brasil</h1>
-          <p style={{color:"rgba(255,255,255,0.82)"}}>Mais de 15 anos de mercado, tecnologia de ponta, agilidade processual e atendimento humanizado para criar a melhor experiência automotiva do país.</p>
+          <span className="fc-eyebrow">Nossa história</span>
+          <h1>A Flash Car nasceu para transformar a forma de vender veículos no Brasil</h1>
+          <p>Mais de 15 anos de mercado, tecnologia de ponta, agilidade processual e atendimento humanizado para criar a melhor experiência automotiva do país.</p>
           <div style={{display:"flex",gap:12,marginTop:24,flexWrap:"wrap"}}>
             <span className="fc-badge fc-badge--yellow"><MS name="verified" size={14} fill={1}/> 15 anos de experiência</span>
             <span className="fc-badge fc-badge--yellow"><MS name="bolt" size={14} fill={1}/> Agilidade digital</span>
@@ -1351,11 +1348,15 @@ function UnidadesPage({ onNav }) {
   const visible = filter==="Todos"?UNITS:UNITS.filter(u=>u.uf===filter);
   return (
     <React.Fragment>
-      <header className="page-header" style={{background:"var(--fc-red)"}}>
+      <header className="page-header" style={{background:"#111"}}>
+        <div className="page-header__video-bg">
+          {React.createElement('video',{ref:el=>{if(el){el.muted=true;el.play&&el.play().catch(()=>{})}},autoPlay:true,loop:true,playsInline:true,preload:"auto"},React.createElement('source',{src:"assets/flashcar-institucional.mp4",type:"video/mp4"}))}
+        </div>
+        <div className="page-header__video-overlay"/>
         <div className="page-header__inner">
-          <span className="fc-eyebrow" style={{color:"var(--fc-yellow)"}}>Rede nacional</span>
-          <h1 style={{color:"white"}}>Encontre a Flash Car mais perto de você</h1>
-          <p style={{color:"rgba(255,255,255,0.82)"}}>Estamos presentes nas principais regiões do país. Atendimento presencial com avaliação gratuita e pagamento via PIX no mesmo dia.</p>
+          <span className="fc-eyebrow">Rede nacional</span>
+          <h1>Encontre a Flash Car mais perto de você</h1>
+          <p>Estamos presentes nas principais regiões do país. Atendimento presencial com avaliação gratuita e pagamento via PIX no mesmo dia.</p>
         </div>
       </header>
       <div className="units-filterbar">
@@ -1782,11 +1783,15 @@ function FaqItem({ q, a }) {
 function FaqPage({ onNav }) {
   return (
     <React.Fragment>
-      <header className="page-header" style={{background:"var(--fc-red)"}}>
+      <header className="page-header" style={{background:"#111"}}>
+        <div className="page-header__video-bg">
+          {React.createElement('video',{ref:el=>{if(el){el.muted=true;el.play&&el.play().catch(()=>{})}},autoPlay:true,loop:true,playsInline:true,preload:"auto"},React.createElement('source',{src:"assets/flashcar-institucional.mp4",type:"video/mp4"}))}
+        </div>
+        <div className="page-header__video-overlay"/>
         <div className="page-header__inner">
-          <span className="fc-eyebrow" style={{color:"var(--fc-yellow)"}}>Central de ajuda</span>
-          <h1 style={{color:"white"}}>Tudo que você precisa saber antes de vender</h1>
-          <p style={{color:"rgba(255,255,255,0.82)"}}>Reunimos as perguntas mais frequentes de clientes que venderam seus veículos com a Flash Car. Se ainda restou dúvida, fale com a gente pelo WhatsApp.</p>
+          <span className="fc-eyebrow">Central de ajuda</span>
+          <h1>Tudo que você precisa saber antes de vender</h1>
+          <p>Reunimos as perguntas mais frequentes de clientes que venderam seus veículos com a Flash Car. Se ainda restou dúvida, fale com a gente pelo WhatsApp.</p>
         </div>
       </header>
       <section className="section">
