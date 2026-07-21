@@ -198,6 +198,11 @@ a:hover{text-decoration:underline;}
   box-shadow:0 8px 20px rgba(37,211,102,0.28);transition:background var(--t-base);}
 .btn-wa:hover{background:#1EB85A;text-decoration:none;}
 .btn-wa svg{width:20px;height:20px;flex-shrink:0;}
+.floating-wa{position:fixed;right:max(18px,env(safe-area-inset-right));bottom:max(18px,env(safe-area-inset-bottom));z-index:70;display:inline-flex;align-items:center;gap:10px;height:58px;padding:0 22px 0 18px;border-radius:var(--radius-pill);background:#25D366;color:#fff;text-decoration:none;font:850 14px var(--font-display);letter-spacing:-0.01em;box-shadow:0 18px 44px rgba(37,211,102,0.34),0 6px 14px rgba(10,22,40,0.18);border:1px solid rgba(255,255,255,0.35);transform:translateY(0);transition:transform 160ms var(--ease-out),background 160ms var(--ease-out),box-shadow 160ms var(--ease-out);}
+.floating-wa:hover{background:#1EB85A;text-decoration:none;transform:translateY(-2px);box-shadow:0 22px 52px rgba(37,211,102,0.40),0 8px 18px rgba(10,22,40,0.22);}
+.floating-wa i{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,0.18);font-size:22px;color:#fff;}
+.floating-wa span{display:block;line-height:1.1;}
+.floating-wa small{display:block;margin-top:2px;font:700 11px var(--font-display);color:rgba(255,255,255,0.78);letter-spacing:0;}
 
 /* COMMERCIAL SECTIONS */
 .section{position:relative;z-index:1;padding:78px max(24px,calc((100vw - 1200px)/2));}
@@ -247,6 +252,8 @@ a:hover{text-decoration:underline;}
   .process-step:last-child{border-bottom:0;}
   .location-photo{min-height:280px;}
   .section{padding:56px 16px;}
+  .floating-wa{right:14px;bottom:14px;width:58px;padding:0;justify-content:center;}
+  .floating-wa span,.floating-wa small{display:none;}
 }
 
 /* FOOTER */
@@ -463,6 +470,11 @@ a:hover{text-decoration:underline;}
   </section>
 </main>
 
+<a href="#whatsapp" class="floating-wa js-wa-link" id="floating-whatsapp" target="_blank" rel="noopener">
+  <i class="ph-fill ph-whatsapp-logo"></i>
+  <span>WhatsApp<small id="floating-wa-phone">Unidade</small></span>
+</a>
+
 <footer class="footer">
   <div class="footer__logo"><img src="/assets/logo-flashcar-white.png" alt="Flash Car Store"/></div>
   <p style="margin:0 0 8px">© 2026 Flash Car Store · Todos os direitos reservados</p>
@@ -511,6 +523,9 @@ a:hover{text-decoration:underline;}
   document.getElementById('cta-primary').target = '_blank';
   document.getElementById('nav-cta').href = waUrl;
   document.getElementById('nav-cta').target = '_blank';
+  document.getElementById('floating-wa-phone').textContent = u.telefone || ('+' + u.whatsapp);
+  document.getElementById('floating-whatsapp').setAttribute('aria-label', 'Falar no WhatsApp com a Flash Car ' + u.nome + ': ' + (u.telefone || ('+' + u.whatsapp)));
+  document.getElementById('floating-whatsapp').setAttribute('title', 'Falar no WhatsApp: ' + (u.telefone || ('+' + u.whatsapp)));
   Array.prototype.forEach.call(document.querySelectorAll('.js-wa-link'), function(el) {
     el.href = waUrl;
   });
