@@ -6,16 +6,20 @@ Site institucional da Flash Car Store — rede de intermediacao de veiculos com 
 
 ## Paginas
 
-| Pagina | Rota | Arquivo |
+| Pagina | URL | Descricao |
 |---|---|---|
-| Home | `/` | `design-system/index.html` |
-| Unidade | `/:slug` | `design-system/unidade.html` |
+| Home | `/` | Hero, trust bar, como funciona, diferenciais, grid de veiculos, conversao |
+| Como Funciona | `/como-funciona` | Metodologia em 6 passos, depoimentos |
+| Sobre | `/sobre` | Historia, fundadores, missao e visao |
+| Unidades | `/unidades` | Listagem filtrada de todas as unidades |
+| Central de Ajuda | `/central-de-ajuda` | Perguntas frequentes |
+| Seja um Franqueado | `/seja-um-franqueado` | Modelos de investimento, diferenciais, KPIs |
 
-### Unidades ativas
+### Unidades
 
-Cada unidade tem sua rota propria (rewrite no `vercel.json` para `unidade.html`). Os dados de cada unidade ficam em `design-system/units-config.js`.
+Cada unidade tem pagina propria. Dados em `units-config.js`.
 
-| Unidade | Rota | UF |
+| Unidade | URL | UF |
 |---|---|---|
 | Blumenau | `/blumenau` | SC |
 | Jaragua do Sul | `/jaragua-do-sul` | SC |
@@ -36,49 +40,47 @@ Cada unidade tem sua rota propria (rewrite no `vercel.json` para `unidade.html`)
 
 **Para adicionar uma nova unidade:**
 
-1. Adicionar os dados em `design-system/units-config.js`
+1. Adicionar os dados em `units-config.js`
 2. Adicionar o rewrite em `vercel.json`
-3. Adicionar a URL em `design-system/sitemap.xml`
+3. Copiar `unidade.html` para `nova-unidade/index.html`
+4. Adicionar a URL em `sitemap.xml`
 
 ---
 
 ## Estrutura
 
 ```
-flashcar/
-├── design-system/
-│   ├── index.html              ← Home
-│   ├── unidade.html            ← Template de pagina de unidade
-│   ├── units-config.js         ← Dados das unidades (nome, endereco, WhatsApp)
-│   ├── colors_and_type.css     ← Tokens de design (cores, tipografia, espacamento)
-│   ├── components.css          ← Componentes CSS (botoes, cards, badges, inputs)
-│   ├── sitemap.xml             ← Sitemap SEO
-│   ├── robots.txt              ← Configuracao de crawlers
-│   ├── car-black-suv.png       ← Imagem OG / hero fallback
-│   └── assets/                 ← Logos e marca
-│       ├── logo-flashcar-color.png
-│       ├── logo-flashcar-white.png
-│       ├── logo-mark.svg
-│       ├── logo-mark-red-bg.svg
-│       ├── avatar-red-square.png
-│       ├── logo-flashcar-red-box.png
-│       ├── logo-flashcar-vertical-red.png
-│       ├── flashcar-hero.mp4
-│       ├── flashcar-institucional.mp4
-│       └── founders-david-agnaldo.webp
-├── vercel.json                 ← Configuracao de deploy (rewrites)
-├── .gitignore
-└── README.md
+design-system/                  ← raiz do site (upload via FTP)
+├── index.html                  ← Home
+├── unidade.html                ← Template de unidade
+├── units-config.js             ← Dados das unidades
+├── colors_and_type.css         ← Tokens de design
+├── components.css              ← Componentes CSS
+├── sitemap.xml                 ← Sitemap SEO
+├── robots.txt                  ← Crawlers
+├── car-black-suv.png           ← Imagem OG / hero
+├── assets/                     ← Logos, videos, fotos
+├── como-funciona/index.html    ← /como-funciona
+├── sobre/index.html            ← /sobre
+├── unidades/index.html         ← /unidades
+├── central-de-ajuda/index.html ← /central-de-ajuda
+├── seja-um-franqueado/index.html ← /seja-um-franqueado
+├── blumenau/index.html         ← /blumenau
+├── jaragua-do-sul/index.html   ← /jaragua-do-sul
+├── ...                         ← demais unidades
+└── goiania/index.html          ← /goiania
 ```
 
 ---
 
 ## Deploy
 
-Deployado no **Vercel** como site estatico.
+### Vercel (automatico)
 
 - **Output directory:** `design-system/`
-- **Build command:** nenhum (HTML estatico)
-- **Rewrites:** cada slug de unidade aponta para `unidade.html`
+- **Build command:** nenhum
+- Deploy automatico a cada push na branch `main`
 
-Deploy automatico a cada push na branch `main`.
+### FTP (manual)
+
+Fazer upload de todo o conteudo da pasta `design-system/` para a raiz do servidor.
