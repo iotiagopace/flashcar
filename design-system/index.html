@@ -787,8 +787,7 @@ function Nav({ current, onNav }) {
             </a>
           ))}
         </div>
-        <a href="#agendar" className="fc-btn fc-btn--primary fc-nav__cta"
-           onClick={(e)=>{e.preventDefault();go("home");}}>
+        <a href="/unidades" className="fc-btn fc-btn--primary fc-nav__cta">
           Agendar avaliação
         </a>
         <button type="button" className="fc-nav__menu-btn" aria-label={mobileOpen?"Fechar menu":"Abrir menu"} aria-expanded={mobileOpen}
@@ -836,8 +835,8 @@ function Footer({ onNav }) {
             <h4>Para empreendedores</h4>
             <ul>
               <li><a href="/seja-um-franqueado">Seja um franqueado</a></li>
-              <li><a href="/seja-um-franqueado">Modelos de investimento</a></li>
-              <li><a href="/seja-um-franqueado">Suporte 360°</a></li>
+              <li><a href="/seja-um-franqueado#modelos">Modelos de investimento</a></li>
+              <li><a href="/seja-um-franqueado#suporte">Suporte 360°</a></li>
             </ul>
           </div>
           <div>
@@ -907,16 +906,13 @@ function ConversionCard({ title, body, primary, secondary, onNav }) {
           <p style={{margin:0,fontSize:15,color:"rgba(255,255,255,0.9)"}}>{body}</p>
         </div>
         <div style={{display:"flex",gap:12,flexWrap:"wrap"}}>
-          <button className="fc-btn fc-btn--lg"
-                  style={{background:"var(--fc-red)",color:"white"}}
-                  onClick={()=>onNav&&onNav(primary.target)}>
-            {primary.label}
-          </button>
-          {secondary&&(
-            <button className="fc-btn fc-btn--lg fc-btn--inverse"
-                    onClick={()=>onNav&&onNav(secondary.target)}>
-              {secondary.label}
-            </button>
+          {primary.href
+            ? <a className="fc-btn fc-btn--lg" style={{background:"var(--fc-red)",color:"white",textDecoration:"none"}} href={primary.href} target="_blank" rel="noopener noreferrer">{primary.label}</a>
+            : <button className="fc-btn fc-btn--lg" style={{background:"var(--fc-red)",color:"white"}} onClick={()=>onNav&&onNav(primary.target)}>{primary.label}</button>
+          }
+          {secondary&&(secondary.href
+            ? <a className="fc-btn fc-btn--lg fc-btn--inverse" style={{textDecoration:"none"}} href={secondary.href} target="_blank" rel="noopener noreferrer">{secondary.label}</a>
+            : <button className="fc-btn fc-btn--lg fc-btn--inverse" onClick={()=>onNav&&onNav(secondary.target)}>{secondary.label}</button>
           )}
         </div>
       </div>
@@ -995,9 +991,9 @@ function HomePage({ onNav }) {
               Sem leilão, sem golpe, sem dor de cabeça.
             </p>
             <div className="kit-hero__ctas">
-              <button className="fc-btn fc-btn--primary fc-btn--lg" onClick={()=>onNav("home")}>
+              <a href="/unidades" className="fc-btn fc-btn--primary fc-btn--lg">
                 Agendar avaliação gratuita
-              </button>
+              </a>
               <button className="fc-btn fc-btn--ghost fc-btn--lg" onClick={()=>onNav("como-funciona")}>
                 Como funciona
               </button>
@@ -1115,7 +1111,7 @@ function HomePage({ onNav }) {
       <ConversionCard
         title="Quer saber quanto vale seu veículo hoje?"
         body="Nossa avaliação é gratuita e sem compromisso. Resultado em minutos."
-        primary={{label:"Agendar agora",target:"home"}}
+        primary={{label:"Agendar agora",target:"unidades"}}
         onNav={onNav}/>
     </React.Fragment>
   );
@@ -1206,7 +1202,7 @@ function ComoFuncionaPage({ onNav }) {
         title="Pronto para vender seu carro hoje?"
         body="Agende sua avaliação gratuita em uma de nossas unidades e receba uma oferta profissional."
         primary={{label:"Encontrar unidade mais próxima",target:"unidades"}}
-        secondary={{label:"Falar com consultor",target:"home"}}
+        secondary={{label:"Falar com consultor",href:"https://wa.me/5547933822805?text=Ol%C3%A1%2C%20vi%20no%20site%20que%20voc%C3%AAs%20vendem%20meu%20ve%C3%ADculo%20em%20at%C3%A9%2060%20minutos.%20Poderia%20me%20passar%20mais%20informa%C3%A7%C3%B5es%3F"}}
         onNav={onNav}/>
     </React.Fragment>
   );
@@ -1319,7 +1315,7 @@ function SobrePage({ onNav }) {
       <ConversionCard
         title="Venda seu veículo com quem entende do mercado"
         body="Junte-se a milhares de clientes satisfeitos e experimente a nova era da intermediação automotiva."
-        primary={{label:"Agendar avaliação",target:"home"}}
+        primary={{label:"Agendar avaliação",target:"unidades"}}
         onNav={onNav}/>
     </React.Fragment>
   );
@@ -1611,7 +1607,7 @@ function FranquiaPage({ onNav }) {
       </section>
 
       {/* ── SUPORTE 360 dark ─────────────────────────────────── */}
-      <section className="section diff-band diff-band--dark">
+      <section id="suporte" className="section diff-band diff-band--dark">
         <div className="diff-band__inner">
           <div className="grid-2" style={{alignItems:"start",gap:56}}>
             <div>
@@ -1649,7 +1645,7 @@ function FranquiaPage({ onNav }) {
       </section>
 
       {/* ── MODELOS ──────────────────────────────────────────── */}
-      <section className="section">
+      <section id="modelos" className="section">
         <div className="section__inner">
           <div className="section__head">
             <span className="fc-eyebrow">Invista no modelo certo</span>
@@ -1738,11 +1734,11 @@ function FranquiaPage({ onNav }) {
             Receba os materiais completos: investimento detalhado, projeção financeira dos primeiros 12 meses e cronograma de implantação. Sem compromisso.
           </p>
           <div style={{display:"flex",gap:12,justifyContent:"center",flexWrap:"wrap"}}>
-            <button className="fc-btn fc-btn--primary fc-btn--lg" onClick={()=>onNav("franquia")}>
+            <a className="fc-btn fc-btn--primary fc-btn--lg" href="https://wa.me/5547933822805?text=Ol%C3%A1%2C%20tenho%20interesse%20em%20ser%20um%20franqueado%20Flash%20Car.%20Poderia%20me%20enviar%20os%20materiais%3F" target="_blank" rel="noopener noreferrer" style={{textDecoration:"none"}}>
               <MS name="description" size={18}/>
               Quero receber os materiais
-            </button>
-            <button className="fc-btn fc-btn--inverse fc-btn--lg" onClick={()=>onNav("franquia")}>Falar com consultor</button>
+            </a>
+            <a className="fc-btn fc-btn--inverse fc-btn--lg" href="https://wa.me/5547933822805?text=Ol%C3%A1%2C%20tenho%20interesse%20em%20ser%20um%20franqueado%20Flash%20Car.%20Gostaria%20de%20falar%20com%20um%20consultor." target="_blank" rel="noopener noreferrer" style={{textDecoration:"none"}}>Falar com consultor</a>
           </div>
           <p style={{marginTop:20,fontSize:12,color:"rgba(255,255,255,0.4)"}}>Sem spam. Sem compromisso. Resposta em até 24 horas úteis.</p>
         </div>
@@ -1819,8 +1815,8 @@ function FaqPage({ onNav }) {
       <ConversionCard
         title="Não encontrou sua dúvida?"
         body="Nossos consultores respondem por WhatsApp em minutos — de segunda a sábado, das 09h às 19h."
-        primary={{label:"Falar com consultor",target:"unidades"}}
-        secondary={{label:"Agendar avaliação",target:"home"}}
+        primary={{label:"Falar com consultor",href:"https://wa.me/5547933822805?text=Ol%C3%A1%2C%20vi%20no%20site%20que%20voc%C3%AAs%20vendem%20meu%20ve%C3%ADculo%20em%20at%C3%A9%2060%20minutos.%20Poderia%20me%20passar%20mais%20informa%C3%A7%C3%B5es%3F"}}
+        secondary={{label:"Agendar avaliação",target:"unidades"}}
         onNav={onNav}/>
     </React.Fragment>
   );
