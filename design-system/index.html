@@ -759,7 +759,7 @@ const NAV_ITEMS = [
   { id:"home",          label:"Vender meu veículo",  href:"/" },
   { id:"como-funciona", label:"Como funciona",        href:"/como-funciona" },
   { id:"sobre",         label:"Sobre a Flash Car",    href:"/sobre" },
-  { id:"unidades",      label:"Unidades",             href:"https://flashcar.store", external:true },
+  { id:"unidades",      label:"Unidades",             href:"/unidades" },
   { id:"faq",           label:"Central de ajuda",     href:"/central-de-ajuda" },
   { id:"franquia",      label:"Seja um franqueado",   href:"/seja-um-franqueado" },
 ];
@@ -782,13 +782,12 @@ function Nav({ current, onNav }) {
           {NAV_ITEMS.map((item)=>(
             <a key={item.id} href={item.href}
                aria-current={current===item.id?"page":undefined}
-               className={"fc-nav__link"+(current===item.id?" fc-nav__link--active":"")}
-               {...(item.external?{target:"_blank",rel:"noopener noreferrer"}:{})}>
+               className={"fc-nav__link"+(current===item.id?" fc-nav__link--active":"")}>
               {item.label}
             </a>
           ))}
         </div>
-        <a href="https://flashcar.store" target="_blank" rel="noopener noreferrer" className="fc-btn fc-btn--primary fc-nav__cta">
+        <a href="/unidades" className="fc-btn fc-btn--primary fc-nav__cta">
           Agendar avaliação
         </a>
         <button type="button" className="fc-nav__menu-btn" aria-label={mobileOpen?"Fechar menu":"Abrir menu"} aria-expanded={mobileOpen}
@@ -800,8 +799,7 @@ function Nav({ current, onNav }) {
         <div className="fc-nav-mobile" aria-label="Menu mobile">
           {NAV_ITEMS.map((item)=>(
             <a key={item.id} href={item.href}
-               aria-current={current===item.id?"page":undefined}
-               {...(item.external?{target:"_blank",rel:"noopener noreferrer"}:{})}>
+               aria-current={current===item.id?"page":undefined}>
               {item.label}
             </a>
           ))}
@@ -828,7 +826,7 @@ function Footer({ onNav }) {
             <ul>
               <li><a href="/">Vender meu veículo</a></li>
               <li><a href="/como-funciona">Como funciona</a></li>
-              <li><a href="https://flashcar.store" target="_blank" rel="noopener noreferrer">Encontrar unidade</a></li>
+              <li><a href="/unidades">Encontrar unidade</a></li>
               <li><a href="/central-de-ajuda">Central de ajuda</a></li>
               <li><a href="/sobre">Sobre a Flash Car</a></li>
             </ul>
@@ -993,7 +991,7 @@ function HomePage({ onNav }) {
               Sem leilão, sem golpe, sem dor de cabeça.
             </p>
             <div className="kit-hero__ctas">
-              <a href="https://flashcar.store" target="_blank" rel="noopener noreferrer" className="fc-btn fc-btn--primary fc-btn--lg">
+              <a href="/unidades" className="fc-btn fc-btn--primary fc-btn--lg">
                 Agendar avaliação gratuita
               </a>
               <button className="fc-btn fc-btn--ghost fc-btn--lg" onClick={()=>onNav("como-funciona")}>
@@ -1113,7 +1111,7 @@ function HomePage({ onNav }) {
       <ConversionCard
         title="Quer saber quanto vale seu veículo hoje?"
         body="Nossa avaliação é gratuita e sem compromisso. Resultado em minutos."
-        primary={{label:"Agendar agora",href:"https://flashcar.store"}}
+        primary={{label:"Agendar agora",target:"unidades"}}
         onNav={onNav}/>
     </React.Fragment>
   );
@@ -1203,7 +1201,7 @@ function ComoFuncionaPage({ onNav }) {
       <ConversionCard
         title="Pronto para vender seu carro hoje?"
         body="Agende sua avaliação gratuita em uma de nossas unidades e receba uma oferta profissional."
-        primary={{label:"Encontrar unidade mais próxima",href:"https://flashcar.store"}}
+        primary={{label:"Encontrar unidade mais próxima",target:"unidades"}}
         secondary={{label:"Falar com consultor",href:"https://wa.me/5547933822805?text=Ol%C3%A1%2C%20vi%20no%20site%20que%20voc%C3%AAs%20vendem%20meu%20ve%C3%ADculo%20em%20at%C3%A9%2060%20minutos.%20Poderia%20me%20passar%20mais%20informa%C3%A7%C3%B5es%3F"}}
         onNav={onNav}/>
     </React.Fragment>
@@ -1317,7 +1315,7 @@ function SobrePage({ onNav }) {
       <ConversionCard
         title="Venda seu veículo com quem entende do mercado"
         body="Junte-se a milhares de clientes satisfeitos e experimente a nova era da intermediação automotiva."
-        primary={{label:"Agendar avaliação",href:"https://flashcar.store"}}
+        primary={{label:"Agendar avaliação",target:"unidades"}}
         onNav={onNav}/>
     </React.Fragment>
   );
@@ -1401,7 +1399,7 @@ function UnidadesPage({ onNav }) {
       <ConversionCard
         title="Quer vender seu veículo com mais segurança?"
         body="Nossos consultores estão prontos para oferecer uma avaliação justa e todo o suporte necessário."
-        primary={{label:"Encontrar minha unidade",href:"https://flashcar.store"}}
+        primary={{label:"Encontrar minha unidade",target:"unidades"}}
         secondary={{label:"Agendar agora",target:"home"}}
         onNav={onNav}/>
     </React.Fragment>
@@ -1818,7 +1816,7 @@ function FaqPage({ onNav }) {
         title="Não encontrou sua dúvida?"
         body="Nossos consultores respondem por WhatsApp em minutos — de segunda a sábado, das 09h às 19h."
         primary={{label:"Falar com consultor",href:"https://wa.me/5547933822805?text=Ol%C3%A1%2C%20vi%20no%20site%20que%20voc%C3%AAs%20vendem%20meu%20ve%C3%ADculo%20em%20at%C3%A9%2060%20minutos.%20Poderia%20me%20passar%20mais%20informa%C3%A7%C3%B5es%3F"}}
-        secondary={{label:"Agendar avaliação",href:"https://flashcar.store"}}
+        secondary={{label:"Agendar avaliação",target:"unidades"}}
         onNav={onNav}/>
     </React.Fragment>
   );
