@@ -860,7 +860,9 @@ function Footer({ onNav }) {
           </a>
         </div>
       </footer>
-      <a href="https://wa.me/5547933822805?text=Ol%C3%A1%2C%20vi%20no%20site%20que%20voc%C3%AAs%20vendem%20meu%20ve%C3%ADculo%20em%20at%C3%A9%2060%20minutos.%20Poderia%20me%20passar%20mais%20informa%C3%A7%C3%B5es%3F" className="fc-fab-whatsapp"
+      <a href={/franqueado/.test(window.location.pathname+window.location.hash)
+           ? "https://wa.me/5547933822805?text=Ol%C3%A1%2C%20tenho%20interesse%20em%20ser%20um%20franqueado%20Flash%20Car.%20Gostaria%20de%20falar%20com%20um%20especialista."
+           : "https://wa.me/5547933822805?text=Ol%C3%A1%2C%20vi%20no%20site%20que%20voc%C3%AAs%20vendem%20meu%20ve%C3%ADculo%20em%20at%C3%A9%2060%20minutos.%20Poderia%20me%20passar%20mais%20informa%C3%A7%C3%B5es%3F"} className="fc-fab-whatsapp"
          target="_blank" rel="noopener noreferrer"
          aria-label="Falar no WhatsApp">
         <WhatsAppIcon size={26}/>
