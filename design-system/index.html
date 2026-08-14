@@ -1046,7 +1046,7 @@ function HomePage({ onNav }) {
               body="Seu veículo é apresentado para uma rede nacional de lojistas e investidores verificados."/>
             <StepCard num="03" icon="sell" title="Propostas"
               body="Filtramos as melhores ofertas e você escolhe a que melhor atende suas expectativas."/>
-            <StepCard num="04" icon="pix" title="Pagamento PIX" active
+            <StepCard num="04" icon="payments" title="Pagamento PIX" active
               body="Após o aceite e documentação, o dinheiro cai na conta em menos de uma hora."/>
           </div>
         </div>
@@ -1130,7 +1130,7 @@ function ComoFuncionaPage({ onNav }) {
      body:"Apresentamos as melhores propostas do mercado em tempo recorde, baseadas em dados reais de comercialização."},
     {num:"05",icon:"handshake",title:"Negociação",
      body:"Nós mediamos todo o fechamento, documentação e burocracia. Você só assina quando estiver tudo certo."},
-    {num:"06",icon:"pix",title:"PIX",active:true,
+    {num:"06",icon:"payments",title:"PIX",
      body:"O pagamento cai na sua conta de forma instantânea e segura logo após a finalização do processo documental."},
   ];
   return (
@@ -1467,7 +1467,7 @@ function FranquiaPage({ onNav }) {
                 <MS name="arrow_forward" size={18}/>
                 Quero conhecer a franquia
               </button>
-              <button className="fc-btn fc-btn--ghost fc-btn--lg" onClick={()=>onNav("franquia")}>Falar com especialista</button>
+              <a className="fc-btn fc-btn--ghost fc-btn--lg" href="https://wa.me/5547933822805?text=Ol%C3%A1%2C%20tenho%20interesse%20em%20ser%20um%20franqueado%20Flash%20Car.%20Gostaria%20de%20falar%20com%20um%20especialista." target="_blank" rel="noopener noreferrer" style={{textDecoration:"none"}}>Falar com especialista</a>
             </div>
             <div style={{display:"flex",gap:20,flexWrap:"wrap"}}>
               {[
